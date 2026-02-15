@@ -2,12 +2,12 @@ import type { Project } from '$lib/types';
 
 export const bio = {
 	name: 'Xinrui Chen',
-	bio: 'Frontend developer and designer with 4 years of experience building web applications and creating visual experiences. Background in graphic design spanning software engineering, interactive media, and print work.',
+	bio: 'Multidisciplinary frontend engineer with a background in design. Experience in hybrid roles spanning both design and development. Passionate about delivering great UX and creating beautiful products.',
 	socialLinks: [
 		{ name: 'Email', url: 'mailto:your.email@example.com' },
-		{ name: 'GitHub', url: 'https://github.com/yourusername' },
-		{ name: 'LinkedIn', url: 'https://linkedin.com/in/yourusername' },
-		{ name: 'Instagram', url: 'https://instagram.com/yourusername' }
+		{ name: 'GitHub', url: 'https://github.com/xynree' },
+		{ name: 'LinkedIn', url: 'https://linkedin.com/in/xinruichen7' },
+		{ name: 'Instagram', url: 'https://instagram.com/xynree' }
 	]
 };
 

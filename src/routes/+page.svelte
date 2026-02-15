@@ -24,10 +24,10 @@
 </script>
 
 <svelte:head>
-	<title>{bio.name} - Portfolio</title>
+	<title>{bio.name}</title>
 	<meta
 		name="description"
-		content="Portfolio of {bio.name} - {bio.bio.substring(0, 150)}"
+		content="Portfolio of {bio.name}"
 	/>
 </svelte:head>
 
@@ -41,8 +41,6 @@
 	<main class="main">
 		<div class="container">
 			<section class="work-section">
-				<h2 class="section-title">Selected Work</h2>
-
 				<TagFilter
 					{categories}
 					{selectedCategory}

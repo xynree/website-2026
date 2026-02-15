@@ -47,10 +47,10 @@
 
 	.tag {
 		padding: var(--spacing-xs) var(--spacing-md);
-		background: transparent;
+		background: var(--color-background);
 		border: 1px solid var(--color-border);
 		color: var(--color-text-secondary);
-		font-size: 0.875rem;
+		font-size: var(--text-xs);
 		cursor: pointer;
 		transition: all var(--transition-fast);
 		font-family: var(--font-sans);
@@ -63,7 +63,7 @@
 	}
 
 	.tag.active {
-		background: var(--color-text-primary);
+		background: var(--color-text-secondary);
 		color: var(--color-background);
 		border-color: var(--color-text-primary);
 	}
