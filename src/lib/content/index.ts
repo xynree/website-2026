@@ -2,7 +2,7 @@ import type { Project } from '$lib/types';
 
 export const bio = {
 	name: 'Xinrui Chen',
-	bio: 'Multidisciplinary frontend engineer with a background in design. Experience in hybrid roles spanning both design and development. Passionate about delivering great UX and creating beautiful products.',
+	bio: 'I make software & interactive visualizations, websites, drawings & paintings, and autobio comics. Spending my time hunting down new hobbies. Ask me about making jewelry, doing tattoos, and collecting rocks.',
 	socialLinks: [
 		{ name: 'Email', url: 'mailto:your.email@example.com' },
 		{ name: 'GitHub', url: 'https://github.com/xynree' },
@@ -10,6 +10,15 @@ export const bio = {
 		{ name: 'Instagram', url: 'https://instagram.com/xynree' }
 	]
 };
+
+export const projectCategories = [
+	'Software',
+	'UI/UX',
+	'Art',
+	'Design',
+	'Misc',
+	'Data Visualization'
+] as const;
 
 /**
  * Sample project data
@@ -19,8 +28,7 @@ export const projects: Project[] = [
 	{
 		id: 'interactive-data-viz',
 		title: 'Interactive Data Visualization Dashboard',
-		year: 2025,
-		category: 'Software Engineering',
+		categories: ['Software', 'Data Visualization'],
 		shortDescription:
 			'A real-time analytics dashboard for tracking user engagement metrics. Built with React and D3.js, featuring custom visualizations and responsive design patterns.',
 		fullDescription:
@@ -38,7 +46,7 @@ export const projects: Project[] = [
 		id: 'generative-art',
 		title: 'Generative Art Playground',
 		year: 2024,
-		category: 'Interactive Visual Applications',
+		categories: ['Software', 'Art'],
 		shortDescription:
 			'Web-based tool for creating algorithmic art using shader programming. Users can manipulate parameters in real-time to generate unique visual compositions.',
 		fullDescription:
@@ -55,7 +63,7 @@ export const projects: Project[] = [
 		id: 'design-system',
 		title: 'Design System for SaaS Platform',
 		year: 2024,
-		category: 'UI/UX Design',
+		categories: ['UI/UX', 'Design'],
 		shortDescription:
 			'Comprehensive design system including component library, documentation, and accessibility guidelines. Improved development velocity by 40% across engineering teams.',
 		fullDescription:
@@ -73,7 +81,7 @@ export const projects: Project[] = [
 		id: 'ecommerce-checkout',
 		title: 'E-commerce Checkout Redesign',
 		year: 2023,
-		category: 'UI/UX Design',
+		categories: ['UI/UX', 'Design'],
 		shortDescription:
 			'Led user research and redesign of checkout flow for mid-sized retailer. Reduced cart abandonment by 25% through simplified multi-step form and progressive disclosure.',
 		fullDescription:

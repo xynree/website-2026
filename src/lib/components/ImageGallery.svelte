@@ -1,8 +1,3 @@
-<!--
-	ImageGallery Component
-	Displays a grid of images for a project
-	Simple, responsive layout
--->
 <script lang="ts">
 	interface Props {
 		images: string[];

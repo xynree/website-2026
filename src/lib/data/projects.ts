@@ -1,12 +1,11 @@
-import { projects } from '$lib/content';
+import { projects, projectCategories } from '$lib/content';
 import type { Project } from '../types';
 
 /**
- * Get all unique categories from projects
+ * Get all available categories
  */
 export function getCategories(): string[] {
-	const categories = new Set(projects.map((p) => p.category));
-	return Array.from(categories).sort();
+	return [...projectCategories];
 }
 
 /**
@@ -17,11 +16,13 @@ export function getProjectById(id: string): Project | undefined {
 }
 
 /**
- * Filter projects by category
+ * Filter projects by categories (OR logic)
  */
-export function filterProjectsByCategory(category: string | null): Project[] {
-	if (!category) {
+export function filterProjectsByCategories(selectedCategories: string[]): Project[] {
+	if (selectedCategories.length === 0) {
 		return projects.filter((p) => p.featured);
 	}
-	return projects.filter((p) => p.category === category && p.featured);
+	return projects.filter(
+		(p) => p.categories.some((cat) => selectedCategories.includes(cat as any)) && p.featured
+	);
 }

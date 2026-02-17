@@ -1,26 +1,27 @@
 <script lang="ts">
 	interface Props {
 		categories: string[];
-		selectedCategory: string | null;
-		onSelectCategory: (category: string | null) => void;
+		selectedCategories: string[];
+		onToggleCategory: (category: string | null) => void;
 	}
 
-	let { categories, selectedCategory, onSelectCategory }: Props = $props();
+	let { categories, selectedCategories, onToggleCategory }: Props = $props();
 
 	/**
 	 * Handle tag click
 	 */
 	function handleTagClick(category: string | null) {
-		onSelectCategory(category);
+		onToggleCategory(category);
 	}
+
 </script>
 
 <div class="tag-filter">
 	<button
 		class="tag"
-		class:active={selectedCategory === null}
+		class:active={selectedCategories.length === 0}
 		onclick={() => handleTagClick(null)}
-		aria-pressed={selectedCategory === null}
+		aria-pressed={selectedCategories.length === 0}
 	>
 		All
 	</button>
@@ -28,14 +29,15 @@
 	{#each categories as category}
 		<button
 			class="tag"
-			class:active={selectedCategory === category}
+			class:active={selectedCategories.includes(category)}
 			onclick={() => handleTagClick(category)}
-			aria-pressed={selectedCategory === category}
+			aria-pressed={selectedCategories.includes(category)}
 		>
 			{category}
 		</button>
 	{/each}
 </div>
+
 
 <style>
 	.tag-filter {

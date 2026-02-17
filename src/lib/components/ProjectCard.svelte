@@ -17,9 +17,9 @@
 	<div class="project-header">
 		<h2 class="project-title">{project.title}</h2>
 		<div class="project-meta">
-			<span class="project-year">{project.year}</span>
+			<span class="project-year">{project?.year ?? 'Ongoing'}</span>
 			<span class="separator">·</span>
-			<span class="project-category">{project.category}</span>
+			<span class="project-category">{project.categories.join(' - ')}</span>
 		</div>
 	</div>
 
@@ -41,9 +41,6 @@
 		border-bottom: 1px solid var(--color-border);
 	}
 
-	.project-card:last-child {
-		border-bottom: none;
-	}
 
 	.project-header {
 		margin-bottom: var(--spacing-sm);

@@ -36,7 +36,7 @@
 				<div class="project-meta">
 					<span class="project-year">{project.year}</span>
 					<span class="separator">·</span>
-					<span class="project-category">{project.category}</span>
+					<span class="project-category">{project.categories.join(' - ')}</span>
 				</div>
 			</header>
 
