@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
-	import { cubicInOut } from 'svelte/easing';
+	import { onMount } from 'svelte';
+	import { fade, fly } from 'svelte/transition';
+	import { cubicInOut, cubicOut } from 'svelte/easing';
 	import { flip } from 'svelte/animate';
 	import Header from '$lib/components/Header.svelte';
 	import TagFilter from '$lib/components/TagFilter.svelte';
@@ -33,6 +34,16 @@
 		}
 	}
 
+	let mounted = $state(false);
+	let isInitialLoad = $state(true);
+
+	onMount(() => {
+		mounted = true;
+		setTimeout(() => {
+			isInitialLoad = false;
+		}, 1200); // Wait for initial sequence to finish
+	});
+
 </script>
 
 <svelte:head>
@@ -44,38 +55,50 @@
 </svelte:head>
 
 <div class="page">
-	<Header
-		name={bio.name}
-		bio={bio.bio}
-		socialLinks={bio.socialLinks}
-	/>
-
-	<main class="main">
-		<div class="container">
-			<section class="work-section">
-				<TagFilter
-					{categories}
-					{selectedCategories}
-					onToggleCategory={handleCategorySelect}
-				/>
-
-				<div class="projects-list">
-					{#each filteredProjects as project (project.id)}
-						<div
-							class="project-wrapper"
-							transition:fade={{ duration: 300, easing: cubicInOut }}
-							animate:flip={{ duration: 300 }}
-						>
-							<ProjectCard {project} />
-						</div>
-					{:else}
-						<p class="no-projects">No projects found for the selected categories.</p>
-					{/each}
-				</div>
-			</section>
+	{#if mounted}
+		<div in:fade={{ duration: 300, easing: cubicInOut }}>
+			<Header
+				name={bio.name}
+				bio={bio.bio}
+				socialLinks={bio.socialLinks}
+			/>
 		</div>
-	</main>
+
+		<main class="main">
+			<div class="container">
+				<section class="work-section">
+					<TagFilter
+						{categories}
+						{selectedCategories}
+						onToggleCategory={handleCategorySelect}
+					/>
+
+					<div class="projects-list">
+						{#each filteredProjects as project, i (project.id)}
+							<div
+								class="project-wrapper"
+								in:fly|global={{ 
+									y: 40, 
+									duration: 800, 
+									delay: isInitialLoad ? 300 + (i * 100) : i * 50, 
+									easing: cubicOut 
+								}}
+								out:fly={{ y: 20, duration: 300, delay: i * 100, easing: cubicInOut }}
+								animate:flip={{ duration: 300 }}
+
+							>
+								<ProjectCard {project} />
+							</div>
+						{:else}
+							<p class="no-projects">No projects found for the selected categories.</p>
+						{/each}
+					</div>
+				</section>
+			</div>
+		</main>
+	{/if}
 </div>
+
 
 <style>
 	.page {

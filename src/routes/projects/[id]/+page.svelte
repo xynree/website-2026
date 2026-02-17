@@ -8,11 +8,13 @@
 	- Image gallery
 -->
 <script lang="ts">
+	import { fade } from 'svelte/transition';
+	import { cubicInOut } from 'svelte/easing';
 	import ImageGallery from '$lib/components/ImageGallery.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
-	const { project } = data;
+	let project = $derived(data.project);
 </script>
 
 <svelte:head>
@@ -21,7 +23,7 @@
 </svelte:head>
 
 <div class="page">
-	<div class="container">
+	<div class="container" in:fade={{ duration: 300, easing: cubicInOut }}>
 		<!-- Back navigation -->
 		<nav class="back-nav">
 			<a href="/" class="back-link">
