@@ -190,22 +190,26 @@
 
 	@media (max-width: 1200px) {
 		.project-thumbnail {
-			position: static;
+			position: absolute;
+			right: var(--spacing-lg);
+			left: auto;
+			top: 0;
 			width: auto;
-			height: 140px;
+			height: 100%;
+			opacity: 0;
+			transform: translateX(10px);
+			pointer-events: none;
+			z-index: 5;
+		}
+
+		.project-card-link:hover .project-thumbnail {
 			opacity: 1;
-			transform: none;
-			pointer-events: auto;
-			margin-left: var(--spacing-lg);
+			transform: translateX(0);
 		}
 
 		.project-row {
-			display: flex;
-			flex-wrap: wrap;
-		}
-
-		.col-content {
-			flex: 1;
+			display: grid;
+			grid-template-columns: var(--col-width-label) 1fr;
 		}
 	}
 
@@ -236,6 +240,10 @@
 		}
 
 		.project-thumbnail {
+			position: static;
+			opacity: 1;
+			pointer-events: auto;
+			transform: none;
 			width: 100%;
 			height: auto;
 			aspect-ratio: 16 / 9;
