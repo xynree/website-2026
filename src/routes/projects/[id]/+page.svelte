@@ -80,7 +80,7 @@
 	.header-wrapper {
 		border-bottom: 1px solid var(--color-border);
 
-		margin: var(--spacing-xl) 0;
+		margin: var(--spacing-xl) 0 var(--spacing-lg) 0;
 	}
 
 	.project-header {
