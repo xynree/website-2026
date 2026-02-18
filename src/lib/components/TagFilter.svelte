@@ -48,26 +48,26 @@
 	}
 
 	.tag {
-		padding: var(--spacing-xs) var(--spacing-md);
+		padding: var(--spacing-xxs) var(--spacing-sm);
 		background: var(--color-background);
-		border: 1px solid var(--color-border);
+		border: 1px solid var(--color-surface-2);
+		border-radius: 4px;
 		color: var(--color-text-secondary);
 		font-size: var(--text-xs);
 		cursor: pointer;
 		transition: all var(--transition-fast);
 		font-family: var(--font-sans);
-		border-radius: var(--border-radius);
 	}
 
 	.tag:hover {
-		background: var(--color-hover);
 		color: var(--color-text-primary);
+		background: var(--color-surface-1);
 	}
 
 	.tag.active {
-		background: var(--color-text-secondary);
-		color: var(--color-background);
-		border-color: var(--color-text-primary);
+		background: var(--color-surface-2);
+		color: var(--color-text-primary);
+		border: 1px solid var(--color-surface-3);
 	}
 
 	.tag:focus-visible {

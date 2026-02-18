@@ -24,10 +24,10 @@
 	{#if mounted}
 		<div class="container">
 			<!-- Back navigation -->
-			<nav class="back-nav" in:fade={{duration: 600, delay: 100, easing: cubicOut }}
+			<nav class="back-nav" in:fade={{duration: 600, delay: 0, easing: cubicOut }}
  >
 				<a href="/" class="back-link">
-					<span aria-hidden="true">←</span> Back to projects
+					<span aria-hidden="true">←</span> Back
 				</a>
 			</nav>
 
@@ -72,7 +72,7 @@
 <style>
 	.page {
 		min-height: 100vh;
-		padding: var(--spacing-3xl) 0;
+		padding: var(--spacing-2xl) 0;
 	}
 
 	.back-nav {
