@@ -3,16 +3,14 @@
 	import { fade, fly } from 'svelte/transition';
 	import { cubicInOut, cubicOut } from 'svelte/easing';
 	import { flip } from 'svelte/animate';
-	import Header from '$lib/components/Header.svelte';
 	import TagFilter from '$lib/components/TagFilter.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
-	import {  getCategories, filterProjectsByCategories } from '$lib/data/projects';
-	import {bio} from '$lib/content'
+	import { getCategories, filterProjectsByCategories } from '$lib/data/projects';
+	import { bio, projectCategories } from '$lib/content';
 	import { type ProjectCategory } from '$lib/types';
 
-
 	// Get all available categories
-	const categories = getCategories();
+	const categories = projectCategories as unknown as ProjectCategory[];
 
 	// State for selected category filter
 	let selectedCategories = $state<ProjectCategory[]>([]);
@@ -65,7 +63,6 @@
 		return () => window.removeEventListener('scroll', handleScroll);
 	});
 
-
 	$effect(() => {
 		if (scrollWatcher && visibleCount < filteredProjects.length) {
 			const observer = new IntersectionObserver((entries) => {
@@ -78,82 +75,64 @@
 			return () => observer.disconnect();
 		}
 	});
-
-
 </script>
 
 <svelte:head>
-	<title>{bio.name}</title>
-	<meta
-		name="description"
-		content="Portfolio of {bio.name}"
-	/>
+	<title>{bio.name} - Work</title>
+	<meta name="description" content="Portfolio of {bio.name}" />
 </svelte:head>
 
-<div class="page">
-	{#if mounted}
-		<Header
-			name={bio.name}
-			bio={bio.bio}
-			socialLinks={bio.socialLinks}
-		/>
-
+{#if mounted}
+	<div class="page">
 		<main class="main">
-			<div class="container">
-				<section class="work-section">
-					<TagFilter
-						{categories}
-						{selectedCategories}
-						onToggleCategory={handleCategorySelect}
-					/>
+			<section class="work-section">
+				<TagFilter
+					{categories}
+					{selectedCategories}
+					onToggleCategory={handleCategorySelect}
+				/>
 
-					<div class="projects-list">
-						{#each visibleProjects as project, i (project.id)}
-							<div
-								class="project-wrapper"
-								in:fly|global={{ 
-									y: 20, 
-									duration: 800, 
-									delay: isInitialLoad ? 400 + (i * 150) : (i % BATCH_SIZE) * 150, 
-									easing: cubicOut 
-								}}
-
-								out:fly={{ y: 20, duration: 300, delay: i * 150, easing: cubicInOut }}
-								animate:flip={{ duration: 300 }}
-							>
-								<ProjectCard {project} />
-							</div>
-						{:else}
-
-							<p class="no-projects">No projects found for the selected categories.</p>
-						{/each}
-					</div>
-
-					<!-- Infinite scroll scrollWatcher -->
-					{#if visibleCount < filteredProjects.length}
-						<div bind:this={scrollWatcher} class="scroll-watcher">
-							<div class="loader"></div>
+				<div class="projects-list">
+					{#each visibleProjects as project, i (project.id)}
+						<div
+							class="project-wrapper"
+							in:fly|global={{ 
+								y: 20, 
+								duration: 800, 
+								delay: isInitialLoad ? 400 + (i * 150) : (i % BATCH_SIZE) * 150, 
+								easing: cubicOut 
+							}}
+							out:fly={{ y: 20, duration: 300, delay: i * 150, easing: cubicInOut }}
+							animate:flip={{ duration: 300 }}
+						>
+							<ProjectCard {project} />
 						</div>
-					{/if}
-				</section>
-			</div>
+					{:else}
+						<p class="no-projects">No projects found for the selected categories.</p>
+					{/each}
+				</div>
+
+				<!-- Infinite scroll scrollWatcher -->
+				{#if visibleCount < filteredProjects.length}
+					<div bind:this={scrollWatcher} class="scroll-watcher">
+						<div class="loader"></div>
+					</div>
+				{/if}
+			</section>
 		</main>
-	{/if}
+	</div>
+{/if}
 
-	{#if showScrollTop}
-		<button
-			class="scroll-top-btn"
-			onclick={scrollToTop}
-			transition:fade={{ duration: 200 }}
-			aria-label="Scroll to top"
-		>
-			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
-		</button>
-	{/if}
-</div>
-
-
-
+{#if showScrollTop}
+	<button
+		class="scroll-top-btn"
+		onclick={scrollToTop}
+		transition:fade={{ duration: 200 }}
+		aria-label="Scroll to top"
+	>
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+	</button>
+{/if}
 
 <style>
 	.page {
@@ -161,7 +140,7 @@
 	}
 
 	.main {
-		padding: var(--spacing-2xl) 0;
+		padding: 0 0 var(--spacing-2xl);
 	}
 
 	.work-section {
@@ -184,13 +163,6 @@
 		color: var(--color-text-tertiary);
 		text-align: center;
 		padding: var(--spacing-xl) 0;
-	}
-
-	@media (max-width: 768px) {
-		.main {
-			padding: var(--spacing-xl) 0;
-		}
-
 	}
 
 	.scroll-watcher {
@@ -247,6 +219,3 @@
 		}
 	}
 </style>
-
-
-

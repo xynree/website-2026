@@ -22,51 +22,50 @@
 
 <div class="page">
 	{#if mounted}
-		<div class="container">
-			<!-- Back navigation -->
-			<nav class="back-nav" in:fade={{duration: 600, delay: 0, easing: cubicOut }}
- >
-				<a href="/" class="back-link">
-					<span aria-hidden="true">←</span> Back
-				</a>
-			</nav>
+		<!-- Back navigation -->
+		<article class="project-detail">
+			<!-- Project header -->
+			<header 
+				class="project-header"
+				in:fade={{duration: 600, delay: 100, easing: cubicOut }}
+			>
+	
+				<h1 class="project-title">
+									<a href="/" class="back-link">
+				<span aria-hidden="true">←</span>
+			</a>
 
-			<article class="project-detail">
-				<!-- Project header -->
-				<header 
-					class="project-header"
-					in:fade={{duration: 600, delay: 100, easing: cubicOut }}
-				>
-					<h1 class="project-title">{project.title}</h1>
-					<div class="project-meta">
-						<span class="project-year">{project.year}</span>
-						<span class="project-category">{project.categories.join(' - ')}</span>
-					</div>
-				</header>
-
-				<!-- Full description -->
-				<div 
-					class="project-content"
-					in:fade={{duration: 600, delay: 200, easing: cubicOut }}
-				>
-					<p class="project-description">{project.fullDescription}</p>
-
-					<!-- Technologies -->
-					<div class="technologies-section">
-						<p class="technologies-list">{project.technologies.join(', ')}</p>
-					</div>
+			{project.title}
+		</h1>
+				<div class="project-meta">
+					<span class="project-year">{project.year}</span>
+					<span class="project-category">{project.categories.join(' - ')}</span>
 				</div>
+			</header>
 
-				<!-- Image gallery -->
-				<ImageGallery 
-					images={project.images} 
-					projectTitle={project.title} 
-					baseDelay={200}
-				/>
-			</article>
-		</div>
+			<!-- Full description -->
+			<div 
+				class="project-content"
+				in:fade={{duration: 600, delay: 200, easing: cubicOut }}
+			>
+				<p class="project-description">{project.fullDescription}</p>
+
+				<!-- Technologies -->
+				<div class="technologies-section">
+					<p class="technologies-list">{project.technologies.join(', ')}</p>
+				</div>
+			</div>
+
+			<!-- Image gallery -->
+			<ImageGallery 
+				images={project.images} 
+				projectTitle={project.title} 
+				baseDelay={200}
+			/>
+		</article>
 	{/if}
 </div>
+
 
 
 <style>

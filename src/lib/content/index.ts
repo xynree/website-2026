@@ -2,8 +2,12 @@ import type { Project } from '$lib/types';
 
 export const bio = {
 	name: 'Xinrui Chen',
-	bio: 'I make software, interactive visualizations & websites as well as drawings, paintings, and autobio comics. Spending my time hunting down new hobbies. Ask me about making jewelry, doing tattoos, and collecting rocks.',
+	bio: 'I make software, interactive visualizations & websites as well as drawings,paintings, and autobio comics. Spending my time hunting down new hobbies. Ask me about making jewelry, doing tattoos, and collecting rocks.',
 	socialLinks: [
+		{ name: 'Work', url: '/' },
+		{ name: 'About', url: '/about' },
+		{ name: 'Contact', url: '/contact' },
+		// Social details for the contact page
 		{ name: 'Email', url: 'mailto:your.email@example.com' },
 		{ name: 'GitHub', url: 'https://github.com/xynree' },
 		{ name: 'LinkedIn', url: 'https://linkedin.com/in/xinruichen7' },
@@ -34,11 +38,7 @@ export const projects: Project[] = [
 			'A comprehensive real-time analytics dashboard designed to track and visualize user engagement metrics across multiple platforms. Built with React and D3.js.',
 		technologies: ['React', 'D3.js', 'TypeScript', 'WebSocket'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Data+Viz+1',
-				caption: 'Main view',
-				featured: true
-			},
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Data+Viz+1', caption: 'Main view' },
 			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Data+Viz+2', caption: 'Details' }
 		]
 	},
@@ -52,11 +52,7 @@ export const projects: Project[] = [
 			'An interactive web-based platform that democratizes generative art creation through shader programming. Built with WebGL and GLSL.',
 		technologies: ['WebGL', 'GLSL', 'Canvas API'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Gen+Art+1',
-				caption: 'Composition',
-				featured: true
-			},
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Gen+Art+1', caption: 'Composition' },
 			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Gen+Art+2', caption: 'Interface' }
 		]
 	},
@@ -70,11 +66,7 @@ export const projects: Project[] = [
 			'A comprehensive design system created to unify the user experience across a large-scale SaaS platform.',
 		technologies: ['Figma', 'React', 'Storybook'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Design+System+1',
-				caption: 'Palette',
-				featured: true
-			},
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Design+System+1', caption: 'Palette' },
 			{
 				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Design+System+2',
 				caption: 'Components'
@@ -91,11 +83,7 @@ export const projects: Project[] = [
 			'A comprehensive redesign of the checkout experience for a mid-sized e-commerce retailer.',
 		technologies: ['Figma', 'User Research', 'A/B Testing'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Ecommerce+1',
-				caption: 'Checkout',
-				featured: true
-			},
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Ecommerce+1', caption: 'Checkout' },
 			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Ecommerce+2', caption: 'Mobile' }
 		]
 	},
@@ -109,11 +97,7 @@ export const projects: Project[] = [
 			'A complete overhaul of the mobile banking experience focused on accessibility and intuitive financial tracking.',
 		technologies: ['Swift', 'Framer', 'Figma'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Banking+App',
-				caption: 'Transactions',
-				featured: true
-			}
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Banking+App', caption: 'Transactions' }
 		]
 	},
 	{
@@ -126,11 +110,7 @@ export const projects: Project[] = [
 			'An experimental AR application designed to help new students navigate complex university campuses.',
 		technologies: ['Unity', 'ARKit', 'C#'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=AR+Wayfinding',
-				caption: 'AR Overlay',
-				featured: true
-			}
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=AR+Wayfinding', caption: 'AR Overlay' }
 		]
 	},
 	{
@@ -143,11 +123,7 @@ export const projects: Project[] = [
 			'This series investigates the intersection of control and chaos through traditional watercolor techniques.',
 		technologies: ['Watercolor', 'Paper'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Watercolor+Art',
-				caption: 'Flow',
-				featured: true
-			}
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Watercolor+Art', caption: 'Flow' }
 		]
 	},
 	{
@@ -162,8 +138,7 @@ export const projects: Project[] = [
 		images: [
 			{
 				url: 'https://placehold.co/1600x1000/EEE/31343C?text=City+Dashboard',
-				caption: 'Urban View',
-				featured: true
+				caption: 'Urban View'
 			}
 		]
 	},
@@ -177,11 +152,7 @@ export const projects: Project[] = [
 			'A collection of posters where letterforms become the primary expressive element for literature.',
 		technologies: ['Adobe Illustrator', 'Screen Printing'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Typography+Design',
-				caption: 'Poster',
-				featured: true
-			}
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Typography+Design', caption: 'Poster' }
 		]
 	},
 	{
@@ -194,11 +165,7 @@ export const projects: Project[] = [
 			'A local social network designed specifically for community garden members to coordinate care.',
 		technologies: ['React Native', 'Firebase'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Garden+App',
-				caption: 'Community',
-				featured: true
-			}
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Garden+App', caption: 'Community' }
 		]
 	},
 	{
@@ -213,8 +180,7 @@ export const projects: Project[] = [
 		images: [
 			{
 				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Isometric+Art',
-				caption: 'Micro-world',
-				featured: true
+				caption: 'Micro-world'
 			}
 		]
 	},
@@ -228,11 +194,7 @@ export const projects: Project[] = [
 			'Simplifying the interaction with dozens of nested IoT devices into a single, cohesive experience.',
 		technologies: ['Figma', 'React', 'Home Assistant'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Smart+Home+UI',
-				caption: 'Dashboard',
-				featured: true
-			}
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Smart+Home+UI', caption: 'Dashboard' }
 		]
 	},
 	{
@@ -245,11 +207,7 @@ export const projects: Project[] = [
 			'Using computational design to create jewelry that would be impossible to cast using traditional methods.',
 		technologies: ['Rhino', 'Grasshopper', '3D Printing'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Jewelry+Design',
-				caption: 'Wearable',
-				featured: true
-			}
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Jewelry+Design', caption: 'Wearable' }
 		]
 	},
 	{
@@ -262,11 +220,7 @@ export const projects: Project[] = [
 			'A 3D-sculpted piece where the topology is directly driven by local wind velocity data.',
 		technologies: ['Processing', 'CNC Milling'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Data+Sculpture',
-				caption: 'Topology',
-				featured: true
-			}
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Data+Sculpture', caption: 'Topology' }
 		]
 	},
 	{
@@ -278,11 +232,7 @@ export const projects: Project[] = [
 		fullDescription: 'Focusing on legibility and ease of use in a messy kitchen environment.',
 		technologies: ['Svelte', 'IndexedDB'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Recipe+App',
-				caption: 'Clean UI',
-				featured: true
-			}
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Recipe+App', caption: 'Clean UI' }
 		]
 	},
 	{
@@ -294,13 +244,7 @@ export const projects: Project[] = [
 		fullDescription:
 			'A personal project documenting small moments and awkward conversations through hand-drawn panels.',
 		technologies: ['Ink', 'Paper', 'Digitization'],
-		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Comic+Art',
-				caption: 'Panel',
-				featured: true
-			}
-		]
+		images: [{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Comic+Art', caption: 'Panel' }]
 	},
 	{
 		id: 'portfolio-v1-redesign',
@@ -312,11 +256,7 @@ export const projects: Project[] = [
 			'Retrospective on the technical and design choices made during my early career development.',
 		technologies: ['HTML', 'CSS', 'Vanilla JS'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Legacy+Site',
-				caption: 'V1 Work',
-				featured: true
-			}
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Legacy+Site', caption: 'V1 Work' }
 		]
 	},
 	{
@@ -329,11 +269,7 @@ export const projects: Project[] = [
 			'An interactive VR experience where the environment pulses and shifts in sync with live audio input.',
 		technologies: ['Unity', 'Oculus SDK', 'Web Audio API'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=VR+Visualizer',
-				caption: 'Immersive',
-				featured: true
-			}
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=VR+Visualizer', caption: 'Immersive' }
 		]
 	},
 	{
@@ -346,11 +282,7 @@ export const projects: Project[] = [
 			'A photographic series documenting the resilience of nature in the concrete jungle of New York City.',
 		technologies: ['Photography', 'Lightroom'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Botany+Study',
-				caption: 'Resilience',
-				featured: true
-			}
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Botany+Study', caption: 'Resilience' }
 		]
 	},
 	{
@@ -363,11 +295,7 @@ export const projects: Project[] = [
 			'Ditching lists for a more fluid, spatial representation of high-priority tasks.',
 		technologies: ['Tauri', 'Rust', 'React'],
 		images: [
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=TaskFlow+UI',
-				caption: 'Spatial View',
-				featured: true
-			}
+			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=TaskFlow+UI', caption: 'Spatial View' }
 		]
 	}
 ];

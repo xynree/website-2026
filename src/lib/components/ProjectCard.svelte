@@ -13,24 +13,17 @@
 	let { project }: Props = $props();
 
 	// Find the featured image for the thumbnail
-	let featuredImage = $derived(project.images.find((img) => img.featured));
+	let featuredImage = $derived(project.images.find((img) => img.featured) ?? project.images[0]);
 </script>
 
 <article class="project-card">
 	<div class="project-layout">
-				{#if featuredImage}
-			<div class="project-thumbnail">
-				<a href="/projects/{project.id}">
-					<img src={featuredImage.url} alt={project.title} class="thumbnail-image" />
-				</a>
-			</div>
-		{/if}
-
 		<div class="project-info">
 			<div class="project-header">
-				<a href="/projects/{project.id}" class="project-title-link">
+				<a href="/projects/{project.id}" class="project-card-link">
 					<h2 class="project-title">{project.title}</h2>
 				</a>
+
 				<div class="project-meta">
 					<span class="project-year">{project?.year ?? 'Ongoing'}</span>
 					<span class="separator">·</span>
@@ -49,14 +42,18 @@
 			</div>
 		</div>
 
-
+		{#if featuredImage}
+			<div class="project-thumbnail">
+				<img src={featuredImage.url} alt={project.title} class="thumbnail-image" />
+			</div>
+		{/if}
 	</div>
 </article>
 
 <style>
 	.project-card {
 		padding: var(--spacing-xl) 0;
-
+		border-bottom: 1px solid var(--color-border);
 	}
 
 	.project-layout {
@@ -76,11 +73,14 @@
 	.project-thumbnail {
 		width: 180px;
 		flex-shrink: 0;
+		opacity: 0;
+		transition: opacity var(--transition-fast);
+		pointer-events: none;
 	}
 
-	.project-thumbnail a {
-		display: block;
-		height: 100%;
+	.project-card:hover .project-thumbnail {
+		opacity: 1;
+		pointer-events: auto;
 	}
 
 	.thumbnail-image {
@@ -91,29 +91,21 @@
 		transition: transform var(--transition-medium);
 	}
 
-	.project-thumbnail:hover .thumbnail-image {
-		transform: scale(1.02);
-	}
-
 	.project-header {
 		margin-bottom: var(--spacing-sm);
-	}
-
-	.project-title-link {
-		text-decoration: none;
-		display: inline-block;
 	}
 
 	.project-title {
 		font-size: 1.125rem;
 		font-weight: 600;
 		margin-bottom: 0.25rem;
+		width: fit-content;
 		color: var(--color-text-primary);
 		font-family: var(--font-header);
 		transition: color var(--transition-fast);
 	}
 
-	.project-title-link:hover .project-title {
+	.project-title:hover {
 		color: var(--color-text-secondary);
 	}
 
@@ -168,6 +160,8 @@
 		.project-thumbnail {
 			width: 100%;
 			aspect-ratio: 16 / 10;
+			opacity: 1;
+			pointer-events: auto;
 		}
 
 		.thumbnail-image {
@@ -185,4 +179,3 @@
 		}
 	}
 </style>
-

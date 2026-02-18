@@ -14,11 +14,10 @@
 
 	interface Props {
 		name: string;
-		bio: string;
 		socialLinks: SocialLink[];
 	}
 
-	let { name, bio, socialLinks }: Props = $props();
+	let { name, socialLinks }: Props = $props();
 	let mounted = $state(false);
 
 	onMount(() => {
@@ -35,9 +34,17 @@
 				in:fade={{ duration: 600, delay: 0 }}
 			>
 				{#each socialLinks as link}
-					<a href={link.url} target="_blank" rel="noopener noreferrer" class="social-link">
-						{link.name}
-					</a>
+					{#if ['Work', 'About', 'Contact'].includes(link.name)}
+						{#if link.url.startsWith('/')}
+							<a href={link.url} class="social-link">
+								{link.name}
+							</a>
+						{:else}
+							<a href={link.url} target="_blank" rel="noopener noreferrer" class="social-link">
+								{link.name}
+							</a>
+						{/if}
+					{/if}
 				{/each}
 			</nav>
 
@@ -47,15 +54,11 @@
 			>
 				{name}
 			</h1>
-			<p 
-				class="bio"
-				in:fade={{duration: 600, delay: 200, easing: cubicOut }}
-			>
-				{bio}
-			</p>
 		{/if}
 	</div>
 </header>
+
+
 
 
 <style>
@@ -66,10 +69,7 @@
 	.name {
 		margin-bottom: var(--spacing-md);
 		font-family: var(--font-header);
-	}
-
-	.bio {
-		max-width: 650px;
+		text-transform: uppercase;
 	}
 
 	nav {
