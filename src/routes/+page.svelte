@@ -43,13 +43,26 @@
 	let mounted = $state(false);
 	let isInitialLoad = $state(true);
 	let scrollWatcher = $state<HTMLElement | null>(null);
+	let showScrollTop = $state(false);
+
+	function scrollToTop() {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
 
 	onMount(() => {
 		mounted = true;
 		setTimeout(() => {
 			isInitialLoad = false;
 		}, 1200);
+
+		const handleScroll = () => {
+			showScrollTop = window.scrollY > 400;
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
 	});
+
 
 	$effect(() => {
 		if (scrollWatcher && visibleCount < filteredProjects.length) {
@@ -124,7 +137,19 @@
 			</div>
 		</main>
 	{/if}
+
+	{#if showScrollTop}
+		<button
+			class="scroll-top-btn"
+			onclick={scrollToTop}
+			transition:fade={{ duration: 200 }}
+			aria-label="Scroll to top"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+		</button>
+	{/if}
 </div>
+
 
 
 
@@ -185,5 +210,40 @@
 	@keyframes spin {
 		to { transform: rotate(360deg); }
 	}
+
+	.scroll-top-btn {
+		position: fixed;
+		bottom: var(--spacing-xl);
+		right: var(--spacing-xl);
+		width: 44px;
+		height: 44px;
+		border-radius: 50%;
+		background: var(--color-background);
+		border: 1px solid var(--color-border);
+		color: var(--color-text-primary);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+		transition: all var(--transition-fast);
+		z-index: 100;
+	}
+
+	.scroll-top-btn:hover {
+		transform: translateY(-4px);
+		background: var(--color-hover);
+		border-color: var(--color-text-tertiary);
+	}
+
+	@media (max-width: 768px) {
+		.scroll-top-btn {
+			bottom: var(--spacing-lg);
+			right: var(--spacing-lg);
+			width: 40px;
+			height: 40px;
+		}
+	}
 </style>
+
 
