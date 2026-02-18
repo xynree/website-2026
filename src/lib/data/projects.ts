@@ -1,5 +1,5 @@
 import { projects, projectCategories } from '$lib/content';
-import type { Project } from '../types';
+import type { Project, ProjectCategory } from '../types';
 
 /**
  * Get all available categories
@@ -16,13 +16,11 @@ export function getProjectById(id: string): Project | undefined {
 }
 
 /**
- * Filter projects by categories (OR logic)
+ * Filter projects by categories
  */
-export function filterProjectsByCategories(selectedCategories: string[]): Project[] {
-	if (selectedCategories.length === 0) {
-		return projects.filter((p) => p.featured);
+export function filterProjectsByCategories(categories: ProjectCategory[]): Project[] {
+	if (!categories || categories.length === 0) {
+		return projects;
 	}
-	return projects.filter(
-		(p) => p.categories.some((cat) => selectedCategories.includes(cat as any)) && p.featured
-	);
+	return projects.filter((p) => categories.some((cat) => p.categories.includes(cat)));
 }

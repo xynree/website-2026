@@ -51,6 +51,7 @@
 		font-weight: 600;
 		margin-bottom: 0.25rem;
 		color: var(--color-text-primary);
+		font-family: var(--font-header);
 	}
 
 	.project-meta {
@@ -79,13 +80,13 @@
 	}
 
 	.view-project-link {
-		font-size: 0.875rem;
-		text-decoration: underline;
+		font-size: var(--text-sm);
 		color: var(--color-text-primary);
 		transition: color var(--transition-fast);
 		display: inline-flex;
 		align-items: center;
 		gap: 0.25rem;
+		text-decoration: none;
 	}
 
 	.view-project-link:hover {

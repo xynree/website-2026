@@ -2,6 +2,11 @@ import { projectCategories } from './content';
 
 export type ProjectCategory = (typeof projectCategories)[number];
 
+export interface ProjectImage {
+	url: string;
+	caption?: string;
+}
+
 export interface Project {
 	id: string;
 	title: string;
@@ -10,6 +15,5 @@ export interface Project {
 	shortDescription: string;
 	fullDescription: string;
 	technologies: string[]; // e.g., ["React", "D3.js", "TypeScript"]
-	images: string[]; // Array of image URLs for the gallery
-	featured: boolean; // Whether to show on main page
+	images: ProjectImage[]; // Array of image objects for the gallery
 }

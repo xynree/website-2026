@@ -37,7 +37,6 @@
 				<h1 class="project-title">{project.title}</h1>
 				<div class="project-meta">
 					<span class="project-year">{project.year}</span>
-					<span class="separator">·</span>
 					<span class="project-category">{project.categories.join(' - ')}</span>
 				</div>
 			</header>
@@ -48,7 +47,6 @@
 
 				<!-- Technologies -->
 				<div class="technologies-section">
-					<h2 class="technologies-title">Technologies</h2>
 					<p class="technologies-list">{project.technologies.join(', ')}</p>
 				</div>
 			</div>
@@ -108,10 +106,6 @@
 		color: var(--color-text-tertiary);
 	}
 
-	.separator {
-		color: var(--color-text-tertiary);
-	}
-
 	.project-content {
 		margin-bottom: var(--spacing-xl);
 	}
@@ -123,23 +117,9 @@
 		margin-bottom: var(--spacing-xl);
 	}
 
-	.technologies-section {
-		padding-top: var(--spacing-lg);
-		border-top: 1px solid var(--color-border);
-	}
-
-	.technologies-title {
-		font-size: 0.875rem;
-		font-weight: 600;
-		color: var(--color-text-primary);
-		margin-bottom: var(--spacing-xs);
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-	}
-
 	.technologies-list {
 		font-size: 0.9375rem;
-		color: var(--color-text-secondary);
+		color: var(--color-text-tertiary);
 		margin: 0;
 	}
 

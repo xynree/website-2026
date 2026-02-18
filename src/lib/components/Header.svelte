@@ -39,6 +39,7 @@
 
 	.name {
 		margin-bottom: var(--spacing-md);
+		font-family: var(--font-header);
 	}
 
 	.bio {
