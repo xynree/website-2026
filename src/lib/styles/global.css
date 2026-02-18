@@ -49,13 +49,13 @@
 
 	/** Font Size - Comprehensive scale **/
 	--text-xxs: 9px;
-	--text-xs: 10px;
-	--text-sm: 12px;
-	--text-md: 15px;
+	--text-xs: 11px;
+	--text-sm: 13px;
+	--text-md: 16px;
 	--text-lg: 20px;
 	--text-xl: 32px;
-	--text-2xl: 72px; 
-	--text-3xl: 120px;
+	--text-2xl: 56px; 
+	--text-3xl: 72px;
 
 	/** Font Weights **/
 	--weight-regular: 400;
@@ -72,7 +72,14 @@
 
 	--font-mono: 'SF Mono', 'Roboto Mono', Menlo, monospace;
 
+	/** Unified Mono Style Tokens **/
+	--mono-size: var(--text-xs); /* 11px */
+	--mono-weight: var(--weight-medium);
+	--mono-ls: var(--ls-wide);
+	--mono-text-transform: uppercase;
+
 	/* Component Specific Tokens */
+
 	--col-width-label: 180px;
 }
 

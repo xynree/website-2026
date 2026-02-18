@@ -41,11 +41,13 @@
 
 	.mono-label {
 		font-family: var(--font-mono);
-		font-size: var(--text-xs);
-		text-transform: uppercase;
+		font-size: var(--mono-size);
+		font-weight: var(--mono-weight);
+		text-transform: var(--mono-text-transform);
 		color: var(--color-text-tertiary);
-		letter-spacing: var(--ls-wide);
+		letter-spacing: var(--mono-ls);
 	}
+
 
 	.bio-text {
 		max-width: 650px;

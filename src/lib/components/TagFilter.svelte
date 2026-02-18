@@ -48,7 +48,7 @@
 
 <style>
 	.tag-filter-wrapper {
-		padding-bottom: var(--spacing-xl);
+		padding-bottom: var(--spacing-lg);
 	}
 
 	.tag-filter-container {
@@ -61,10 +61,11 @@
 
 	.mono-label {
 		font-family: var(--font-mono);
-		font-size: var(--text-xs);
-		text-transform: uppercase;
+		font-size: var(--mono-size);
+		font-weight: var(--mono-weight);
+		text-transform: var(--mono-text-transform);
 		color: var(--color-text-tertiary);
-		letter-spacing: var(--ls-wide);
+		letter-spacing: var(--mono-ls);
 	}
 
 	.tag-filter {
@@ -78,12 +79,13 @@
 		border: none;
 		padding: 0;
 		font-family: var(--font-mono);
-		font-size: var(--text-xs);
-		text-transform: uppercase;
+		font-size: var(--mono-size);
+		font-weight: var(--mono-weight);
+		text-transform: var(--mono-text-transform);
 		color: var(--color-text-tertiary);
 		cursor: pointer;
 		transition: color var(--transition-fast);
-		letter-spacing: 0.02em;
+		letter-spacing: var(--mono-ls);
 	}
 
 	.tag:hover {
@@ -102,9 +104,15 @@
 			gap: var(--spacing-xs);
 		}
 
+		.label-col {
+			display: none;
+		}
+
 		.tag {
-			font-size: var(--text-xs);
+			font-size: var(--mono-size);
 		}
 	}
+
+
 </style>
 

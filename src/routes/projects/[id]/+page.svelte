@@ -22,60 +22,66 @@
 <div class="page">
 	{#if mounted}
 		<article class="project-detail">
-			<header class="project-header" in:fade={{ duration: 600, delay: 100, easing: cubicOut }}>
-				<div class="header-grid container">
-					<div class="label-col">
-						<a href="/" class="back-link" aria-label="Back to work">
-							<span aria-hidden="true">← Index</span>
-						</a>
-					</div>
-					<div class="title-col">
-						<h1 class="project-title">{project.title}</h1>
-					</div>
-				</div>
-			</header>
-
-			<div class="detail-grid container" in:fade={{ duration: 600, delay: 200, easing: cubicOut }}>
-				<div class="meta-col">
-					<div class="meta-item">
-						<span class="mono-value">{project.year ?? 'Ongoing'}</span>
-					</div>
-					<div class="meta-item">
-						<div class="mono-list">
-							{#each project.categories as cat}
-								<span class="mono-value">{cat}</span>
-							{/each}
+			<div class="header-wrapper">
+				<header class="project-header container">
+					<div class="header-grid">
+						<div class="label-col">
+							<a href="/" class="back-link" aria-label="Back to work">
+								<span aria-hidden="true">← Index</span>
+							</a>
+						</div>
+						<div class="title-col">
+							<h3 class="project-title">{project.title}</h3>
 						</div>
 					</div>
-					<div class="meta-item">
-						<div class="mono-list">
-							{#each project.technologies as tech}
-								<span class="mono-value">{tech}</span>
-							{/each}
+				</header>
+			</div>
+
+			<div class="detail-wrapper">
+				<div class="detail-grid container" in:fade={{ duration: 600, delay: 150, easing: cubicOut }}>
+					<div class="meta-col">
+						<div class="meta-item">
+							<span class="mono-value">{project.year ?? 'Ongoing'}</span>
+						</div>
+						<div class="meta-item">
+							<div class="mono-list">
+								{#each project.categories as cat}
+									<span class="mono-value">{cat}</span>
+								{/each}
+							</div>
+						</div>
+						<div class="meta-item">
+							<div class="mono-list">
+								{#each project.technologies as tech}
+									<span class="mono-value">{tech}</span>
+								{/each}
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="content-col">
-					<p class="full-description">{project.fullDescription}</p>
+					<div class="content-col">
+						<p class="full-description">{project.fullDescription}</p>
 
-					<div class="gallery-wrapper">
-						<ImageGallery images={project.images} projectTitle={project.title} baseDelay={400} />
+						<div class="gallery-wrapper">
+							<ImageGallery images={project.images} projectTitle={project.title} baseDelay={400} />
+						</div>
 					</div>
 				</div>
 			</div>
+
 		</article>
 	{/if}
 </div>
 
 <style>
-	.page {
-		padding-bottom: var(--spacing-3xl);
+	.header-wrapper {
+		border-bottom: 1px solid var(--color-border);
+
+		margin: var(--spacing-xl) 0;
 	}
 
 	.project-header {
-		margin-bottom: var(--spacing-xl);
-		padding-bottom: var(--spacing-sm);
+		padding: var(--spacing-sm) 0 var(--spacing-lg) var(--spacing-lg);
 	}
 
 	.header-grid {
@@ -85,15 +91,16 @@
 		align-items: end;
 	}
 
+
 	.back-link {
 		font-family: var(--font-mono);
-		font-size: var(--text-xs);
-		text-transform: uppercase;
+		font-size: var(--mono-size);
+		font-weight: var(--mono-weight);
+		text-transform: var(--mono-text-transform);
 		color: var(--color-text-tertiary);
 		text-decoration: none;
-		letter-spacing: var(--ls-wide);
+		letter-spacing: var(--mono-ls);
 		display: block;
-		margin-bottom: var(--spacing-xxs); /* Align baseline with H1 roughly */
 	}
 
 	.project-title {
@@ -122,20 +129,15 @@
 		gap: var(--spacing-xxs);
 	}
 
-	.mono-label {
-		font-family: var(--font-mono);
-		font-size: var(--text-xs);
-		text-transform: uppercase;
-		color: var(--color-text-tertiary);
-		letter-spacing: var(--ls-wide);
-	}
-
 	.mono-value {
 		font-family: var(--font-mono);
-		font-size: var(--text-sm);
-		text-transform: uppercase;
-		color: var(--color-text-secondary);
+		font-size: var(--mono-size);
+		font-weight: var(--mono-weight);
+		text-transform: var(--mono-text-transform);
+		color: var(--color-text-tertiary);
+		letter-spacing: var(--mono-ls);
 	}
+
 
 	.mono-list {
 		display: flex;
@@ -148,7 +150,8 @@
 		font-size: var(--text-md);
 		line-height: 1.6;
 		margin-bottom: var(--spacing-2xl);
-		color: var(--color-text-primary);
+		color: var(--color-text-secondary);
+		
 	}
 
 	.gallery-wrapper {
@@ -156,20 +159,35 @@
 	}
 
 	@media (max-width: 768px) {
+		.header-grid {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-sm);
+			align-items: start;
+		}
+
+		.project-header {
+			padding: var(--spacing-sm) 0 var(--spacing-md) var(--spacing-md);
+		}
+
+		.back-link {
+			margin-bottom: var(--spacing-xxs);
+		}
+
 		.detail-grid {
 			grid-template-columns: 1fr;
 			gap: var(--spacing-xl);
 		}
 
 		.project-title {
-			font-size: 1.5rem;
+			font-size: var(--text-xl);
 		}
 
 		.meta-col {
-			flex-direction: row;
-			flex-wrap: wrap;
+			flex-direction: column;
 			gap: var(--spacing-md);
+			align-items: flex-start;
 		}
 	}
+
 </style>
 

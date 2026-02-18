@@ -52,10 +52,11 @@
 
 	.mono-label {
 		font-family: var(--font-mono);
-		font-size: var(--text-xs);
-		text-transform: uppercase;
+		font-size: var(--mono-size);
+		font-weight: var(--mono-weight);
+		text-transform: var(--mono-text-transform);
 		color: var(--color-text-tertiary);
-		letter-spacing: var(--ls-wide);
+		letter-spacing: var(--mono-ls);
 	}
 
 	.contact-methods {
@@ -78,11 +79,13 @@
 
 	.small-mono {
 		font-family: var(--font-mono);
-		text-transform: uppercase;
-		font-size: var(--text-xs);
-		letter-spacing: var(--ls-wide);
+		font-size: var(--mono-size);
+		font-weight: var(--mono-weight);
+		text-transform: var(--mono-text-transform);
+		letter-spacing: var(--mono-ls);
 		color: var(--color-text-tertiary);
 	}
+
 
 	.link {
 		font-size: var(--text-md);

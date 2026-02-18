@@ -42,8 +42,11 @@
 		</nav>
 
 		<div class="name-section">
-			<h1 class="name">{name}</h1>
+			<h1 class="name">
+				<a href="/">{name}</a>
+			</h1>
 		</div>
+
 	</div>
 </header>
 
@@ -66,15 +69,16 @@
 		padding: 0;
 		display: flex;
 		flex-direction: column;
-		gap: var(--spacing-xxs);
-		margin-top: var(--spacing-xs); /* Aligns with the massive header text's cap height roughly */
+		gap: 8px;
+		margin-top: 1px;
 	}
 
 	.mono-text {
 		font-family: var(--font-mono);
-		font-size: var(--text-xs);
-		text-transform: uppercase;
-		letter-spacing: var(--ls-wider);
+		font-size: var(--mono-size);
+		font-weight: var(--mono-weight);
+		text-transform: var(--mono-text-transform);
+		letter-spacing: var(--mono-ls);
 	}
 
 	.nav-link {
@@ -82,12 +86,8 @@
 		transition: color var(--transition-fast);
 	}
 
-	.nav-link:hover {
-		color: var(--color-text-primary);
-	}
-
 	.name {
-		font-size: var(--text-2xl);
+		font-size: var(--text-3xl);
 		font-weight: var(--weight-heavy);
 		margin: 0;
 		line-height: 0.85;
@@ -110,7 +110,7 @@
 		}
 
 		.name {
-			font-size: var(--text-xl);
+			font-size: var(--text-2xl);
 		}
 	}
 </style>

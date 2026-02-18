@@ -107,16 +107,16 @@
 		flex-direction: column;
 		gap: var(--spacing-sm);
 		align-items: flex-end;
-		margin-top: var(--spacing-sm);
 		text-align: right;
 	}
 
 	.mono-label {
 		font-family: var(--font-mono);
-		font-size: var(--text-xs);
-		text-transform: uppercase;
+		font-size: var(--mono-size);
+		font-weight: var(--mono-weight);
+		text-transform: var(--mono-text-transform);
 		color: var(--color-text-secondary);
-		letter-spacing: var(--ls-wide);
+		letter-spacing: var(--mono-ls);
 	}
 
 	.project-title {
@@ -151,13 +151,16 @@
 
 	.tech-tag {
 		font-family: var(--font-mono);
-		font-size: var(--text-xs);
+		font-size: var(--mono-size);
+		font-weight: var(--mono-weight);
+		text-transform: var(--mono-text-transform);
 		color: var(--color-text-tertiary);
-		text-transform: uppercase;
 		background: var(--color-surface-2);
 		padding: 2px 5px;
 		border-radius: 2px;
+		letter-spacing: var(--mono-ls);
 	}
+
 
 	.project-thumbnail {
 		position: absolute;

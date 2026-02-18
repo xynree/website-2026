@@ -8,7 +8,7 @@ export const bio = {
 		{ name: 'About', url: '/about' },
 		{ name: 'Contact', url: '/contact' },
 		// Social details for the contact page
-		{ name: 'Email', url: 'mailto:your.email@example.com' },
+		{ name: 'Email', url: 'xynree@gmail.com' },
 		{ name: 'GitHub', url: 'https://github.com/xynree' },
 		{ name: 'LinkedIn', url: 'https://linkedin.com/in/xinruichen7' },
 		{ name: 'Instagram', url: 'https://instagram.com/xynree' }
