@@ -5,6 +5,7 @@ export type ProjectCategory = (typeof projectCategories)[number];
 export interface ProjectImage {
 	url: string;
 	caption?: string;
+	featured?: boolean;
 }
 
 export interface Project {
