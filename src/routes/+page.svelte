@@ -20,15 +20,17 @@
 	// Filtered projects based on selected category
 	let filteredProjects = $derived(filterProjectsByCategories(selectedCategories));
 	
+	const BATCH_SIZE = 5;
+
 	// Infinite scroll state
-	let visibleCount = $state(5);
+	let visibleCount = $state(BATCH_SIZE);
 	let visibleProjects = $derived(filteredProjects.slice(0, visibleCount));
 
 	/**
 	 * Handle category selection (Toggle logic)
 	 */
 	function handleCategorySelect(category: string | null) {
-		visibleCount = 5; // Reset count on filter change
+		visibleCount = BATCH_SIZE; // Reset count on filter change
 		if (category === null) {
 			selectedCategories = [];
 		} else {
@@ -68,7 +70,7 @@
 		if (scrollWatcher && visibleCount < filteredProjects.length) {
 			const observer = new IntersectionObserver((entries) => {
 				if (entries[0].isIntersecting) {
-					visibleCount += 5;
+					visibleCount += BATCH_SIZE;
 				}
 			}, { threshold: 0.1 });
 
@@ -90,13 +92,11 @@
 
 <div class="page">
 	{#if mounted}
-		<div in:fade={{ duration: 300, easing: cubicInOut }}>
-			<Header
-				name={bio.name}
-				bio={bio.bio}
-				socialLinks={bio.socialLinks}
-			/>
-		</div>
+		<Header
+			name={bio.name}
+			bio={bio.bio}
+			socialLinks={bio.socialLinks}
+		/>
 
 		<main class="main">
 			<div class="container">
@@ -112,17 +112,19 @@
 							<div
 								class="project-wrapper"
 								in:fly|global={{ 
-									y: 40, 
+									y: 20, 
 									duration: 800, 
-									delay: isInitialLoad ? 300 + (i * 100) : i * 50, 
+									delay: isInitialLoad ? 400 + (i * 150) : (i % BATCH_SIZE) * 150, 
 									easing: cubicOut 
 								}}
-								out:fly={{ y: 20, duration: 300, delay: i * 100, easing: cubicInOut }}
+
+								out:fly={{ y: 20, duration: 300, delay: i * 150, easing: cubicInOut }}
 								animate:flip={{ duration: 300 }}
 							>
 								<ProjectCard {project} />
 							</div>
 						{:else}
+
 							<p class="no-projects">No projects found for the selected categories.</p>
 						{/each}
 					</div>

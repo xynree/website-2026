@@ -1,21 +1,19 @@
-<!--
-	Project Detail Page
-	Displays full project information including:
-	- Back navigation
-	- Project title, year, and category
-	- Full description
-	- Technologies used
-	- Image gallery
--->
 <script lang="ts">
-	import { fade } from 'svelte/transition';
-	import { cubicInOut } from 'svelte/easing';
+	import { onMount } from 'svelte';
+	import { fade, fly } from 'svelte/transition';
+	import { cubicInOut, cubicOut } from 'svelte/easing';
 	import ImageGallery from '$lib/components/ImageGallery.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
 	let project = $derived(data.project);
+
+	let mounted = $state(false);
+	onMount(() => {
+		mounted = true;
+	});
 </script>
+
 
 <svelte:head>
 	<title>{project.title} - Portfolio</title>
@@ -23,39 +21,53 @@
 </svelte:head>
 
 <div class="page">
-	<div class="container" in:fade={{ duration: 300, easing: cubicInOut }}>
-		<!-- Back navigation -->
-		<nav class="back-nav">
-			<a href="/" class="back-link">
-				<span aria-hidden="true">←</span> Back to projects
-			</a>
-		</nav>
+	{#if mounted}
+		<div class="container">
+			<!-- Back navigation -->
+			<nav class="back-nav" in:fade={{duration: 600, delay: 100, easing: cubicOut }}
+ >
+				<a href="/" class="back-link">
+					<span aria-hidden="true">←</span> Back to projects
+				</a>
+			</nav>
 
-		<article class="project-detail">
-			<!-- Project header -->
-			<header class="project-header">
-				<h1 class="project-title">{project.title}</h1>
-				<div class="project-meta">
-					<span class="project-year">{project.year}</span>
-					<span class="project-category">{project.categories.join(' - ')}</span>
+			<article class="project-detail">
+				<!-- Project header -->
+				<header 
+					class="project-header"
+					in:fade={{duration: 600, delay: 100, easing: cubicOut }}
+				>
+					<h1 class="project-title">{project.title}</h1>
+					<div class="project-meta">
+						<span class="project-year">{project.year}</span>
+						<span class="project-category">{project.categories.join(' - ')}</span>
+					</div>
+				</header>
+
+				<!-- Full description -->
+				<div 
+					class="project-content"
+					in:fade={{duration: 600, delay: 200, easing: cubicOut }}
+				>
+					<p class="project-description">{project.fullDescription}</p>
+
+					<!-- Technologies -->
+					<div class="technologies-section">
+						<p class="technologies-list">{project.technologies.join(', ')}</p>
+					</div>
 				</div>
-			</header>
 
-			<!-- Full description -->
-			<div class="project-content">
-				<p class="project-description">{project.fullDescription}</p>
-
-				<!-- Technologies -->
-				<div class="technologies-section">
-					<p class="technologies-list">{project.technologies.join(', ')}</p>
-				</div>
-			</div>
-
-			<!-- Image gallery -->
-			<ImageGallery images={project.images} projectTitle={project.title} />
-		</article>
-	</div>
+				<!-- Image gallery -->
+				<ImageGallery 
+					images={project.images} 
+					projectTitle={project.title} 
+					baseDelay={200}
+				/>
+			</article>
+		</div>
+	{/if}
 </div>
+
 
 <style>
 	.page {

@@ -3,6 +3,10 @@
 	Displays the user's name, bio, and social links
 -->
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { fade, fly } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
+
 	interface SocialLink {
 		name: string;
 		url: string;
@@ -15,22 +19,44 @@
 	}
 
 	let { name, bio, socialLinks }: Props = $props();
+	let mounted = $state(false);
+
+	onMount(() => {
+		mounted = true;
+	});
 </script>
 
 <header class="header">
 	<div class="container">
-		<nav class="social-links" aria-label="Social media links">
-			{#each socialLinks as link}
-				<a href={link.url} target="_blank" rel="noopener noreferrer" class="social-link">
-					{link.name}
-				</a>
-			{/each}
-		</nav>
+		{#if mounted}
+			<nav 
+				class="social-links" 
+				aria-label="Social media links"
+				in:fade={{ duration: 600, delay: 0 }}
+			>
+				{#each socialLinks as link}
+					<a href={link.url} target="_blank" rel="noopener noreferrer" class="social-link">
+						{link.name}
+					</a>
+				{/each}
+			</nav>
 
-		<h1 class="name">{name}</h1>
-		<p class="bio">{bio}</p>
+			<h1 
+				class="name"
+				in:fade={{ duration: 600, delay: 100, easing: cubicOut }}
+			>
+				{name}
+			</h1>
+			<p 
+				class="bio"
+				in:fade={{duration: 600, delay: 200, easing: cubicOut }}
+			>
+				{bio}
+			</p>
+		{/if}
 	</div>
 </header>
+
 
 <style>
 	.header {

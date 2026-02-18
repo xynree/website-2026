@@ -1,30 +1,47 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { fly } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 	import type { ProjectImage } from '$lib/types';
 
 	interface Props {
 		images: ProjectImage[];
 		projectTitle: string;
+		baseDelay?: number;
 	}
 
-	let { images, projectTitle }: Props = $props();
+	let { images, projectTitle, baseDelay = 0 }: Props = $props();
+	let mounted = $state(false);
+
+	onMount(() => {
+		mounted = true;
+	});
 </script>
 
 <div class="gallery">
-	{#each images as image, index}
-		<div class="gallery-item">
-			<div class="gallery-image-wrapper">
-				<img
-					src={image.url}
-					alt={image.caption || `${projectTitle} - Image ${index + 1}`}
-					class="gallery-image"
-				/>
+	{#if mounted}
+		{#each images as image, index}
+			<div 
+				class="gallery-item"
+				in:fly|global={{ y: 40, duration: 800, delay: baseDelay + (index * 150), easing: cubicOut }}
+			>
+
+
+				<div class="gallery-image-wrapper">
+					<img
+						src={image.url}
+						alt={image.caption || `${projectTitle} - Image ${index + 1}`}
+						class="gallery-image"
+					/>
+				</div>
+				{#if image.caption}
+					<p class="image-caption">{image.caption}</p>
+				{/if}
 			</div>
-			{#if image.caption}
-				<p class="image-caption">{image.caption}</p>
-			{/if}
-		</div>
-	{/each}
+		{/each}
+	{/if}
 </div>
+
 
 
 
