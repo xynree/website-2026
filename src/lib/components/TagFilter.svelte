@@ -31,7 +31,7 @@
 					All
 				</button>
 
-				{#each categories as category}
+				{#each categories as category (category)}
 					<button
 						class="tag"
 						class:active={selectedCategories.includes(category)}
@@ -56,7 +56,7 @@
 		grid-template-columns: var(--col-width-label) 1fr;
 		gap: var(--spacing-lg);
 		padding-top: var(--spacing-md);
-		align-items: start;
+		align-items: center;
 	}
 
 	.mono-label {
@@ -112,7 +112,4 @@
 			font-size: var(--mono-size);
 		}
 	}
-
-
 </style>
-

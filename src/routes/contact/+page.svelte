@@ -24,10 +24,10 @@
 			<div class="content-col">
 				<div class="contact-methods">
 					<ul class="contact-list">
-						{#each contactLinks as link}
+						{#each contactLinks as link (link.name)}
 							<li>
 								<span class="small-mono">{link.name}</span>
-								<a href={link.url} target="_blank" rel="noopener noreferrer" class="link">
+								<a href={link.url} target="_blank" rel="noopener noreferrer external" class="link">
 									{link.url.replace('mailto:', '').replace('https://', '')}
 								</a>
 							</li>
@@ -86,7 +86,6 @@
 		color: var(--color-text-tertiary);
 	}
 
-
 	.link {
 		font-size: var(--text-md);
 		color: var(--color-text-primary);
@@ -101,4 +100,3 @@
 		}
 	}
 </style>
-

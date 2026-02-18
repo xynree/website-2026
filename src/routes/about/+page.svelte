@@ -48,7 +48,6 @@
 		letter-spacing: var(--mono-ls);
 	}
 
-
 	.bio-text {
 		max-width: 650px;
 		font-size: var(--text-md);
@@ -63,4 +62,3 @@
 		}
 	}
 </style>
-

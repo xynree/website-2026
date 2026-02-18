@@ -1,4 +1,4 @@
-import type { Project } from '$lib/types';
+import type { Project, SocialLink } from '$lib/types';
 
 export const bio = {
 	name: 'Xinrui Chen',
@@ -8,12 +8,18 @@ export const bio = {
 		{ name: 'About', url: '/about' },
 		{ name: 'Contact', url: '/contact' },
 		// Social details for the contact page
-		{ name: 'Email', url: 'xynree@gmail.com' },
+		{ name: 'Email', url: 'mailto:xynree@gmail.com' },
 		{ name: 'GitHub', url: 'https://github.com/xynree' },
 		{ name: 'LinkedIn', url: 'https://linkedin.com/in/xinruichen7' },
 		{ name: 'Instagram', url: 'https://instagram.com/xynree' }
 	]
 };
+
+export const headerLinks = [
+	{ name: 'Work', url: '/' },
+	{ name: 'About', url: '/about' },
+	{ name: 'Contact', url: '/contact' }
+] as SocialLink[];
 
 export const projectCategories = [
 	'Software',

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
-	import { cubicInOut, cubicOut } from 'svelte/easing';
+	import { cubicOut } from 'svelte/easing';
 	import { flip } from 'svelte/animate';
 	import TagFilter from '$lib/components/TagFilter.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
-	import { getCategories, filterProjectsByCategories } from '$lib/data/projects';
+	import { filterProjectsByCategories } from '$lib/data/projects';
 	import { bio, projectCategories } from '$lib/content';
 	import { type ProjectCategory } from '$lib/types';
 
@@ -161,7 +161,6 @@
 		position: relative;
 	}
 
-
 	.project-wrapper {
 		grid-column: 1;
 		width: 100%;
@@ -213,7 +212,6 @@
 		transition: all var(--transition-fast);
 		z-index: 100;
 	}
-
 
 	.scroll-top-btn:hover {
 		transform: translateY(-4px);

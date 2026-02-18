@@ -1,42 +1,25 @@
-<!--
-	Header Component
-	Displays the user's name, bio, and social links
--->
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { fade, fly } from 'svelte/transition';
-	import { cubicOut } from 'svelte/easing';
+	import type { SocialLink } from '$lib/types';
 
-	interface SocialLink {
-		name: string;
-		url: string;
-	}
-
-	interface Props {
+	let {
+		name,
+		socialLinks
+	}: {
 		name: string;
 		socialLinks: SocialLink[];
-	}
-
-	let { name, socialLinks }: Props = $props();
-	let mounted = $state(false);
-
-	onMount(() => {
-		mounted = true;
-	});
+	} = $props();
 </script>
 
 <header class="header">
 	<div class="header-inner container">
 		<nav class="nav-section" aria-label="Primary navigation">
 			<ul class="nav-list mono-text">
-				{#each socialLinks as link}
-					{#if ['Work', 'About', 'Contact'].includes(link.name)}
-						<li>
-							<a href={link.url} class="nav-link">
-								{link.name}
-							</a>
-						</li>
-					{/if}
+				{#each socialLinks as link (link.name)}
+					<li>
+						<a href={link.url} class="nav-link">
+							{link.name}
+						</a>
+					</li>
 				{/each}
 			</ul>
 		</nav>
@@ -46,7 +29,6 @@
 				<a href="/">{name}</a>
 			</h1>
 		</div>
-
 	</div>
 </header>
 
@@ -114,4 +96,3 @@
 		}
 	}
 </style>
-

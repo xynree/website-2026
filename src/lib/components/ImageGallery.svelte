@@ -20,7 +20,7 @@
 
 <div class="gallery">
 	{#if mounted}
-		{#each images as image, index}
+		{#each images as image, index (image.url)}
 			<div
 				class="gallery-item"
 				in:fly|global={{ y: 40, duration: 800, delay: baseDelay + index * 150, easing: cubicOut }}

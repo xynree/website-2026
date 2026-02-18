@@ -2,6 +2,11 @@ import { projectCategories } from './content';
 
 export type ProjectCategory = (typeof projectCategories)[number];
 
+export interface SocialLink {
+	name: string;
+	url: string;
+}
+
 export interface ProjectImage {
 	url: string;
 	caption?: string;

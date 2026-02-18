@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { fade, fly } from 'svelte/transition';
-	import { cubicInOut, cubicOut } from 'svelte/easing';
+	import { fade } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 	import ImageGallery from '$lib/components/ImageGallery.svelte';
 	import type { PageData } from './$types';
 
@@ -26,10 +26,11 @@
 				<header class="project-header container">
 					<div class="header-grid">
 						<div class="label-col">
-							<a href="/" class="back-link" aria-label="Back to work">
+							<a href="/" class="back-link" aria-label="Back">
 								<span aria-hidden="true">← Index</span>
 							</a>
 						</div>
+
 						<div class="title-col">
 							<h3 class="project-title">{project.title}</h3>
 						</div>
@@ -38,21 +39,24 @@
 			</div>
 
 			<div class="detail-wrapper">
-				<div class="detail-grid container" in:fade={{ duration: 600, delay: 150, easing: cubicOut }}>
+				<div
+					class="detail-grid container"
+					in:fade={{ duration: 600, delay: 150, easing: cubicOut }}
+				>
 					<div class="meta-col">
 						<div class="meta-item">
 							<span class="mono-value">{project.year ?? 'Ongoing'}</span>
 						</div>
 						<div class="meta-item">
 							<div class="mono-list">
-								{#each project.categories as cat}
+								{#each project.categories as cat (cat)}
 									<span class="mono-value">{cat}</span>
 								{/each}
 							</div>
 						</div>
 						<div class="meta-item">
 							<div class="mono-list">
-								{#each project.technologies as tech}
+								{#each project.technologies as tech (tech)}
 									<span class="mono-value">{tech}</span>
 								{/each}
 							</div>
@@ -68,7 +72,6 @@
 					</div>
 				</div>
 			</div>
-
 		</article>
 	{/if}
 </div>
@@ -88,9 +91,8 @@
 		display: grid;
 		grid-template-columns: var(--col-width-label) 1fr;
 		gap: var(--spacing-lg);
-		align-items: end;
+		align-items: center;
 	}
-
 
 	.back-link {
 		font-family: var(--font-mono);
@@ -108,7 +110,7 @@
 		margin: 0;
 		line-height: 1;
 		color: var(--color-text-primary);
-		letter-spacing: var(--ls-tighter);
+		letter-spacing: var(--ls-tight);
 	}
 
 	.detail-grid {
@@ -138,7 +140,6 @@
 		letter-spacing: var(--mono-ls);
 	}
 
-
 	.mono-list {
 		display: flex;
 		flex-direction: column;
@@ -151,7 +152,6 @@
 		line-height: 1.6;
 		margin-bottom: var(--spacing-2xl);
 		color: var(--color-text-secondary);
-		
 	}
 
 	.gallery-wrapper {
@@ -188,6 +188,4 @@
 			align-items: flex-start;
 		}
 	}
-
 </style>
-

@@ -1,10 +1,5 @@
-<!--
-	ProjectCard Component
-	Displays a project summary with title, year, category, description, and technologies
-	Clicking "View Project" navigates to the project detail page
--->
 <script lang="ts">
-	import type { Project } from '$lib/types';
+	import type { Project, ProjectImage } from '$lib/types';
 
 	interface Props {
 		project: Project;
@@ -13,11 +8,13 @@
 	let { project }: Props = $props();
 
 	// Find the featured image for the thumbnail
-	let featuredImage = $derived(project.images.find((img) => img.featured) ?? project.images[0]);
+	let featuredImage = $derived(
+		project.images.find((img: ProjectImage) => img.featured) ?? project.images[0]
+	);
 </script>
 
 <article class="project-card">
-	<a href="/projects/{project.id}" class="project-card-link">
+	<a href={`/projects/${project.id}`} class="project-card-link">
 		<div class="project-row container">
 			<div class="col-index">
 				<span class="mono-label">{project.year ?? 'Ongoing'}</span>
@@ -36,7 +33,7 @@
 						</div>
 						<div class="col-tech">
 							<div class="tech-tags">
-								{#each project.technologies as p}
+								{#each project.technologies as p (p)}
 									<span class="tech-tag">{p}</span>
 								{/each}
 							</div>
@@ -44,7 +41,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			{#if featuredImage}
 				<div class="project-thumbnail">
 					<img src={featuredImage.url} alt={project.title} class="thumbnail-image" />
@@ -53,7 +50,6 @@
 		</div>
 	</a>
 </article>
-
 
 <style>
 	.project-card {
@@ -161,7 +157,6 @@
 		letter-spacing: var(--mono-ls);
 	}
 
-
 	.project-thumbnail {
 		position: absolute;
 		left: calc(100% + var(--spacing-lg));
@@ -249,5 +244,3 @@
 		}
 	}
 </style>
-
-
