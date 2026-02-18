@@ -35,16 +35,16 @@
 
 	.about-grid {
 		display: grid;
-		grid-template-columns: 180px 1fr;
+		grid-template-columns: var(--col-width-label) 1fr;
 		gap: var(--spacing-lg);
 	}
 
 	.mono-label {
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: var(--text-xs);
 		text-transform: uppercase;
 		color: var(--color-text-tertiary);
-		letter-spacing: 0.05em;
+		letter-spacing: var(--ls-wide);
 	}
 
 	.bio-text {
@@ -61,3 +61,4 @@
 		}
 	}
 </style>
+

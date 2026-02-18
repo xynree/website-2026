@@ -55,7 +55,7 @@
 
 	.header-inner {
 		display: grid;
-		grid-template-columns: 180px 1fr;
+		grid-template-columns: var(--col-width-label) 1fr;
 		gap: var(--spacing-lg);
 		align-items: start;
 		padding: var(--spacing-xl) var(--spacing-lg);
@@ -66,15 +66,15 @@
 		padding: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 4px;
-		margin-top: 10px; /* Aligns with the massive header text's cap height roughly */
+		gap: var(--spacing-xxs);
+		margin-top: var(--spacing-xs); /* Aligns with the massive header text's cap height roughly */
 	}
 
 	.mono-text {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: var(--text-xs);
 		text-transform: uppercase;
-		letter-spacing: 0.1em;
+		letter-spacing: var(--ls-wider);
 	}
 
 	.nav-link {
@@ -88,11 +88,11 @@
 
 	.name {
 		font-size: var(--text-2xl);
-		font-weight: 800;
+		font-weight: var(--weight-heavy);
 		margin: 0;
 		line-height: 0.85;
 		color: var(--color-text-primary);
-		letter-spacing: -0.06em;
+		letter-spacing: var(--ls-tighter);
 		text-transform: uppercase;
 	}
 
@@ -103,7 +103,6 @@
 			padding: var(--spacing-lg) var(--spacing-md);
 		}
 
-
 		.nav-list {
 			flex-direction: row;
 			gap: var(--spacing-md);
@@ -111,7 +110,8 @@
 		}
 
 		.name {
-			font-size: 2.5rem;
+			font-size: var(--text-xl);
 		}
 	}
 </style>
+

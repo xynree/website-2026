@@ -46,16 +46,16 @@
 
 	.contact-grid {
 		display: grid;
-		grid-template-columns: 180px 1fr;
+		grid-template-columns: var(--col-width-label) 1fr;
 		gap: var(--spacing-lg);
 	}
 
 	.mono-label {
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: var(--text-xs);
 		text-transform: uppercase;
 		color: var(--color-text-tertiary);
-		letter-spacing: 0.05em;
+		letter-spacing: var(--ls-wide);
 	}
 
 	.contact-methods {
@@ -73,14 +73,14 @@
 	.contact-list li {
 		display: flex;
 		flex-direction: column;
-		gap: 2px;
+		gap: var(--spacing-xxs);
 	}
 
 	.small-mono {
 		font-family: var(--font-mono);
 		text-transform: uppercase;
-		font-size: 10px;
-		letter-spacing: 0.05em;
+		font-size: var(--text-xs);
+		letter-spacing: var(--ls-wide);
 		color: var(--color-text-tertiary);
 	}
 
@@ -98,3 +98,4 @@
 		}
 	}
 </style>
+

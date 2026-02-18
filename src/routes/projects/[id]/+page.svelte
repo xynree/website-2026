@@ -80,20 +80,20 @@
 
 	.header-grid {
 		display: grid;
-		grid-template-columns: 180px 1fr;
+		grid-template-columns: var(--col-width-label) 1fr;
 		gap: var(--spacing-lg);
 		align-items: end;
 	}
 
 	.back-link {
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: var(--text-xs);
 		text-transform: uppercase;
 		color: var(--color-text-tertiary);
 		text-decoration: none;
-		letter-spacing: 0.05em;
+		letter-spacing: var(--ls-wide);
 		display: block;
-		margin-bottom: 4px; /* Align baseline with H1 roughly */
+		margin-bottom: var(--spacing-xxs); /* Align baseline with H1 roughly */
 	}
 
 	.project-title {
@@ -101,12 +101,12 @@
 		margin: 0;
 		line-height: 1;
 		color: var(--color-text-primary);
-		letter-spacing: -0.04em;
+		letter-spacing: var(--ls-tighter);
 	}
 
 	.detail-grid {
 		display: grid;
-		grid-template-columns: 180px 1fr;
+		grid-template-columns: var(--col-width-label) 1fr;
 		gap: var(--spacing-lg);
 	}
 
@@ -119,20 +119,20 @@
 	.meta-item {
 		display: flex;
 		flex-direction: column;
-		gap: 4px;
+		gap: var(--spacing-xxs);
 	}
 
 	.mono-label {
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: var(--text-xs);
 		text-transform: uppercase;
 		color: var(--color-text-tertiary);
-		letter-spacing: 0.05em;
+		letter-spacing: var(--ls-wide);
 	}
 
 	.mono-value {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: var(--text-sm);
 		text-transform: uppercase;
 		color: var(--color-text-secondary);
 	}
@@ -172,3 +172,4 @@
 		}
 	}
 </style>
+

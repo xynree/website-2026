@@ -53,7 +53,7 @@
 
 	.tag-filter-container {
 		display: grid;
-		grid-template-columns: 180px 1fr;
+		grid-template-columns: var(--col-width-label) 1fr;
 		gap: var(--spacing-lg);
 		padding-top: var(--spacing-md);
 		align-items: start;
@@ -61,10 +61,10 @@
 
 	.mono-label {
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: var(--text-xs);
 		text-transform: uppercase;
 		color: var(--color-text-tertiary);
-		letter-spacing: 0.05em;
+		letter-spacing: var(--ls-wide);
 	}
 
 	.tag-filter {
@@ -78,7 +78,7 @@
 		border: none;
 		padding: 0;
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: var(--text-xs);
 		text-transform: uppercase;
 		color: var(--color-text-tertiary);
 		cursor: pointer;
@@ -93,7 +93,7 @@
 	.tag.active {
 		color: var(--color-text-primary);
 		text-decoration: underline;
-		text-underline-offset: 4px;
+		text-underline-offset: var(--spacing-xxs);
 	}
 
 	@media (max-width: 768px) {
@@ -103,7 +103,8 @@
 		}
 
 		.tag {
-			font-size: 10px;
+			font-size: var(--text-xs);
 		}
 	}
 </style>
+
