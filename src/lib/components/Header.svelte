@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { SocialLink } from '$lib/types';
+		import { goto } from '$app/navigation';
+
 
 	let {
 		name,
@@ -76,6 +78,10 @@
 		color: var(--color-text-primary);
 		letter-spacing: var(--ls-tighter);
 		text-transform: uppercase;
+	}
+
+	.name a:hover {
+		opacity: 1;
 	}
 
 	@media (max-width: 768px) {
