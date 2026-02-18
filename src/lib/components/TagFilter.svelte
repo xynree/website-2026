@@ -13,72 +13,97 @@
 	function handleTagClick(category: string | null) {
 		onToggleCategory(category);
 	}
-
 </script>
 
-<div class="tag-filter">
-	<button
-		class="tag"
-		class:active={selectedCategories.length === 0}
-		onclick={() => handleTagClick(null)}
-		aria-pressed={selectedCategories.length === 0}
-	>
-		All
-	</button>
+<div class="tag-filter-wrapper">
+	<div class="tag-filter-container container">
+		<div class="label-col">
+			<span class="mono-label">Filter</span>
+		</div>
+		<div class="tags-col">
+			<div class="tag-filter">
+				<button
+					class="tag"
+					class:active={selectedCategories.length === 0}
+					onclick={() => handleTagClick(null)}
+					aria-pressed={selectedCategories.length === 0}
+				>
+					All
+				</button>
 
-	{#each categories as category}
-		<button
-			class="tag"
-			class:active={selectedCategories.includes(category)}
-			onclick={() => handleTagClick(category)}
-			aria-pressed={selectedCategories.includes(category)}
-		>
-			{category}
-		</button>
-	{/each}
+				{#each categories as category}
+					<button
+						class="tag"
+						class:active={selectedCategories.includes(category)}
+						onclick={() => handleTagClick(category)}
+						aria-pressed={selectedCategories.includes(category)}
+					>
+						{category}
+					</button>
+				{/each}
+			</div>
+		</div>
+	</div>
 </div>
 
-
 <style>
+	.tag-filter-wrapper {
+		padding-bottom: var(--spacing-xl);
+	}
+
+	.tag-filter-container {
+		display: grid;
+		grid-template-columns: 180px 1fr;
+		gap: var(--spacing-lg);
+		padding-top: var(--spacing-md);
+		align-items: start;
+	}
+
+	.mono-label {
+		font-family: var(--font-mono);
+		font-size: 10px;
+		text-transform: uppercase;
+		color: var(--color-text-tertiary);
+		letter-spacing: 0.05em;
+	}
+
 	.tag-filter {
 		display: flex;
-		gap: var(--spacing-sm);
+		gap: var(--spacing-md);
 		flex-wrap: wrap;
-		margin-bottom: var(--spacing-xl);
 	}
 
 	.tag {
-		padding: var(--spacing-xxs) var(--spacing-sm);
-		background: var(--color-background);
-		border: 1px solid var(--color-surface-2);
-		border-radius: 4px;
-		color: var(--color-text-secondary);
-		font-size: var(--text-xs);
+		background: none;
+		border: none;
+		padding: 0;
+		font-family: var(--font-mono);
+		font-size: 11px;
+		text-transform: uppercase;
+		color: var(--color-text-tertiary);
 		cursor: pointer;
-		transition: all var(--transition-fast);
-		font-family: var(--font-sans);
+		transition: color var(--transition-fast);
+		letter-spacing: 0.02em;
 	}
 
 	.tag:hover {
 		color: var(--color-text-primary);
-		background: var(--color-surface-1);
 	}
 
 	.tag.active {
-		background: var(--color-surface-2);
 		color: var(--color-text-primary);
-		border: 1px solid var(--color-surface-3);
-	}
-
-	.tag:focus-visible {
-		outline: 2px solid var(--color-text-primary);
-		outline-offset: 2px;
+		text-decoration: underline;
+		text-underline-offset: 4px;
 	}
 
 	@media (max-width: 768px) {
+		.tag-filter-container {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-xs);
+		}
+
 		.tag {
-			font-size: 0.8125rem;
-			padding: 0.375rem var(--spacing-sm);
+			font-size: 10px;
 		}
 	}
 </style>

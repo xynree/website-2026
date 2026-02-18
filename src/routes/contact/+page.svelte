@@ -10,29 +10,31 @@
 	});
 
 	// Filter for the actual social links only
-	const contactLinks = bio.socialLinks.filter(link => 
-		!['Work', 'About', 'Contact'].includes(link.name)
+	const contactLinks = bio.socialLinks.filter(
+		(link) => !['Work', 'About', 'Contact'].includes(link.name)
 	);
 </script>
 
-<svelte:head>
-	<title>Contact - {bio.name}</title>
-	<meta name="description" content="Contact {bio.name}" />
-</svelte:head>
-
 <div class="page">
 	{#if mounted}
-		<div class="contact-methods" in:fade={{ duration: 600, delay: 200, easing: cubicOut }}>
-			<ul class="contact-list">
-				{#each contactLinks as link}
-					<li>
-						<span class="label">{link.name}</span>
-						<a href={link.url} target="_blank" rel="noopener noreferrer" class="link">
-							{link.url.replace('mailto:', '').replace('https://', '')}
-						</a>
-					</li>
-				{/each}
-			</ul>
+		<div class="contact-grid container" in:fade={{ duration: 600, delay: 200, easing: cubicOut }}>
+			<div class="label-col">
+				<span class="mono-label">Contact</span>
+			</div>
+			<div class="content-col">
+				<div class="contact-methods">
+					<ul class="contact-list">
+						{#each contactLinks as link}
+							<li>
+								<span class="small-mono">{link.name}</span>
+								<a href={link.url} target="_blank" rel="noopener noreferrer" class="link">
+									{link.url.replace('mailto:', '').replace('https://', '')}
+								</a>
+							</li>
+						{/each}
+					</ul>
+				</div>
+			</div>
 		</div>
 	{/if}
 </div>
@@ -40,6 +42,20 @@
 <style>
 	.page {
 		padding-top: var(--spacing-lg);
+	}
+
+	.contact-grid {
+		display: grid;
+		grid-template-columns: 180px 1fr;
+		gap: var(--spacing-lg);
+	}
+
+	.mono-label {
+		font-family: var(--font-mono);
+		font-size: 10px;
+		text-transform: uppercase;
+		color: var(--color-text-tertiary);
+		letter-spacing: 0.05em;
 	}
 
 	.contact-methods {
@@ -57,26 +73,28 @@
 	.contact-list li {
 		display: flex;
 		flex-direction: column;
-		gap: 4px;
+		gap: 2px;
 	}
 
-	.label {
-		font-family: var(--font-header);
+	.small-mono {
+		font-family: var(--font-mono);
 		text-transform: uppercase;
-		font-size: 11px;
+		font-size: 10px;
 		letter-spacing: 0.05em;
 		color: var(--color-text-tertiary);
 	}
 
 	.link {
-		font-size: 1.125rem;
+		font-size: var(--text-md);
 		color: var(--color-text-primary);
 		text-decoration: none;
-		transition: color var(--transition-fast);
 		word-break: break-all;
 	}
 
-	.link:hover {
-		color: var(--color-text-secondary);
+	@media (max-width: 768px) {
+		.contact-grid {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-sm);
+		}
 	}
 </style>

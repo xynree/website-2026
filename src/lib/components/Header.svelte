@@ -26,80 +26,92 @@
 </script>
 
 <header class="header">
-	<div class="container">
-		{#if mounted}
-			<nav 
-				class="social-links" 
-				aria-label="Social media links"
-				in:fade={{ duration: 600, delay: 0 }}
-			>
+	<div class="header-inner container">
+		<nav class="nav-section" aria-label="Primary navigation">
+			<ul class="nav-list mono-text">
 				{#each socialLinks as link}
 					{#if ['Work', 'About', 'Contact'].includes(link.name)}
-						{#if link.url.startsWith('/')}
-							<a href={link.url} class="social-link">
+						<li>
+							<a href={link.url} class="nav-link">
 								{link.name}
 							</a>
-						{:else}
-							<a href={link.url} target="_blank" rel="noopener noreferrer" class="social-link">
-								{link.name}
-							</a>
-						{/if}
+						</li>
 					{/if}
 				{/each}
-			</nav>
+			</ul>
+		</nav>
 
-			<h1 
-				class="name"
-				in:fade={{ duration: 600, delay: 100, easing: cubicOut }}
-			>
-				{name}
-			</h1>
-		{/if}
+		<div class="name-section">
+			<h1 class="name">{name}</h1>
+		</div>
 	</div>
 </header>
 
-
-
-
 <style>
 	.header {
-		padding: var(--spacing-xl) 0 var(--spacing-lg);
+		margin-top: var(--spacing-xl);
+		margin-bottom: var(--spacing-2xl);
 	}
 
-	.name {
-		margin-bottom: var(--spacing-md);
-		font-family: var(--font-header);
-		text-transform: uppercase;
+	.header-inner {
+		display: grid;
+		grid-template-columns: 180px 1fr;
+		gap: var(--spacing-lg);
+		align-items: start;
+		padding: var(--spacing-xl) var(--spacing-lg);
 	}
 
-	nav {
-		margin-bottom: var(--spacing-lg);
-	}
-
-	.social-links {
+	.nav-list {
+		list-style: none;
+		padding: 0;
 		display: flex;
-		gap: var(--spacing-xl);
-		flex-wrap: wrap;
+		flex-direction: column;
+		gap: 4px;
+		margin-top: 10px; /* Aligns with the massive header text's cap height roughly */
 	}
 
-	.social-link {
-		font-size: var(--text-sm);
-		color: var(--color-text-secondary);
-		text-decoration: none;
+	.mono-text {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+	}
+
+	.nav-link {
+		color: var(--color-text-tertiary);
 		transition: color var(--transition-fast);
 	}
 
-	.social-link:hover {
-		color: var(--color-text-tertiary);
+	.nav-link:hover {
+		color: var(--color-text-primary);
+	}
+
+	.name {
+		font-size: var(--text-2xl);
+		font-weight: 800;
+		margin: 0;
+		line-height: 0.85;
+		color: var(--color-text-primary);
+		letter-spacing: -0.06em;
+		text-transform: uppercase;
 	}
 
 	@media (max-width: 768px) {
-		.header {
-			padding: var(--spacing-lg) 0 var(--spacing-lg);
+		.header-inner {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-md);
+			padding: var(--spacing-lg) var(--spacing-md);
 		}
 
-		.social-links {
-			gap: var(--spacing-sm);
+
+		.nav-list {
+			flex-direction: row;
+			gap: var(--spacing-md);
+			margin-top: 0;
+		}
+
+		.name {
+			font-size: 2.5rem;
 		}
 	}
 </style>

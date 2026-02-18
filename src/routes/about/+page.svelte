@@ -17,8 +17,13 @@
 
 <div class="page">
 	{#if mounted}
-		<div in:fade={{ duration: 600, delay: 200, easing: cubicOut }}>
-			<p class="bio-text">{bio.bio}</p>
+		<div class="about-grid container" in:fade={{ duration: 600, delay: 200, easing: cubicOut }}>
+			<div class="label-col">
+				<span class="mono-label">About</span>
+			</div>
+			<div class="content-col">
+				<p class="bio-text">{bio.bio}</p>
+			</div>
 		</div>
 	{/if}
 </div>
@@ -28,16 +33,31 @@
 		padding-top: var(--spacing-lg);
 	}
 
+	.about-grid {
+		display: grid;
+		grid-template-columns: 180px 1fr;
+		gap: var(--spacing-lg);
+	}
+
+	.mono-label {
+		font-family: var(--font-mono);
+		font-size: 10px;
+		text-transform: uppercase;
+		color: var(--color-text-tertiary);
+		letter-spacing: 0.05em;
+	}
+
 	.bio-text {
 		max-width: 650px;
-		font-size: 1.125rem;
+		font-size: var(--text-md);
 		line-height: 1.6;
 		color: var(--color-text-primary);
 	}
 
 	@media (max-width: 768px) {
-		.bio-text {
-			font-size: 1rem;
+		.about-grid {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-sm);
 		}
 	}
 </style>

@@ -21,12 +21,10 @@
 <div class="gallery">
 	{#if mounted}
 		{#each images as image, index}
-			<div 
+			<div
 				class="gallery-item"
-				in:fly|global={{ y: 40, duration: 800, delay: baseDelay + (index * 150), easing: cubicOut }}
+				in:fly|global={{ y: 40, duration: 800, delay: baseDelay + index * 150, easing: cubicOut }}
 			>
-
-
 				<div class="gallery-image-wrapper">
 					<img
 						src={image.url}
@@ -41,9 +39,6 @@
 		{/each}
 	{/if}
 </div>
-
-
-
 
 <style>
 	.gallery {
@@ -88,5 +83,4 @@
 			aspect-ratio: 4 / 3;
 		}
 	}
-
 </style>

@@ -17,165 +17,235 @@
 </script>
 
 <article class="project-card">
-	<div class="project-layout">
-		<div class="project-info">
-			<div class="project-header">
-				<a href="/projects/{project.id}" class="project-card-link">
-					<h2 class="project-title">{project.title}</h2>
-				</a>
-
-				<div class="project-meta">
-					<span class="project-year">{project?.year ?? 'Ongoing'}</span>
-					<span class="separator">·</span>
-					<span class="project-category">{project.categories.join(' - ')}</span>
-				</div>
+	<a href="/projects/{project.id}" class="project-card-link">
+		<div class="project-row container">
+			<div class="col-index">
+				<span class="mono-label">{project.year ?? 'Ongoing'}</span>
 			</div>
 
-			<p class="project-description">{project.shortDescription}</p>
+			<div class="col-content">
+				<div class="content-wrapper">
+					<div class="title-section">
+						<h2 class="project-title">{project.title}</h2>
+						<p class="project-description">{project.shortDescription}</p>
+					</div>
 
-			<div class="project-footer">
-				<div class="technologies">
-					{#each project.technologies as p}
-						<span class="tech-tag">{p}</span>
-					{/each}
+					<div class="metadata-section">
+						<div class="col-categories">
+							<span class="mono-label">{project.categories[0]}</span>
+						</div>
+						<div class="col-tech">
+							<div class="tech-tags">
+								{#each project.technologies as p}
+									<span class="tech-tag">{p}</span>
+								{/each}
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
+			
+			{#if featuredImage}
+				<div class="project-thumbnail">
+					<img src={featuredImage.url} alt={project.title} class="thumbnail-image" />
+				</div>
+			{/if}
 		</div>
-
-		{#if featuredImage}
-			<div class="project-thumbnail">
-				<img src={featuredImage.url} alt={project.title} class="thumbnail-image" />
-			</div>
-		{/if}
-	</div>
+	</a>
 </article>
+
 
 <style>
 	.project-card {
-		padding: var(--spacing-xl) 0;
-		border-bottom: 1px solid var(--color-border);
+		border-top: 1px solid var(--color-border);
+		transition: background-color var(--transition-fast);
+		position: relative;
 	}
 
-	.project-layout {
+	.project-card:hover {
+		background-color: var(--color-surface-1);
+	}
+
+	.project-card-link {
+		display: block;
+		padding: var(--spacing-lg) 0;
+	}
+
+	.project-row {
+		display: grid;
+		grid-template-columns: 180px 1fr;
+		gap: var(--spacing-lg);
+		align-items: stretch;
+		position: relative;
+	}
+
+	.col-index {
+		padding-top: 2px;
+	}
+
+	.col-content {
 		display: flex;
-		gap: var(--spacing-md);
-		justify-content: space-between;
-		align-items: stretch; /* Aligns top and bottom with content */
+		flex-direction: column;
 	}
 
-	.project-info {
+	.content-wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: var(--spacing-xl);
+	}
+
+	.title-section {
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
+		gap: 4px;
 	}
 
-	.project-thumbnail {
-		width: 180px;
-		flex-shrink: 0;
-		opacity: 0;
-		transition: opacity var(--transition-fast);
-		pointer-events: none;
+	.metadata-section {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-sm);
+		align-items: flex-end;
+		margin-top: var(--spacing-sm);
+		text-align: right;
 	}
 
-	.project-card:hover .project-thumbnail {
-		opacity: 1;
-		pointer-events: auto;
-	}
-
-	.thumbnail-image {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		background: var(--color-surface-1);
-		transition: transform var(--transition-medium);
-	}
-
-	.project-header {
-		margin-bottom: var(--spacing-sm);
+	.mono-label {
+		font-family: var(--font-mono);
+		font-size: var(--text-xs);
+		text-transform: uppercase;
+		color: var(--color-text-secondary);
+		letter-spacing: 0.05em;
 	}
 
 	.project-title {
-		font-size: 1.125rem;
-		font-weight: 600;
-		margin-bottom: 0.25rem;
-		width: fit-content;
+		font-size: var(--text-md);
+		font-weight: 500;
+		text-transform: uppercase;
+		margin: 0;
 		color: var(--color-text-primary);
-		font-family: var(--font-header);
-		transition: color var(--transition-fast);
-	}
-
-	.project-title:hover {
-		color: var(--color-text-secondary);
-	}
-
-	.project-meta {
-		display: flex;
-		align-items: center;
-		gap: var(--spacing-xs);
-		font-size: 0.875rem;
-		color: var(--color-text-tertiary);
-	}
-
-	.separator {
-		color: var(--color-text-tertiary);
+		letter-spacing: -0.01em;
 	}
 
 	.project-description {
-		margin-bottom: var(--spacing-md);
-		line-height: 1.7;
+		font-size: var(--text-sm);
+		color: var(--color-text-tertiary);
+		margin: 0;
+		line-height: 1.4;
+		max-width: 500px;
 	}
 
-	.project-footer {
+	.col-tech {
 		display: flex;
-		justify-content: flex-start;
+		flex-direction: column;
 		align-items: flex-end;
-		gap: var(--spacing-md);
-		flex-wrap: wrap;
 	}
 
-	.technologies {
+	.tech-tags {
 		display: flex;
-		gap: 12px;
-		font-size: var(--text-xs);
-		color: var(--color-text-secondary);
+		flex-wrap: wrap;
+		gap: 8px;
+		justify-content: flex-end;
 	}
 
 	.tech-tag {
-		background-color: var(--color-surface-1);
-		padding: 4px 8px;
-		border-radius: 4px;
+		font-family: var(--font-mono);
+		font-size: 10px;
+		color: var(--color-text-tertiary);
+		text-transform: uppercase;
+		background: var(--color-surface-2);
+		padding: 2px 5px;
+		border-radius: 2px;
+	}
+
+	.project-thumbnail {
+		position: absolute;
+		left: calc(100% + var(--spacing-lg));
+		top: 0;
+		width: auto;
+		height: 100%;
+		opacity: 0;
+		transition: all var(--transition-medium);
+		background: transparent;
+		pointer-events: none;
+		z-index: 10;
+		transform: translateX(-10px);
+	}
+
+	.project-card-link:hover .project-thumbnail {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	.thumbnail-image {
+		width: auto;
+		height: 100%;
+		object-fit: contain;
+		mix-blend-mode: multiply;
+		filter: grayscale(1);
+	}
+
+
+	@media (max-width: 1400px) {
+		/* Inherit dynamic width from aspect ratio */
+	}
+
+	@media (max-width: 1200px) {
+		.project-thumbnail {
+			position: static;
+			width: auto;
+			height: 140px;
+			opacity: 1;
+			transform: none;
+			pointer-events: auto;
+			margin-left: var(--spacing-lg);
+		}
+
+
+		.project-row {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.col-content {
+			flex: 1;
+		}
 	}
 
 	@media (max-width: 768px) {
-		.project-card {
-			padding: var(--spacing-lg) 0;
+		.project-row {
+			display: flex;
+			flex-direction: column;
+			gap: var(--spacing-md);
 		}
 
-		.project-layout {
-			flex-direction: column-reverse;
-			gap: var(--spacing-sm);
+		.col-index {
+			width: auto;
+		}
+
+		.content-wrapper {
+			flex-direction: column;
+			gap: var(--spacing-md);
+		}
+
+		.metadata-section {
+			align-items: flex-start;
+			text-align: left;
+			margin-top: 0;
+		}
+
+		.tech-tags {
+			justify-content: flex-start;
 		}
 
 		.project-thumbnail {
 			width: 100%;
-			aspect-ratio: 16 / 10;
-			opacity: 1;
-			pointer-events: auto;
-		}
-
-		.thumbnail-image {
-			height: 100%;
-		}
-
-		.project-title {
-			font-size: 1rem;
-		}
-
-		.project-footer {
-			flex-direction: column;
-			align-items: flex-start;
-			gap: var(--spacing-sm);
+			height: auto;
+			aspect-ratio: 16 / 9;
+			margin-left: 0;
+			margin-top: var(--spacing-md);
 		}
 	}
 </style>
+

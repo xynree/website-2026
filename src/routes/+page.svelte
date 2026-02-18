@@ -17,7 +17,7 @@
 
 	// Filtered projects based on selected category
 	let filteredProjects = $derived(filterProjectsByCategories(selectedCategories));
-	
+
 	const BATCH_SIZE = 5;
 
 	// Infinite scroll state
@@ -65,11 +65,14 @@
 
 	$effect(() => {
 		if (scrollWatcher && visibleCount < filteredProjects.length) {
-			const observer = new IntersectionObserver((entries) => {
-				if (entries[0].isIntersecting) {
-					visibleCount += BATCH_SIZE;
-				}
-			}, { threshold: 0.1 });
+			const observer = new IntersectionObserver(
+				(entries) => {
+					if (entries[0].isIntersecting) {
+						visibleCount += BATCH_SIZE;
+					}
+				},
+				{ threshold: 0.1 }
+			);
 
 			observer.observe(scrollWatcher);
 			return () => observer.disconnect();
@@ -86,23 +89,18 @@
 	<div class="page">
 		<main class="main">
 			<section class="work-section">
-				<TagFilter
-					{categories}
-					{selectedCategories}
-					onToggleCategory={handleCategorySelect}
-				/>
+				<TagFilter {categories} {selectedCategories} onToggleCategory={handleCategorySelect} />
 
 				<div class="projects-list">
 					{#each visibleProjects as project, i (project.id)}
 						<div
 							class="project-wrapper"
-							in:fly|global={{ 
-								y: 20, 
-								duration: 800, 
-								delay: isInitialLoad ? 400 + (i * 150) : (i % BATCH_SIZE) * 150, 
-								easing: cubicOut 
+							in:fly|global={{
+								y: 20,
+								duration: 800,
+								delay: isInitialLoad ? 400 + i * 150 : (i % BATCH_SIZE) * 150,
+								easing: cubicOut
 							}}
-							out:fly={{ y: 20, duration: 300, delay: i * 150, easing: cubicInOut }}
 							animate:flip={{ duration: 300 }}
 						>
 							<ProjectCard {project} />
@@ -130,7 +128,17 @@
 		transition:fade={{ duration: 200 }}
 		aria-label="Scroll to top"
 	>
-		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"><path d="m18 15-6-6-6 6" /></svg
+		>
 	</button>
 {/if}
 
@@ -150,9 +158,9 @@
 	.projects-list {
 		display: grid;
 		grid-template-columns: 100%;
-		overflow: hidden;
 		position: relative;
 	}
+
 
 	.project-wrapper {
 		grid-column: 1;
@@ -182,7 +190,9 @@
 	}
 
 	@keyframes spin {
-		to { transform: rotate(360deg); }
+		to {
+			transform: rotate(360deg);
+		}
 	}
 
 	.scroll-top-btn {

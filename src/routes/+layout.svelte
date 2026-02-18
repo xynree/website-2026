@@ -13,6 +13,6 @@
 
 <Header name={bio.name} socialLinks={bio.socialLinks} />
 
-<div class="container">
+<main class="site-main">
 	{@render children()}
-</div>
+</main>
