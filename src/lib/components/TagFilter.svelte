@@ -71,6 +71,7 @@
 	.tag-filter {
 		display: flex;
 		gap: var(--spacing-md);
+		justify-content: space-between;
 		flex-wrap: wrap;
 	}
 
@@ -99,6 +100,10 @@
 	}
 
 	@media (max-width: 768px) {
+		.tag-filter {
+			justify-content: flex-start;
+		}
+
 		.tag-filter-container {
 			grid-template-columns: 1fr;
 			gap: var(--spacing-xs);
