@@ -2,7 +2,7 @@ import type { Project } from '$lib/types';
 
 export const bio = {
 	name: 'Xinrui Chen',
-	bio: 'I make software & interactive visualizations, websites, drawings & paintings, and autobio comics. Spending my time hunting down new hobbies. Ask me about making jewelry, doing tattoos, and collecting rocks.',
+	bio: 'I make software, interactive visualizations & websites as well as drawings, paintings, and autobio comics. Spending my time hunting down new hobbies. Ask me about making jewelry, doing tattoos, and collecting rocks.',
 	socialLinks: [
 		{ name: 'Email', url: 'mailto:your.email@example.com' },
 		{ name: 'GitHub', url: 'https://github.com/xynree' },

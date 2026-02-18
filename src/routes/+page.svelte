@@ -244,6 +244,17 @@
 			height: 40px;
 		}
 	}
+
+	/* Hide scrollbar but keep functionality */
+	:global(html) {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
+	}
+
+	:global(html::-webkit-scrollbar) {
+		display: none; /* Chrome, Safari and Opera */
+	}
 </style>
+
 
 
