@@ -13,6 +13,11 @@ export interface ProjectImage {
 	featured?: boolean;
 }
 
+export interface ProjectLink {
+	title: string;
+	url: string;
+}
+
 export interface Project {
 	id: string;
 	title: string;
@@ -22,4 +27,5 @@ export interface Project {
 	fullDescription: string;
 	technologies: string[]; // e.g., ["React", "D3.js", "TypeScript"]
 	images: ProjectImage[]; // Array of image objects for the gallery
+	links?: ProjectLink[];
 }

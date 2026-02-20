@@ -81,8 +81,8 @@
 </script>
 
 <svelte:head>
-	<title>{bio.name} - Work</title>
-	<meta name="description" content="Portfolio of {bio.name}" />
+	<title>xinrui chen</title>
+	<meta name="description" content="{bio.name} - work" />
 </svelte:head>
 
 {#if mounted}

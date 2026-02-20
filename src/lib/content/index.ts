@@ -4,10 +4,6 @@ export const bio = {
 	name: 'Xinrui Chen',
 	bio: 'I make software, interactive visualizations & websites as well as drawings,paintings, and autobio comics. Spending my time hunting down new hobbies. Ask me about making jewelry, doing tattoos, and collecting rocks.',
 	socialLinks: [
-		{ name: 'Work', url: '/' },
-		{ name: 'About', url: '/about' },
-		{ name: 'Contact', url: '/contact' },
-		// Social details for the contact page
 		{ name: 'Email', url: 'mailto:xynree@gmail.com' },
 		{ name: 'GitHub', url: 'https://github.com/xynree' },
 		{ name: 'LinkedIn', url: 'https://linkedin.com/in/xinruichen7' },
@@ -46,6 +42,10 @@ export const projects: Project[] = [
 		images: [
 			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Data+Viz+1', caption: 'Main view' },
 			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Data+Viz+2', caption: 'Details' }
+		],
+		links: [
+			{ title: 'Live Demo', url: 'https://example.com/demo' },
+			{ title: 'Source Code', url: 'https://github.com/example/repo' }
 		]
 	},
 	{
@@ -60,7 +60,8 @@ export const projects: Project[] = [
 		images: [
 			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Gen+Art+1', caption: 'Composition' },
 			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Gen+Art+2', caption: 'Interface' }
-		]
+		],
+		links: [{ title: 'Open Playground', url: 'https://example.com/art' }]
 	},
 	{
 		id: 'design-system',

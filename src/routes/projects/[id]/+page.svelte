@@ -66,6 +66,16 @@
 					<div class="content-col">
 						<p class="full-description">{project.fullDescription}</p>
 
+						{#if project.links && project.links.length > 0}
+							<div class="project-links">
+								{#each project.links as link (link.url)}
+									<a href={link.url} target="_blank" rel="noopener noreferrer" class="project-link">
+										{link.title} <span class="arrow">↗</span>
+									</a>
+								{/each}
+							</div>
+						{/if}
+
 						<div class="gallery-wrapper">
 							<ImageGallery images={project.images} projectTitle={project.title} baseDelay={400} />
 						</div>
@@ -150,8 +160,46 @@
 		max-width: 650px;
 		font-size: var(--text-md);
 		line-height: 1.6;
-		margin-bottom: var(--spacing-2xl);
+		margin-bottom: var(--spacing-lg);
 		color: var(--color-text-secondary);
+	}
+
+	.project-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-md);
+		margin-bottom: var(--spacing-2xl);
+	}
+
+	.project-link {
+		font-family: var(--font-mono);
+		font-size: var(--mono-size);
+		font-weight: var(--mono-weight);
+		text-transform: var(--mono-text-transform);
+		color: var(--color-text-primary);
+		text-decoration: none;
+		letter-spacing: var(--mono-ls);
+		border: 1px solid var(--color-border);
+		padding: var(--spacing-xs) var(--spacing-sm);
+		transition: all 0.2s ease;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5ch;
+	}
+
+	.project-link:hover {
+		background-color: var(--color-text-primary);
+		color: var(--color-bg);
+		border-color: var(--color-text-primary);
+	}
+
+	.arrow {
+		font-size: 0.8em;
+		transition: transform 0.2s ease;
+	}
+
+	.project-link:hover .arrow {
+		transform: translate(2px, -2px);
 	}
 
 	.gallery-wrapper {

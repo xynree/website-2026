@@ -9,10 +9,6 @@
 		mounted = true;
 	});
 
-	// Filter for the actual social links only
-	const contactLinks = bio.socialLinks.filter(
-		(link) => !['Work', 'About', 'Contact'].includes(link.name)
-	);
 </script>
 
 <div class="page">
@@ -24,7 +20,7 @@
 			<div class="content-col">
 				<div class="contact-methods">
 					<ul class="contact-list">
-						{#each contactLinks as link (link.name)}
+						{#each bio.socialLinks as link (link.name)}
 							<li>
 								<span class="small-mono">{link.name}</span>
 								<a href={link.url} target="_blank" rel="noopener noreferrer external" class="link">
