@@ -2,7 +2,7 @@ import type { Project, SocialLink } from '$lib/types';
 
 export const bio = {
 	name: 'Xinrui Chen',
-	bio: 'I make software, interactive visualizations & websites as well as drawings,paintings, and autobio comics. Spending my time hunting down new hobbies. Ask me about making jewelry, doing tattoos, and collecting rocks.',
+	bio: 'I make software, interactive visualizations & websites as well as drawings, paintings, and autobio comics. Spending my time hunting down new hobbies. Ask me about making jewelry, doing tattoos, and collecting rocks.',
 	socialLinks: [
 		{ name: 'Email', url: 'mailto:xynree@gmail.com' },
 		{ name: 'GitHub', url: 'https://github.com/xynree' },
@@ -17,21 +17,17 @@ export const headerLinks = [
 	{ name: 'Contact', url: '/contact' }
 ] as SocialLink[];
 
-export const projectCategories = ['Software', 'UI/UX', 'Art/Design', 'Data Visualization'] as const;
+export const projectCategories = ['Software', 'UI/UX', 'Art/Design'] as const;
 
-/**
- * Sample project data
- * Replace with your actual projects
- */
 export const projects: Project[] = [
 	{
 		id: 'seattle-tree-spy',
 		title: 'Seattle Tree Spy',
-		categories: ['Software', 'Data Visualization', 'UI/UX'],
+		categories: ['Software', 'UI/UX'],
 		shortDescription:
 			'Interactive map interface for exploring neighborhood trees from local SDOT Tree dataset',
 		fullDescription: '',
-		year: 2025,
+		year: 2026,
 		technologies: ['React.JS', 'Deck.GL'],
 		images: [
 			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Data+Viz+1', caption: 'Main view' },
@@ -78,8 +74,8 @@ export const projects: Project[] = [
 	},
 	{
 		id: 'thread-association-flow',
-		title: 'Utility Asset Association Flow',
-		year: 2024,
+		title: 'Asset Utility Association Flow',
+		year: 2025,
 		categories: ['UI/UX', 'Software'],
 		shortDescription:
 			'Design and implementation for software to associate drone photography to utility assets in the field',
@@ -135,7 +131,7 @@ export const projects: Project[] = [
 		title: 'Tattoo Practice',
 		year: 2019,
 		categories: ['Art/Design'],
-		shortDescription: 'Log of tattoos done for friends, family and clients',
+		shortDescription: 'Various tattoos done for friends, family and clients',
 		fullDescription: '',
 		technologies: [],
 		images: [
