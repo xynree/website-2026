@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-	<title>{project.title} - Portfolio</title>
+	<title>xinrui chen » {project.title.toLowerCase()}</title>
 	<meta name="description" content={project.shortDescription} />
 </svelte:head>
 

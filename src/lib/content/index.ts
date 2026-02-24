@@ -2,7 +2,7 @@ import type { Project, SocialLink } from '$lib/types';
 
 export const bio = {
 	name: 'Xinrui Chen',
-	bio: 'I make software, interactive visualizations & websites as well as drawings, paintings, and autobio comics. Spending my time hunting down new hobbies. Ask me about making jewelry, doing tattoos, and collecting rocks.',
+	bio: 'I make software, interactive visualizations & websites as well as drawings, paintings, and autobio comics. Collecting selected works here on this website. I spend my time hunting down new hobbies. Ask me about making jewelry, doing tattoos, and collecting rocks.',
 	socialLinks: [
 		{ name: 'Email', url: 'mailto:xynree@gmail.com' },
 		{ name: 'GitHub', url: 'https://github.com/xynree' },
@@ -30,11 +30,14 @@ export const projects: Project[] = [
 		year: 2026,
 		technologies: ['React.JS', 'Deck.GL'],
 		images: [
-			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Data+Viz+1', caption: 'Main view' },
+			{
+				url: 'https://raw.githubusercontent.com/xynree/seattle-tree-spy/main/public/screenshot.gif',
+				caption: 'View and interact with surrounding SDOT Tree data'
+			},
 			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Data+Viz+2', caption: 'Details' }
 		],
 		links: [
-			{ title: 'View on Web', url: 'https://www.xynree.github.io/seattle-tree-spy' },
+			{ title: 'View on Web', url: 'https://xynree.github.io/seattle-tree-spy/' },
 			{ title: 'Source', url: 'https://github.com/xynree/seattle-tree-spy' }
 		]
 	},
