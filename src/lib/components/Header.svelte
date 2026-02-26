@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bio } from '$lib/content';
 	import type { SocialLink } from '$lib/types';
 
 	let {
@@ -28,14 +29,17 @@
 			<h1 class="name">
 				<a href="/">{name}</a>
 			</h1>
+			<div class="about-section">
+				{bio.bio}
+			</div>
 		</div>
 	</div>
 </header>
 
 <style>
 	.header {
-		margin-top: var(--spacing-xl);
-		margin-bottom: var(--spacing-2xl);
+		margin-top: var(--spacing-lg);
+		margin-bottom: var(--spacing-md);
 	}
 
 	.header-inner {
@@ -78,8 +82,12 @@
 		text-transform: uppercase;
 	}
 
-	.name a:hover {
-		opacity: 1;
+	.about-section {
+		max-width: 600px;
+		margin-top: var(--spacing-md);
+		font-size: var(--text-sm);
+		color: var(--color-text-secondary);
+		line-height: 1.5;
 	}
 
 	@media (max-width: 768px) {

@@ -53,6 +53,7 @@
 
 <style>
 	.project-card {
+		padding: var(--spacing-md) 0;
 		border-top: 1px solid var(--color-border);
 		transition: background-color var(--transition-fast);
 		position: relative;

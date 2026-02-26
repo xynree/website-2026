@@ -42,16 +42,7 @@
 	.contact-grid {
 		display: grid;
 		grid-template-columns: var(--col-width-label) 1fr;
-		gap: var(--spacing-lg);
-	}
-
-	.mono-label {
-		font-family: var(--font-mono);
-		font-size: var(--mono-size);
-		font-weight: var(--mono-weight);
-		text-transform: var(--mono-text-transform);
-		color: var(--color-text-tertiary);
-		letter-spacing: var(--mono-ls);
+		gap: var(--spacing-xl) var(--spacing-lg);
 	}
 
 	.contact-methods {
@@ -70,15 +61,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--spacing-xxs);
-	}
-
-	.small-mono {
-		font-family: var(--font-mono);
-		font-size: var(--mono-size);
-		font-weight: var(--mono-weight);
-		text-transform: var(--mono-text-transform);
-		letter-spacing: var(--mono-ls);
-		color: var(--color-text-tertiary);
 	}
 
 	.link {

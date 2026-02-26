@@ -1,8 +1,8 @@
-import type { Project, SocialLink } from '$lib/types';
+import type { ArtProject, SocialLink, SoftwareProject } from '$lib/types';
 
 export const bio = {
 	name: 'Xinrui Chen',
-	bio: 'I make software, interactive visualizations & websites as well as drawings, paintings, and autobio comics. Collecting selected works here on this website. I spend my time hunting down new hobbies. Ask me about making jewelry, doing tattoos, and collecting rocks.',
+	bio: 'I make software, interactive visualizations & websites as well as drawings, paintings, and autobio comics. Spending my time hunting down new hobbies.',
 	socialLinks: [
 		{ name: 'Email', url: 'mailto:xynree@gmail.com' },
 		{ name: 'GitHub', url: 'https://github.com/xynree' },
@@ -12,14 +12,14 @@ export const bio = {
 };
 
 export const headerLinks = [
-	{ name: 'Work', url: '/' },
-	{ name: 'About', url: '/about' },
+	{ name: 'Software', url: '/' },
+	{ name: 'Art', url: '/art' },
 	{ name: 'Contact', url: '/contact' }
 ] as SocialLink[];
 
-export const projectCategories = ['Software', 'UI/UX', 'Art/Design'] as const;
+export const softwareCategories = ['Software', 'UI/UX'] as const;
 
-export const projects: Project[] = [
+export const softwareProjects: SoftwareProject[] = [
 	{
 		id: 'seattle-tree-spy',
 		title: 'Seattle Tree Spy',
@@ -46,8 +46,9 @@ export const projects: Project[] = [
 	{
 		id: 'diary-comics',
 		title: 'Diary Comics',
-		categories: ['Software', 'Art/Design'],
-		shortDescription: 'Ongoing autobiographical comics practice and website',
+		year: 2025,
+		categories: ['Software'],
+		shortDescription: 'Autobiographical comics website',
 		fullDescription: '',
 		technologies: ['Next.JS', 'TailwindCSS', 'Procreate'],
 		images: [
@@ -64,7 +65,7 @@ export const projects: Project[] = [
 		id: 'john-honda-website',
 		title: 'John Honda Website & Branding',
 		year: 2025,
-		categories: ['Software', 'UI/UX', 'Art/Design'],
+		categories: ['Software', 'UI/UX'],
 		shortDescription:
 			'Website, merchandise, promotional art materials & branding for the band John Honda',
 		fullDescription: '',
@@ -118,12 +119,32 @@ export const projects: Project[] = [
 			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Ecommerce+1', caption: 'Checkout' },
 			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Ecommerce+2', caption: 'Mobile' }
 		]
+	}
+];
+
+export const artProjects: ArtProject[] = [
+	{
+		id: 'diary-comics-art',
+		title: 'Diary Comics',
+		categories: ['Comics'],
+		shortDescription: 'Ongoing autobiographical comics practice',
+		fullDescription: '',
+		technologies: ['Next.JS', 'TailwindCSS', 'Procreate'],
+		images: [
+			{ url: '/diary-comics/recording.gif', caption: '' },
+			{ url: '/diary-comics/ss1.jpg', caption: '' },
+			{ url: '/diary-comics/recording-2.gif', caption: '' }
+		],
+		links: [
+			{ title: 'View on Web', url: 'https://comics.xinrui.work' },
+			{ title: 'Source', url: 'https://github.com/xynree/diary-comics' }
+		]
 	},
 	{
 		id: 'debris-series',
 		title: 'Painting Series - Debris',
 		year: 2019,
-		categories: ['Art/Design'],
+		categories: ['Painting'],
 		shortDescription: 'Painting Series',
 		fullDescription: '',
 		technologies: ['Procreate'],
@@ -136,7 +157,7 @@ export const projects: Project[] = [
 		id: 'tattoo-series',
 		title: 'Tattoo Practice',
 		year: 2019,
-		categories: ['Art/Design'],
+		categories: ['Tattoo'],
 		shortDescription: 'Various tattoos done for friends, family and clients',
 		fullDescription: '',
 		technologies: [],

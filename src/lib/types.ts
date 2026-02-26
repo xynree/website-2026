@@ -1,6 +1,10 @@
-import { projectCategories } from './content';
+export const softwareCategories = ['Software', 'UI/UX'] as const;
 
-export type ProjectCategory = (typeof projectCategories)[number];
+export type SoftwareCategory = (typeof softwareCategories)[number];
+
+export const artCategories = ['Comics', 'Tattoo', 'Painting'] as const;
+
+export type ArtCategory = (typeof artCategories)[number];
 
 export interface SocialLink {
 	name: string;
@@ -22,10 +26,18 @@ export interface Project {
 	id: string;
 	title: string;
 	year?: number;
-	categories: ProjectCategory[]; // Now multiple categories
 	shortDescription: string;
 	fullDescription: string;
-	technologies: string[]; // e.g., ["React", "D3.js", "TypeScript"]
 	images: ProjectImage[]; // Array of image objects for the gallery
 	links?: ProjectLink[];
+	technologies?: string[]; // e.g., ["React", "D3.js", "TypeScript"]
+	categories: string[];
+}
+
+export interface SoftwareProject extends Project {
+	categories: SoftwareCategory[];
+}
+
+export interface ArtProject extends Project {
+	categories: ArtCategory[];
 }
