@@ -84,8 +84,8 @@
 
 	.about-section {
 		max-width: 600px;
-		margin-top: var(--spacing-md);
-		font-size: var(--text-sm);
+		margin-top: var(--spacing-lg);
+		font-size: var(--text-base);
 		color: var(--color-text-secondary);
 		line-height: 1.5;
 	}

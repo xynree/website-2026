@@ -18,7 +18,7 @@
 
 	/* Colors - Refined technical palette */
 	--color-text-primary: #111111;
-	--color-text-secondary: #444444;
+	--color-text-secondary: #5c5b59;
 	--color-text-tertiary: #888888;
 	--color-background: #fafaf9;
 	--color-surface-1: #f7f7f7;
@@ -51,6 +51,7 @@
 	--text-xxs: 9px;
 	--text-xs: 11px;
 	--text-sm: 13px;
+	--text-base: 14px;
 	--text-md: 16px;
 	--text-lg: 20px;
 	--text-xl: 32px;

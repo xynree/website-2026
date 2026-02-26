@@ -14,7 +14,7 @@
 	{#if mounted}
 		<div class="contact-grid container" in:fade={{ duration: 600, delay: 200, easing: cubicOut }}>
 			<div class="label-col">
-				<span class="mono-label">Contact</span>
+				<span class="mono-label">Say Hi ☺︎</span>
 			</div>
 			<div class="content-col">
 				<div class="contact-methods">

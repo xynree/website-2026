@@ -16,7 +16,14 @@
 <article class="art-card">
 	<a href={`/projects/${project.id}`} class="art-card-link container">
 		<div class="art-header">
-			<h2 class="art-title">{project.title}</h2>
+			<div class="art-title-section">
+				<h2 class="art-title">{project.title}</h2>
+				<div class="art-categories">
+					{#each project.categories as category (category)}
+						<span class="mono-label">{category}</span>
+					{/each}
+				</div>
+			</div>
 			<span class="art-date mono-label">{project.year ?? 'Ongoing'}</span>
 		</div>
 
@@ -50,6 +57,17 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: baseline;
+	}
+
+	.art-title-section {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-xxs);
+	}
+
+	.art-categories {
+		display: flex;
+		gap: var(--spacing-sm);
 	}
 
 	.art-title {

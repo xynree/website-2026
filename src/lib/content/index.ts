@@ -2,7 +2,7 @@ import type { ArtProject, SocialLink, SoftwareProject } from '$lib/types';
 
 export const bio = {
 	name: 'Xinrui Chen',
-	bio: 'I make software, interactive visualizations & websites as well as drawings, paintings, and autobio comics. Spending my time hunting down new hobbies.',
+	bio: "I'm an engineer & visual artist who does a little bit of everything. Making software, interactive visualizations & websites as well as drawings, paintings, and autobio comics. Spending my time hunting down new hobbies!",
 	socialLinks: [
 		{ name: 'Email', url: 'mailto:xynree@gmail.com' },
 		{ name: 'GitHub', url: 'https://github.com/xynree' },
@@ -14,7 +14,7 @@ export const bio = {
 export const headerLinks = [
 	{ name: 'Software', url: '/' },
 	{ name: 'Art', url: '/art' },
-	{ name: 'Contact', url: '/contact' }
+	{ name: 'Links', url: '/contact' }
 ] as SocialLink[];
 
 export const softwareCategories = ['Software', 'UI/UX'] as const;

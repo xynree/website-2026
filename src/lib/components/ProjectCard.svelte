@@ -11,6 +11,8 @@
 	let featuredImage = $derived(
 		project.images.find((img: ProjectImage) => img.featured) ?? project.images[0]
 	);
+
+	let sortedCategories = $derived(project.categories.sort((a, b) => a.localeCompare(b)));
 </script>
 
 <article class="project-card">
@@ -29,7 +31,9 @@
 
 					<div class="metadata-section">
 						<div class="col-categories">
-							<span class="mono-label">{project.categories[0]}</span>
+							{#each sortedCategories as category (category)}
+								<span class="mono-label">{category}</span>
+							{/each}
 						</div>
 						<div class="col-tech">
 							<div class="tech-tags">
@@ -131,6 +135,12 @@
 		margin: 0;
 		line-height: 1.4;
 		max-width: 500px;
+	}
+
+	.col-categories {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
 	}
 
 	.col-tech {
