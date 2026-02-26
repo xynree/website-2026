@@ -1,7 +1,5 @@
 <script lang="ts">
 	import type { SocialLink } from '$lib/types';
-		import { goto } from '$app/navigation';
-
 
 	let {
 		name,

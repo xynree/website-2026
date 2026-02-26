@@ -34,7 +34,9 @@ export const projects: Project[] = [
 				url: 'https://raw.githubusercontent.com/xynree/seattle-tree-spy/main/public/screenshot.gif',
 				caption: 'View and interact with surrounding SDOT Tree data'
 			},
-			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Data+Viz+2', caption: 'Details' }
+			{ url: '/seattle-tree-spy/ss2.jpg', caption: '' },
+			{ url: '/seattle-tree-spy/ss3.jpg', caption: '' },
+			{ url: '/seattle-tree-spy/ss4.jpg', caption: '' }
 		],
 		links: [
 			{ title: 'View on Web', url: 'https://xynree.github.io/seattle-tree-spy/' },
@@ -49,8 +51,9 @@ export const projects: Project[] = [
 		fullDescription: '',
 		technologies: ['Next.JS', 'TailwindCSS', 'Procreate'],
 		images: [
-			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Gen+Art+1', caption: 'Composition' },
-			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Gen+Art+2', caption: 'Interface' }
+			{ url: '/diary-comics/recording.gif', caption: '' },
+			{ url: '/diary-comics/ss1.jpg', caption: '' },
+			{ url: '/diary-comics/recording-2.gif', caption: '' }
 		],
 		links: [
 			{ title: 'View on Web', url: 'https://comics.xinrui.work' },

@@ -53,9 +53,7 @@
 	}
 
 	.gallery-image-wrapper {
-		width: 100%;
-		background: var(--color-hover);
-		aspect-ratio: 16 / 10;
+		background: var(--color-background);
 		overflow: hidden;
 		margin-bottom: var(--spacing-xs);
 	}
@@ -63,7 +61,7 @@
 	.gallery-image {
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
+		object-fit: contain;
 		display: block;
 	}
 

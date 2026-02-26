@@ -8,7 +8,6 @@
 	onMount(() => {
 		mounted = true;
 	});
-
 </script>
 
 <div class="page">

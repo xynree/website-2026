@@ -1,5 +1,4 @@
 <script lang="ts">
-	import favicon from '$lib/assets/favicon.svg';
 	import { bio, headerLinks } from '$lib/content';
 	import Header from '$lib/components/Header.svelte';
 	import '$lib/styles/global.css';
@@ -8,7 +7,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" href="/favicon.svg" />
 </svelte:head>
 
 <Header name={bio.name} socialLinks={headerLinks} />

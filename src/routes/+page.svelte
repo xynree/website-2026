@@ -16,15 +16,17 @@
 	let selectedCategories = $state<ProjectCategory[]>([]);
 
 	// Filtered projects based on selected category
-	let filteredProjects = $derived(filterProjectsByCategories(selectedCategories).sort((a,b)=> {
-		if (!a?.year) {
-			return -1; // Move ongoing to the top
-		}
-		if (!b?.year) {
-			return 1;
-		}
-		return b.year - a.year; // Newest to Oldest
-	}));
+	let filteredProjects = $derived(
+		filterProjectsByCategories(selectedCategories).sort((a, b) => {
+			if (!a?.year) {
+				return -1; // Move ongoing to the top
+			}
+			if (!b?.year) {
+				return 1;
+			}
+			return b.year - a.year; // Newest to Oldest
+		})
+	);
 
 	const BATCH_SIZE = 5;
 
