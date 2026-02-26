@@ -12,8 +12,8 @@ export const bio = {
 };
 
 export const headerLinks = [
-	{ name: 'Software', url: '/' },
 	{ name: 'Art', url: '/art' },
+	{ name: 'Software', url: '/' },
 	{ name: 'Links', url: '/contact' }
 ] as SocialLink[];
 

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { bio } from '$lib/content';
 	import type { SocialLink } from '$lib/types';
 
@@ -17,7 +18,12 @@
 			<ul class="nav-list mono-text">
 				{#each socialLinks as link (link.name)}
 					<li>
-						<a href={link.url} class="nav-link">
+						<a
+							href={link.url}
+							class="nav-link"
+							class:active={$page.url.pathname === link.url ||
+								(link.url === '/' && $page.url.pathname.startsWith('/projects/'))}
+						>
 							{link.name}
 						</a>
 					</li>
@@ -70,6 +76,11 @@
 	.nav-link {
 		color: var(--color-text-tertiary);
 		transition: color var(--transition-fast);
+	}
+
+	.nav-link:hover,
+	.nav-link.active {
+		color: var(--color-text-primary);
 	}
 
 	.name {
