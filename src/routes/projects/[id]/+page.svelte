@@ -90,7 +90,7 @@
 	.header-wrapper {
 		border-bottom: 1px solid var(--color-border);
 
-		margin: var(--spacing-xl) 0 var(--spacing-lg) 0;
+		margin: 0 0 var(--spacing-lg) 0;
 	}
 
 	.project-header {
@@ -100,7 +100,7 @@
 	.header-grid {
 		display: grid;
 		grid-template-columns: var(--col-width-label) 1fr;
-		gap: var(--spacing-lg);
+		gap: var(--spacing-sm);
 		align-items: center;
 	}
 
@@ -126,7 +126,7 @@
 	.detail-grid {
 		display: grid;
 		grid-template-columns: var(--col-width-label) 1fr;
-		gap: var(--spacing-lg);
+		gap: var(--spacing-sm);
 	}
 
 	.meta-col {

@@ -57,15 +57,6 @@
 		align-items: center;
 	}
 
-	.mono-label {
-		font-family: var(--font-mono);
-		font-size: var(--mono-size);
-		font-weight: var(--mono-weight);
-		text-transform: var(--mono-text-transform);
-		color: var(--color-text-tertiary);
-		letter-spacing: var(--mono-ls);
-	}
-
 	.tag-filter {
 		display: flex;
 		gap: var(--spacing-md);

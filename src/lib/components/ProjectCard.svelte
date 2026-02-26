@@ -20,7 +20,7 @@
 	<a href={`/projects/${project.id}`} class="project-card-link container">
 		<div class="project-row container">
 			<div class="col-index">
-				<span class="mono-label">{project.year ?? 'Ongoing'}</span>
+				<span class="mono-label year-label">{project.year ?? 'Ongoing'}</span>
 			</div>
 
 			<div class="col-content">
@@ -114,21 +114,19 @@
 		gap: var(--spacing-md);
 	}
 
+	.year-label {
+		font-weight: 600;
+		color: var(--color-text-secondary);
+		letter-spacing: -0.01em;
+		
+	}
+
 	.metadata-section {
 		display: flex;
 		flex-direction: column;
 		gap: var(--spacing-sm);
 		align-items: flex-end;
 		text-align: right;
-	}
-
-	.mono-label {
-		font-family: var(--font-mono);
-		font-size: var(--mono-size);
-		font-weight: var(--mono-weight);
-		text-transform: var(--mono-text-transform);
-		color: var(--color-text-secondary);
-		letter-spacing: var(--mono-ls);
 	}
 
 	.project-title {

@@ -1,5 +1,5 @@
 export const softwareCategories = ['Software', 'UI/UX'] as const;
-export const artCategories = ['Comics', 'Misc', 'Painting'] as const;
+export const artCategories = ['Illustration', 'Design', 'Comics', 'Other'] as const;
 
 export type SoftwareCategory = (typeof softwareCategories)[number];
 export type ArtCategory = (typeof artCategories)[number];

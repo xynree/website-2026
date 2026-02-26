@@ -17,6 +17,10 @@ export const headerLinks = [
 	{ name: 'Links', url: '/contact' }
 ] as SocialLink[];
 
+export const CLOUDINARY_URL = 'https://res.cloudinary.com/xynree/image/upload/website';
+export const CLOUDINARY_SOFTWARE = `${CLOUDINARY_URL}/software`;
+export const CLOUDINARY_ART = `${CLOUDINARY_URL}/art`;
+
 export const softwareProjects: SoftwareProject[] = [
 	{
 		id: 'seattle-tree-spy',
@@ -26,15 +30,24 @@ export const softwareProjects: SoftwareProject[] = [
 			'Interactive map interface for exploring neighborhood trees from local SDOT Tree dataset',
 		fullDescription: '',
 		year: 2026,
-		technologies: ['React.JS', 'Deck.GL'],
+		technologies: ['React.JS', 'Deck.GL', 'TailwindCSS'],
 		images: [
 			{
 				url: 'https://raw.githubusercontent.com/xynree/seattle-tree-spy/main/public/screenshot.gif',
 				caption: 'View and interact with surrounding SDOT Tree data'
 			},
-			{ url: '/seattle-tree-spy/ss2.jpg', caption: '' },
-			{ url: '/seattle-tree-spy/ss3.jpg', caption: '' },
-			{ url: '/seattle-tree-spy/ss4.jpg', caption: '' }
+			{
+				url: `${CLOUDINARY_SOFTWARE}/seattle-tree-spy/ss2.jpg`,
+				caption: ''
+			},
+			{
+				url: `${CLOUDINARY_SOFTWARE}/seattle-tree-spy/ss3.jpg`,
+				caption: ''
+			},
+			{
+				url: `${CLOUDINARY_SOFTWARE}/seattle-tree-spy/ss4.jpg`,
+				caption: ''
+			}
 		],
 		links: [
 			{ title: 'View on Web', url: 'https://xynree.github.io/seattle-tree-spy/' },
@@ -48,33 +61,25 @@ export const softwareProjects: SoftwareProject[] = [
 		categories: ['Software'],
 		shortDescription: 'Autobiographical comics website',
 		fullDescription: '',
-		technologies: ['Next.JS', 'TailwindCSS', 'Procreate'],
+		technologies: ['Next.JS', 'TailwindCSS', 'Python'],
 		images: [
-			{ url: '/diary-comics/recording.gif', caption: '' },
-			{ url: '/diary-comics/ss1.jpg', caption: '' },
-			{ url: '/diary-comics/recording-2.gif', caption: '' }
+			{
+				url: `${CLOUDINARY_SOFTWARE}/diary-comics/recording.gif`,
+				caption: ''
+			},
+			{
+				url: `${CLOUDINARY_SOFTWARE}/diary-comics/ss1.jpg`,
+				caption: ''
+			},
+			{
+				url: `${CLOUDINARY_SOFTWARE}/diary-comics/recording-2.gif`,
+				caption: ''
+			}
 		],
 		links: [
 			{ title: 'View on Web', url: 'https://comics.xinrui.work' },
 			{ title: 'Source', url: 'https://github.com/xynree/diary-comics' }
 		]
-	},
-	{
-		id: 'john-honda-website',
-		title: 'John Honda',
-		year: 2025,
-		categories: ['Software', 'UI/UX'],
-		shortDescription: 'Website & branding for the band John Honda',
-		fullDescription: '',
-		technologies: ['Astro', 'Python'],
-		images: [
-			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Design+System+1', caption: 'Palette' },
-			{
-				url: 'https://placehold.co/1600x1000/EEE/31343C?text=Design+System+2',
-				caption: 'Components'
-			}
-		],
-		links: [{ title: 'View on Web', url: 'https://www.johnhonda.com' }]
 	},
 	{
 		id: 'thread-association-flow',
@@ -91,8 +96,23 @@ export const softwareProjects: SoftwareProject[] = [
 		]
 	},
 	{
-		id: 'thread-design-system',
-		title: 'Design System and Implementation',
+		id: 'john-honda-website',
+		title: 'John Honda',
+		year: 2025,
+		categories: ['Software', 'UI/UX'],
+		shortDescription: 'Website & branding for the band John Honda',
+		fullDescription: '',
+		technologies: ['Astro', 'Python'],
+		images: [
+			{ url: `${CLOUDINARY_SOFTWARE}/john-honda-website/screencap.gif`, caption: '' },
+			{ url: `${CLOUDINARY_SOFTWARE}/john-honda-website/ss-1.jpg`, caption: '' }
+		],
+		links: [{ title: 'View on Web', url: 'https://www.johnhonda.com' }]
+	},
+
+	{
+		id: 'design-system',
+		title: 'Design System',
 		year: 2023,
 		categories: ['UI/UX', 'Software'],
 		shortDescription:
@@ -121,27 +141,47 @@ export const softwareProjects: SoftwareProject[] = [
 
 export const artProjects: ArtProject[] = [
 	{
+		id: 'john-honda-branding',
+		title: 'John Honda: Design & Branding',
+		year: 2025,
+		categories: ['Illustration', 'Design'],
+		shortDescription: 'Branding and design work for the band John Honda',
+		fullDescription: '',
+		technologies: ['Procreate', 'Figma'],
+		images: [
+			{ url: '/john-honda-branding/ss1.jpg', caption: '' },
+			{ url: '/john-honda-branding/ss2.jpg', caption: '' },
+			{ url: '/john-honda-branding/ss3.jpg', caption: '' }
+		],
+		links: []
+	},
+	{
 		id: 'diary-comics-art',
 		title: 'Diary Comics',
 		categories: ['Comics'],
 		shortDescription: 'Ongoing autobiographical comics practice',
 		fullDescription: '',
-		technologies: ['Next.JS', 'TailwindCSS'],
 		images: [
-			{ url: '/diary-comics/recording.gif', caption: '' },
-			{ url: '/diary-comics/ss1.jpg', caption: '' },
-			{ url: '/diary-comics/recording-2.gif', caption: '' }
+			{
+				url: 'https://res.cloudinary.com/xynree/image/upload/diary/2026/2.18.26_1',
+				caption: '2/18/26 - 1'
+			},
+			{
+				url: 'https://res.cloudinary.com/xynree/image/upload/diary/2026/2.18.26_2',
+				caption: '2/18/26 - 2'
+			},
+			{
+				url: 'https://res.cloudinary.com/xynree/image/upload/diary/2026/2.18.26_3',
+				caption: '2/18/26 - 3'
+			}
 		],
-		links: [
-			{ title: 'View on Web', url: 'https://comics.xinrui.work' },
-			{ title: 'Source', url: 'https://github.com/xynree/diary-comics' }
-		]
+		links: [{ title: 'View on Web', url: 'https://comics.xinrui.work' }]
 	},
 	{
 		id: 'debris-series',
 		title: 'Painting Series - Debris',
 		year: 2019,
-		categories: ['Painting'],
+		categories: ['Illustration'],
 		shortDescription: 'Painting Series',
 		fullDescription: '',
 		technologies: ['Procreate'],
@@ -151,10 +191,10 @@ export const artProjects: ArtProject[] = [
 		]
 	},
 	{
-		id: 'tattoo-series',
-		title: 'Tattoo Practice',
+		id: 'tattoos',
+		title: 'Tattoos',
 		year: 2019,
-		categories: ['Misc'],
+		categories: ['Other'],
 		shortDescription: 'Various tattoos done for friends, family and clients',
 		fullDescription: '',
 		technologies: [],
