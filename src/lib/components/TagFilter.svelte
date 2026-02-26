@@ -18,7 +18,6 @@
 <div class="tag-filter-wrapper">
 	<div class="tag-filter-container container">
 		<div class="label-col">
-			<span class="mono-label">Filter</span>
 		</div>
 		<div class="tags-col">
 			<div class="tag-filter">
@@ -54,8 +53,7 @@
 	.tag-filter-container {
 		display: grid;
 		grid-template-columns: var(--col-width-label) 1fr;
-		gap: var(--spacing-lg);
-		padding-top: var(--spacing-md);
+		gap: var(--spacing-sm);
 		align-items: center;
 	}
 

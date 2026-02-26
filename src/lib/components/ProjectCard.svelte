@@ -3,9 +3,10 @@
 
 	interface Props {
 		project: Project;
+		showCategories?: boolean;
 	}
 
-	let { project }: Props = $props();
+	let { project, showCategories = false }: Props = $props();
 
 	// Find the featured image for the thumbnail
 	let featuredImage = $derived(
@@ -16,7 +17,7 @@
 </script>
 
 <article class="project-card">
-	<a href={`/projects/${project.id}`} class="project-card-link">
+	<a href={`/projects/${project.id}`} class="project-card-link container">
 		<div class="project-row container">
 			<div class="col-index">
 				<span class="mono-label">{project.year ?? 'Ongoing'}</span>
@@ -27,30 +28,40 @@
 					<div class="title-section">
 						<h2 class="project-title">{project.title}</h2>
 						<p class="project-description">{project.shortDescription}</p>
-					</div>
 
-					<div class="metadata-section">
-						<div class="col-categories">
-							{#each sortedCategories as category (category)}
-								<span class="mono-label">{category}</span>
-							{/each}
-						</div>
-						<div class="col-tech">
-							<div class="tech-tags">
-								{#each project.technologies as p (p)}
-									<span class="tech-tag">{p}</span>
+						{#if project.images && project.images.length > 0}
+							<div class="project-previews">
+								{#each project.images.slice(0, 3) as image, i (image.url)}
+									<div class="project-preview-item">
+										<img
+											src={image.url}
+											alt={`${project.title} preview ${i + 1}`}
+											class="preview-image"
+										/>
+									</div>
 								{/each}
 							</div>
-						</div>
+						{/if}
 					</div>
 				</div>
 			</div>
 
-			{#if featuredImage}
-				<div class="project-thumbnail">
-					<img src={featuredImage.url} alt={project.title} class="thumbnail-image" />
+			<div class="metadata-section">
+				<div class="col-categories">
+					{#if showCategories}
+						{#each sortedCategories as category (category)}
+							<span class="mono-label">{category}</span>
+						{/each}
+					{/if}
 				</div>
-			{/if}
+				<div class="col-tech">
+					<div class="tech-tags">
+						{#each project.technologies as p (p)}
+							<span class="tech-tag">{p}</span>
+						{/each}
+					</div>
+				</div>
+			</div>
 		</div>
 	</a>
 </article>
@@ -74,10 +85,9 @@
 
 	.project-row {
 		display: grid;
-		grid-template-columns: var(--col-width-label) 1fr;
-		gap: var(--spacing-lg);
-		align-items: stretch;
-		position: relative;
+		grid-template-columns: var(--col-width-label) 1fr var(--col-width-link);
+		gap: var(--spacing-sm);
+		align-items: flex-start;
 	}
 
 	.col-index {
@@ -87,6 +97,7 @@
 	.col-content {
 		display: flex;
 		flex-direction: column;
+		overflow:hidden;
 	}
 
 	.content-wrapper {
@@ -97,10 +108,10 @@
 	}
 
 	.title-section {
-		flex: 1;
+		flex:1;
 		display: flex;
 		flex-direction: column;
-		gap: var(--spacing-xxs);
+		gap: var(--spacing-md);
 	}
 
 	.metadata-section {
@@ -168,60 +179,25 @@
 		letter-spacing: var(--mono-ls);
 	}
 
-	.project-thumbnail {
-		position: absolute;
-		left: calc(100% + var(--spacing-lg));
-		top: 0;
-		width: auto;
+	.project-previews {
+		display: flex;
+		gap: var(--spacing-sm);
+		margin-top: var(--spacing-xs);
+		overflow: hidden;
+		width: 100%;
+	}
+
+	.project-preview-item {
+		width: 180px;
+		flex-shrink: 0;
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+	}
+
+	.preview-image {
+		width: 100%;
 		height: 100%;
-		opacity: 0;
-		transition: all var(--transition-medium);
-		background: transparent;
-		pointer-events: none;
-		z-index: 10;
-		transform: translateX(-10px);
-	}
-
-	.project-card-link:hover .project-thumbnail {
-		opacity: 1;
-		transform: translateX(0);
-	}
-
-	.thumbnail-image {
-		width: auto;
-		height: 100%;
-		object-fit: contain;
-		mix-blend-mode: multiply;
-		filter: grayscale(1);
-	}
-
-	@media (max-width: 1400px) {
-		/* Inherit dynamic width from aspect ratio */
-	}
-
-	@media (max-width: 1200px) {
-		.project-thumbnail {
-			position: absolute;
-			right: var(--spacing-lg);
-			left: auto;
-			top: 0;
-			width: auto;
-			height: 100%;
-			opacity: 0;
-			transform: translateX(10px);
-			pointer-events: none;
-			z-index: 5;
-		}
-
-		.project-card-link:hover .project-thumbnail {
-			opacity: 1;
-			transform: translateX(0);
-		}
-
-		.project-row {
-			display: grid;
-			grid-template-columns: var(--col-width-label) 1fr;
-		}
+		object-fit: cover;
 	}
 
 	@media (max-width: 768px) {
@@ -248,18 +224,6 @@
 
 		.tech-tags {
 			justify-content: flex-start;
-		}
-
-		.project-thumbnail {
-			position: static;
-			opacity: 1;
-			pointer-events: auto;
-			transform: none;
-			width: 100%;
-			height: auto;
-			aspect-ratio: 16 / 9;
-			margin-left: 0;
-			margin-top: var(--spacing-md);
 		}
 	}
 </style>

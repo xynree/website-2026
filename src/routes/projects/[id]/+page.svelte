@@ -94,7 +94,7 @@
 	}
 
 	.project-header {
-		padding: var(--spacing-sm) 0 var(--spacing-lg) var(--spacing-lg);
+		padding: 0 0 var(--spacing-lg) 0;
 	}
 
 	.header-grid {

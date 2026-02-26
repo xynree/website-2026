@@ -45,9 +45,9 @@
 	.header-inner {
 		display: grid;
 		grid-template-columns: var(--col-width-label) 1fr;
-		gap: var(--spacing-lg);
+		gap: var(--spacing-sm);
 		align-items: start;
-		padding: var(--spacing-xl) var(--spacing-lg);
+		padding: var(--spacing-xl) 0;
 	}
 
 	.nav-list {

@@ -3,56 +3,16 @@
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { flip } from 'svelte/animate';
-	import TagFilter from '$lib/components/TagFilter.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
-	import { filterProjectsByCategories } from '$lib/data/projects';
-	import { bio, softwareCategories } from '$lib/content';
-	import { type SoftwareCategory } from '$lib/types';
+	import { bio, softwareProjects,  } from '$lib/content';
 
-	// Get all available categories
-	const categories = softwareCategories as unknown as SoftwareCategory[];
-
-	// State for selected category filter
-	let selectedCategories = $state<SoftwareCategory[]>([]);
-
-	// Filtered projects based on selected category
-	let filteredProjects = $derived(
-		filterProjectsByCategories(
-			selectedCategories.length > 0
-				? selectedCategories
-				: (['Software', 'UI/UX'] as SoftwareCategory[])
-		).sort((a, b) => {
-			if (!a?.year) {
-				return -1; // Move ongoing to the top
-			}
-			if (!b?.year) {
-				return 1;
-			}
-			return b.year - a.year; // Newest to Oldest
-		})
-	);
 
 	const BATCH_SIZE = 5;
 
 	// Infinite scroll state
 	let visibleCount = $state(BATCH_SIZE);
-	let visibleProjects = $derived(filteredProjects.slice(0, visibleCount));
+	let visibleProjects = $derived(softwareProjects.slice(0, visibleCount));
 
-	/**
-	 * Handle category selection (Toggle logic)
-	 */
-	function handleCategorySelect(category: string | null) {
-		visibleCount = BATCH_SIZE; // Reset count on filter change
-		if (category === null) {
-			selectedCategories = [];
-		} else {
-			if (selectedCategories.includes(category as SoftwareCategory)) {
-				selectedCategories = selectedCategories.filter((c) => c !== category);
-			} else {
-				selectedCategories = [...selectedCategories, category as SoftwareCategory];
-			}
-		}
-	}
 
 	let mounted = $state(false);
 	let isInitialLoad = $state(true);
@@ -78,7 +38,7 @@
 	});
 
 	$effect(() => {
-		if (scrollWatcher && visibleCount < filteredProjects.length) {
+		if (scrollWatcher && visibleCount < softwareProjects.length) {
 			const observer = new IntersectionObserver(
 				(entries) => {
 					if (entries[0].isIntersecting) {
@@ -103,21 +63,19 @@
 	<div class="page">
 		<main class="main">
 			<section class="software-section">
-				<!-- <TagFilter categories={['Software', 'UI/UX'] as SoftwareCategory[]} {selectedCategories} onToggleCategory={handleCategorySelect} /> -->
-
 				<div class="projects-list">
 					{#each visibleProjects as project, i (project.id)}
 						<div
 							class="project-wrapper"
 							in:fly|global={{
-								y: 20,
+								y: 5,
 								duration: 800,
-								delay: isInitialLoad ? 400 + i * 150 : (i % BATCH_SIZE) * 150,
+								delay: isInitialLoad ? 200 + i * 150 : (i % BATCH_SIZE) * 150,
 								easing: cubicOut
 							}}
 							animate:flip={{ duration: 300 }}
 						>
-							<ProjectCard {project} />
+							<ProjectCard {project} showCategories={false} />
 						</div>
 					{:else}
 						<p class="no-projects">No projects found for the selected categories.</p>
@@ -125,7 +83,7 @@
 				</div>
 
 				<!-- Infinite scroll scrollWatcher -->
-				{#if visibleCount < filteredProjects.length}
+				{#if visibleCount < softwareProjects.length}
 					<div bind:this={scrollWatcher} class="scroll-watcher">
 						<div class="loader"></div>
 					</div>

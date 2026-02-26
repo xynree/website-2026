@@ -17,8 +17,6 @@ export const headerLinks = [
 	{ name: 'Links', url: '/contact' }
 ] as SocialLink[];
 
-export const softwareCategories = ['Software', 'UI/UX'] as const;
-
 export const softwareProjects: SoftwareProject[] = [
 	{
 		id: 'seattle-tree-spy',
@@ -63,13 +61,12 @@ export const softwareProjects: SoftwareProject[] = [
 	},
 	{
 		id: 'john-honda-website',
-		title: 'John Honda Website & Branding',
+		title: 'John Honda',
 		year: 2025,
 		categories: ['Software', 'UI/UX'],
-		shortDescription:
-			'Website, merchandise, promotional art materials & branding for the band John Honda',
+		shortDescription: 'Website & branding for the band John Honda',
 		fullDescription: '',
-		technologies: ['Astro', 'Procreate'],
+		technologies: ['Astro', 'Python'],
 		images: [
 			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Design+System+1', caption: 'Palette' },
 			{
@@ -129,7 +126,7 @@ export const artProjects: ArtProject[] = [
 		categories: ['Comics'],
 		shortDescription: 'Ongoing autobiographical comics practice',
 		fullDescription: '',
-		technologies: ['Next.JS', 'TailwindCSS', 'Procreate'],
+		technologies: ['Next.JS', 'TailwindCSS'],
 		images: [
 			{ url: '/diary-comics/recording.gif', caption: '' },
 			{ url: '/diary-comics/ss1.jpg', caption: '' },
@@ -157,7 +154,7 @@ export const artProjects: ArtProject[] = [
 		id: 'tattoo-series',
 		title: 'Tattoo Practice',
 		year: 2019,
-		categories: ['Tattoo'],
+		categories: ['Misc'],
 		shortDescription: 'Various tattoos done for friends, family and clients',
 		fullDescription: '',
 		technologies: [],

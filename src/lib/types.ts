@@ -1,9 +1,7 @@
 export const softwareCategories = ['Software', 'UI/UX'] as const;
+export const artCategories = ['Comics', 'Misc', 'Painting'] as const;
 
 export type SoftwareCategory = (typeof softwareCategories)[number];
-
-export const artCategories = ['Comics', 'Tattoo', 'Painting'] as const;
-
 export type ArtCategory = (typeof artCategories)[number];
 
 export interface SocialLink {

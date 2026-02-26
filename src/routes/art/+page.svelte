@@ -2,12 +2,46 @@
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import ArtCard from '$lib/components/ArtCard.svelte';
-	import { artProjects, bio } from '$lib/content';
+	import { flip } from 'svelte/animate';
+	import ProjectCard from '$lib/components/ProjectCard.svelte';
+	import TagFilter from '$lib/components/TagFilter.svelte';
+	import { artProjects, bio, } from '$lib/content';
+	import { artCategories, type ArtCategory } from '$lib/types';
+
+	// State for selected category filter
+	let selectedCategories = $state<ArtCategory[]>([]);
+
+	// Filtered projects based on selected category
+	let filteredProjects = $derived(
+		(selectedCategories.length > 0
+			? artProjects.filter((p) => p.categories.some((c) => selectedCategories.includes(c as ArtCategory)))
+			: artProjects
+		).sort((a, b) => {
+			if (!a?.year) return -1;
+			if (!b?.year) return 1;
+			return b.year - a.year;
+		})
+	);
 
 	const BATCH_SIZE = 6;
 	let visibleCount = $state(BATCH_SIZE);
-	let visibleProjects = $derived(artProjects.slice(0, visibleCount));
+	let visibleProjects = $derived(filteredProjects.slice(0, visibleCount));
+
+	/**
+	 * Handle category selection (Toggle logic)
+	 */
+	function handleCategorySelect(category: string | null) {
+		visibleCount = BATCH_SIZE;
+		if (category === null) {
+			selectedCategories = [];
+		} else {
+			if (selectedCategories.includes(category as ArtCategory)) {
+				selectedCategories = selectedCategories.filter((c) => c !== category);
+			} else {
+				selectedCategories = [...selectedCategories, category as ArtCategory];
+			}
+		}
+	}
 
 	let mounted = $state(false);
 	let isInitialLoad = $state(true);
@@ -33,7 +67,7 @@
 	});
 
 	$effect(() => {
-		if (scrollWatcher && visibleCount < artProjects.length) {
+		if (scrollWatcher && visibleCount < filteredProjects.length) {
 			const observer = new IntersectionObserver(
 				(entries) => {
 					if (entries[0].isIntersecting) {
@@ -58,25 +92,32 @@
 	<div class="page">
 		<main class="main">
 			<section class="art-section">
+				<TagFilter
+					categories={artCategories as unknown as ArtCategory[]}
+					{selectedCategories}
+					onToggleCategory={handleCategorySelect}
+				/>
+
 				<div class="art-grid">
 					{#each visibleProjects as project, i (project.id)}
 						<div
 							class="art-wrapper"
 							in:fly|global={{
-								y: 20,
+								y: 5,
 								duration: 800,
-								delay: isInitialLoad ? 400 + i * 150 : (i % BATCH_SIZE) * 150,
+								delay: isInitialLoad ? 200 + i * 150 : (i % BATCH_SIZE) * 150,
 								easing: cubicOut
 							}}
+							animate:flip={{ duration: 300 }}
 						>
-							<ArtCard {project} />
+							<ProjectCard {project} showCategories={true} />
 						</div>
 					{:else}
 						<p class="no-projects">No art projects found.</p>
 					{/each}
 				</div>
 
-				{#if visibleCount < artProjects.length}
+				{#if visibleCount < filteredProjects.length}
 					<div bind:this={scrollWatcher} class="scroll-watcher">
 						<div class="loader"></div>
 					</div>
@@ -117,7 +158,6 @@
 	}
 
 	.art-section {
-		margin-top: var(--spacing-xl);
 		margin-bottom: var(--spacing-3xl);
 	}
 
