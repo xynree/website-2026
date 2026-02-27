@@ -4,14 +4,14 @@
 	import { cubicOut } from 'svelte/easing';
 	import { flip } from 'svelte/animate';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
-	import { bio, softwareProjects,  } from '$lib/content';
+	import { bio, webProjects,  } from '$lib/content';
 
 
 	const BATCH_SIZE = 5;
 
 	// Infinite scroll state
 	let visibleCount = $state(BATCH_SIZE);
-	let visibleProjects = $derived(softwareProjects.slice(0, visibleCount));
+	let visibleProjects = $derived(webProjects.slice(0, visibleCount));
 
 
 	let mounted = $state(false);
@@ -38,7 +38,7 @@
 	});
 
 	$effect(() => {
-		if (scrollWatcher && visibleCount < softwareProjects.length) {
+		if (scrollWatcher && visibleCount < webProjects.length) {
 			const observer = new IntersectionObserver(
 				(entries) => {
 					if (entries[0].isIntersecting) {
@@ -83,7 +83,7 @@
 				</div>
 
 				<!-- Infinite scroll scrollWatcher -->
-				{#if visibleCount < softwareProjects.length}
+				{#if visibleCount < webProjects.length}
 					<div bind:this={scrollWatcher} class="scroll-watcher">
 						<div class="loader"></div>
 					</div>

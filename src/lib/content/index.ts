@@ -1,4 +1,4 @@
-import type { ArtProject, SocialLink, SoftwareProject } from '$lib/types';
+import type { ArtProject, SocialLink, WebProject as WebProject } from '$lib/types';
 
 export const bio = {
 	name: 'Xinrui Chen',
@@ -21,7 +21,7 @@ export const CLOUDINARY_URL = 'https://res.cloudinary.com/xynree/image/upload/we
 export const CLOUDINARY_SOFTWARE = `${CLOUDINARY_URL}/software`;
 export const CLOUDINARY_ART = `${CLOUDINARY_URL}/art`;
 
-export const softwareProjects: SoftwareProject[] = [
+export const webProjects: WebProject[] = [
 	{
 		id: 'seattle-tree-spy',
 		title: 'Seattle Tree Spy',

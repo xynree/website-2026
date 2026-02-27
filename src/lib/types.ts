@@ -1,7 +1,7 @@
-export const softwareCategories = ['Software', 'UI/UX'] as const;
+export const webCategories = ['Software', 'UI/UX'] as const;
 export const artCategories = ['Illustration', 'Design', 'Comics', 'Other'] as const;
 
-export type SoftwareCategory = (typeof softwareCategories)[number];
+export type WebCategory = (typeof webCategories)[number];
 export type ArtCategory = (typeof artCategories)[number];
 
 export interface SocialLink {
@@ -32,8 +32,8 @@ export interface Project {
 	categories: string[];
 }
 
-export interface SoftwareProject extends Project {
-	categories: SoftwareCategory[];
+export interface WebProject extends Project {
+	categories: WebCategory[];
 }
 
 export interface ArtProject extends Project {
