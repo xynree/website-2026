@@ -13,7 +13,7 @@ export const bio = {
 
 export const headerLinks = [
 	{ name: 'Art', url: '/art' },
-	{ name: 'Software', url: '/' },
+	{ name: 'Web', url: '/' },
 	{ name: 'Links', url: '/contact' }
 ] as SocialLink[];
 
@@ -91,8 +91,15 @@ export const softwareProjects: SoftwareProject[] = [
 		fullDescription: '',
 		technologies: ['Figma', 'Angular', 'Storybook'],
 		images: [
-			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Ecommerce+1', caption: 'Checkout' },
-			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Ecommerce+2', caption: 'Mobile' }
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-association-flow/association-flow_1.jpg` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-association-flow/association-flow_2.jpg` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-association-flow/association-flow_3.jpg` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-association-flow/association-flow_4.jpg` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-association-flow/association-flow_5.jpg` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-association-flow/association-flow_6.jpg` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-association-flow/association-flow_7.jpg` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-association-flow/association-flow_8.jpg` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-association-flow/association-flow_9.jpg` }
 		]
 	},
 	{
@@ -111,7 +118,7 @@ export const softwareProjects: SoftwareProject[] = [
 	},
 
 	{
-		id: 'design-system',
+		id: 'thread-design-system',
 		title: 'Design System',
 		year: 2023,
 		categories: ['UI/UX', 'Software'],
@@ -120,21 +127,17 @@ export const softwareProjects: SoftwareProject[] = [
 		fullDescription: '',
 		technologies: ['Figma', 'Svelte', 'Storybook'],
 		images: [
-			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Ecommerce+1', caption: 'Checkout' },
-			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Ecommerce+2', caption: 'Mobile' }
-		]
-	},
-	{
-		id: 'rating-room',
-		title: 'Rating Room',
-		year: 2023,
-		categories: ['Software', 'UI/UX'],
-		shortDescription: 'Desktop app for keeping a personal database of ratings',
-		fullDescription: '',
-		technologies: ['Rust', 'Tauri', 'Svelte', 'Figma'],
-		images: [
-			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Ecommerce+1', caption: 'Checkout' },
-			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Ecommerce+2', caption: 'Mobile' }
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-design-system/design-system_1.png` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-design-system/design-system_2.png` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-design-system/design-system_3.png` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-design-system/design-system_4.png` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-design-system/design-system_5.png` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-design-system/design-system_6.png` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-design-system/design-system_7.png` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-design-system/design-system_8.png` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-design-system/design-system_9.png` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-design-system/design-system_10.png` },
+			{ url: `${CLOUDINARY_SOFTWARE}/thread-design-system/design-system_11.jpg` }
 		]
 	}
 ];
