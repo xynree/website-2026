@@ -143,15 +143,27 @@ export const artProjects: ArtProject[] = [
 	{
 		id: 'john-honda-branding',
 		title: 'John Honda: Design & Branding',
-		year: 2025,
 		categories: ['Illustration', 'Design'],
 		shortDescription: 'Branding and design work for the band John Honda',
 		fullDescription: '',
 		technologies: ['Procreate', 'Figma'],
 		images: [
-			{ url: '/john-honda-branding/ss1.jpg', caption: '' },
-			{ url: '/john-honda-branding/ss2.jpg', caption: '' },
-			{ url: '/john-honda-branding/ss3.jpg', caption: '' }
+			{
+				url: `${CLOUDINARY_ART}/john-honda-art/1.7.26_central-saloon-poster-small.jpg`,
+				caption: ''
+			},
+			{
+				url: `${CLOUDINARY_ART}/john-honda-art/3.8.26_chacha-lounge-poster-small.jpg`,
+				caption: ''
+			},
+			{
+				url: `${CLOUDINARY_ART}/john-honda-art/12.18.25_mountain-room-poster-small.jpg`,
+				caption: ''
+			},
+			{
+				url: `${CLOUDINARY_ART}/john-honda-art/nose-cars.gif`,
+				caption: ''
+			}
 		],
 		links: []
 	},

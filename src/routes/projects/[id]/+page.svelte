@@ -26,8 +26,16 @@
 				<header class="project-header container">
 					<div class="header-grid">
 						<div class="label-col">
-							<a href="/" class="back-link" aria-label="Back">
-								<span aria-hidden="true">← Index</span>
+							<a
+								href="/"
+								onclick={(e) => {
+									e.preventDefault();
+									history.back();
+								}}
+								class="back-link"
+								aria-label="Back"
+							>
+								<span aria-hidden="true">← Back</span>
 							</a>
 						</div>
 
