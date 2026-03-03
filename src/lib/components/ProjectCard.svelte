@@ -1,30 +1,20 @@
 <script lang="ts">
-	import type { Project, ProjectImage } from '$lib/types';
-	import { getOptimizedUrl } from '$lib/cloudinary';
+	import type { Project } from '$lib/types';
+	import { getOptimizedUrl } from '$lib/helpers/cloudinary';
+	import { formatProjectYear } from '$lib/helpers';
 
-	interface Props {
+	const {
+		project,
+		showCategories = false,
+		basePath
+	}: {
 		project: Project;
 		showCategories?: boolean;
 		basePath: string;
-	}
-
-	let { project, showCategories = false, basePath }: Props = $props();
-
-	// Find the featured image for the thumbnail
-	let featuredImage = $derived(
-		project.images.find((img: ProjectImage) => img.featured) ?? project.images[0]
-	);
+	} = $props();
 
 	let sortedCategories = $derived(project.categories.sort((a, b) => a.localeCompare(b)));
-	
-	let formattedYear = $derived.by(() => {
-		if (project.ongoing) {
-			return `${project.year ? project.year[0] : ''} - Ongoing`;
-		}
-		if (!project.year) return ''; // Should not happen with new logic but safe fallback
-		if (project.year.length === 1) return project.year[0].toString();
-		return `${project.year[0]} - ${project.year[1]}`;
-	});
+	let formattedYear = $derived(formatProjectYear(project));
 </script>
 
 <article class="project-card">
@@ -109,7 +99,7 @@
 	.col-content {
 		display: flex;
 		flex-direction: column;
-		overflow:hidden;
+		overflow: hidden;
 	}
 
 	.content-wrapper {
@@ -120,7 +110,7 @@
 	}
 
 	.title-section {
-		flex:1;
+		flex: 1;
 		display: flex;
 		flex-direction: column;
 		gap: var(--spacing-md);
@@ -130,7 +120,6 @@
 		font-weight: 600;
 		color: var(--color-text-secondary);
 		letter-spacing: -0.01em;
-		
 	}
 
 	.metadata-section {

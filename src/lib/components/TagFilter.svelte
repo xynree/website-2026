@@ -17,8 +17,7 @@
 
 <div class="tag-filter-wrapper">
 	<div class="tag-filter-container container">
-		<div class="label-col">
-		</div>
+		<div class="label-col"></div>
 		<div class="tags-col">
 			<div class="tag-filter">
 				<button

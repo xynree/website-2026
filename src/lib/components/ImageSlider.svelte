@@ -2,7 +2,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import type { ProjectImage } from '$lib/types';
-	import { getOptimizedUrl } from '$lib/cloudinary';
+	import { getOptimizedUrl } from '$lib/helpers';
 
 	interface Props {
 		images: ProjectImage[];
@@ -40,13 +40,15 @@
 		if (e.key === 'ArrowRight') next();
 		if (e.key === 'ArrowLeft') prev();
 	}
-
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
 <svelte:head>
 	{#if images.length > 1}
-		<link rel="prefetch" href={getOptimizedUrl(images[(currentIndex + 1) % images.length].url, 800)} />
+		<link
+			rel="prefetch"
+			href={getOptimizedUrl(images[(currentIndex + 1) % images.length].url, 800)}
+		/>
 	{/if}
 	<link rel="prefetch" href={getOptimizedUrl(images[currentIndex].url, 1600)} />
 </svelte:head>
@@ -61,19 +63,15 @@
 
 		<div class="slider-main">
 			{#key currentIndex}
-				<div 
+				<div
 					class="slide"
 					in:fly={{ x: direction * 50, duration: 400, easing: cubicOut, opacity: 0 }}
 					out:fade={{ duration: 200 }}
 				>
-					<button 
-						class="image-wrapper" 
-						onclick={openModal}
-						aria-label="View large image"
-					>
-						<img 
-							src={getOptimizedUrl(images[currentIndex].url, 800)} 
-							alt={images[currentIndex].caption || `${projectTitle} - image ${currentIndex + 1}`} 
+					<button class="image-wrapper" onclick={openModal} aria-label="View large image">
+						<img
+							src={getOptimizedUrl(images[currentIndex].url, 800)}
+							alt={images[currentIndex].caption || `${projectTitle} - image ${currentIndex + 1}`}
 							class="slider-image"
 							fetchpriority="high"
 						/>
@@ -104,13 +102,9 @@
 {#if isModalOpen}
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
-	<div 
-		class="modal-overlay" 
-		onclick={closeModal}
-		transition:fade={{ duration: 250 }}
-	>
+	<div class="modal-overlay" onclick={closeModal} transition:fade={{ duration: 250 }}>
 		<button class="modal-close" onclick={closeModal} aria-label="Close modal">×</button>
-		
+
 		<div class="modal-content" onclick={(e) => e.stopPropagation()}>
 			{#if images.length > 1}
 				<button class="modal-nav prev" onclick={prev} aria-label="Previous image">←</button>
@@ -118,12 +112,12 @@
 			{/if}
 
 			{#key currentIndex}
-				<div 
+				<div
 					class="modal-image-container"
 					in:fly={{ x: direction * 20, duration: 300, easing: cubicOut }}
 				>
-					<img 
-						src={getOptimizedUrl(images[currentIndex].url, 1600)} 
+					<img
+						src={getOptimizedUrl(images[currentIndex].url, 1600)}
 						alt={images[currentIndex].caption || projectTitle}
 						class="modal-image"
 					/>
@@ -229,8 +223,14 @@
 		color: var(--color-text-primary);
 	}
 
-	.prev { position: static; transform: none; }
-	.next { position: static; transform: none; }
+	.prev {
+		position: static;
+		transform: none;
+	}
+	.next {
+		position: static;
+		transform: none;
+	}
 
 	.slider-controls {
 		display: flex;
@@ -238,7 +238,6 @@
 		align-items: center;
 		padding: 0 var(--spacing-xs);
 	}
-
 
 	.counter {
 		font-family: var(--font-mono);
@@ -333,14 +332,18 @@
 		color: black;
 	}
 
-	.modal-nav.prev { left: -80px; }
-	.modal-nav.next { right: -80px; }
+	.modal-nav.prev {
+		left: -80px;
+	}
+	.modal-nav.next {
+		right: -80px;
+	}
 
 	@media (max-width: 768px) {
 		.slider-main {
 			aspect-ratio: 1/1;
 		}
-		
+
 		.modal-content {
 			width: 100vw;
 			height: 80vh;
@@ -354,8 +357,12 @@
 			transform: none;
 		}
 
-		.modal-nav.prev { left: 20%; }
-		.modal-nav.next { right: 20%; }
+		.modal-nav.prev {
+			left: 20%;
+		}
+		.modal-nav.next {
+			right: 20%;
+		}
 
 		.modal-image {
 			max-width: 95%;

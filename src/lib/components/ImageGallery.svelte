@@ -3,7 +3,7 @@
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import type { ProjectImage } from '$lib/types';
-	import { getOptimizedUrl } from '$lib/cloudinary';
+	import { getOptimizedUrl } from '$lib/helpers';
 
 	interface Props {
 		images: ProjectImage[];
@@ -14,9 +14,7 @@
 	let { images, projectTitle, baseDelay = 0 }: Props = $props();
 	let mounted = $state(false);
 
-	onMount(() => {
-		mounted = true;
-	});
+	onMount(() => (mounted = true));
 </script>
 
 <div class="gallery">

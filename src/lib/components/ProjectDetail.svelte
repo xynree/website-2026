@@ -5,6 +5,7 @@
 	import ImageGallery from '$lib/components/ImageGallery.svelte';
 	import ImageSlider from '$lib/components/ImageSlider.svelte';
 	import type { Project } from '$lib/types';
+	import { formatProjectYear } from '$lib/helpers';
 
 	interface Props {
 		project: Project;
@@ -15,27 +16,18 @@
 
 	let mounted = $state(false);
 	let dynamicImages = $state<Project['images']>([]);
-	let isLoadingDynamic = $state(false);
 
-	let allImages = $derived(dynamicImages.length? dynamicImages:project.images);
-	
+	let allImages = $derived(dynamicImages.length ? dynamicImages : project.images);
+
 	const BATCH_SIZE = 5;
 	let visibleCount = $state(BATCH_SIZE);
 	let visibleImages = $derived(allImages.slice(0, visibleCount));
 	let scrollWatcher = $state<HTMLElement | null>(null);
 
-	let formattedYear = $derived.by(() => {
-		if (project.ongoing) {
-			return `${project.year ? project.year[0] : ''} - Ongoing`;
-		}
-		if (!project.year) return '';
-		if (project.year.length === 1) return project.year[0].toString();
-		return `${project.year[0]} - ${project.year[1]}`;
-	});
+	let formattedYear = $derived(formatProjectYear(project));
 
 	onMount(async () => {
 		if (project.cloudinaryFolder) {
-			isLoadingDynamic = true;
 			try {
 				const response = await fetch(`/api/cloudinary/${project.cloudinaryFolder}`);
 				if (response.ok) {
@@ -46,8 +38,6 @@
 				}
 			} catch (e) {
 				console.error('Failed to fetch dynamic images:', e);
-			} finally {
-				isLoadingDynamic = false;
 			}
 		}
 		mounted = true;

@@ -4,26 +4,15 @@
 	import { cubicOut } from 'svelte/easing';
 	import { flip } from 'svelte/animate';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
-	import { bio, webProjects,  } from '$lib/content';
-
+	import { bio, webProjects } from '$lib/content';
+	import { sortProjectByYear } from '$lib/helpers';
 
 	const BATCH_SIZE = 5;
 
 	// Infinite scroll state
 	let visibleCount = $state(BATCH_SIZE);
-	let sortedProjects = $derived(
-		[...webProjects].sort((a, b) => {
-			const valA = a.ongoing ? Infinity : (a.year ? Math.max(...a.year) : -Infinity);
-			const valB = b.ongoing ? Infinity : (b.year ? Math.max(...b.year) : -Infinity);
-			
-			if (valA === Infinity && valB === Infinity) {
-				return (b.year?.[0] || 0) - (a.year?.[0] || 0);
-			}
-			return valB - valA;
-		})
-	);
+	let sortedProjects = $derived(webProjects.sort(sortProjectByYear));
 	let visibleProjects = $derived(sortedProjects.slice(0, visibleCount));
-
 
 	let mounted = $state(false);
 	let isInitialLoad = $state(true);

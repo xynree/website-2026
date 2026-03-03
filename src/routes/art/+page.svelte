@@ -5,8 +5,9 @@
 	import { flip } from 'svelte/animate';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import TagFilter from '$lib/components/TagFilter.svelte';
-	import { artProjects, bio, } from '$lib/content';
+	import { artProjects, bio } from '$lib/content';
 	import { artCategories, type ArtCategory } from '$lib/types';
+	import { sortProjectByYear } from '$lib/helpers';
 
 	// State for selected category filter
 	let selectedCategories = $state<ArtCategory[]>([]);
@@ -14,17 +15,11 @@
 	// Filtered projects based on selected category
 	let filteredProjects = $derived(
 		(selectedCategories.length > 0
-			? artProjects.filter((p) => p.categories.some((c) => selectedCategories.includes(c as ArtCategory)))
+			? artProjects.filter((p) =>
+					p.categories.some((c) => selectedCategories.includes(c as ArtCategory))
+				)
 			: artProjects
-		).sort((a, b) => {
-			const valA = a.ongoing ? Infinity : (a.year ? Math.max(...a.year) : -Infinity);
-			const valB = b.ongoing ? Infinity : (b.year ? Math.max(...b.year) : -Infinity);
-			
-			if (valA === Infinity && valB === Infinity) {
-				return (b.year?.[0] || 0) - (a.year?.[0] || 0);
-			}
-			return valB - valA;
-		})
+		).sort(sortProjectByYear)
 	);
 
 	const BATCH_SIZE = 6;
