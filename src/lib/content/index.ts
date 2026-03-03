@@ -213,9 +213,7 @@ export const artProjects: ArtProject[] = [
 		shortDescription: 'Various tattoos done for friends, family and clients',
 		fullDescription: '',
 		technologies: [],
-		images: [
-			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Ecommerce+1', caption: 'Checkout' },
-			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Ecommerce+2', caption: 'Mobile' }
-		]
+		cloudinaryFolder: 'art/tattoos',
+		images: []
 	}
 ];

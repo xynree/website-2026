@@ -13,8 +13,50 @@
 	let { project, fallbackHref }: Props = $props();
 
 	let mounted = $state(false);
-	onMount(() => {
+	let dynamicImages = $state<Project['images']>([]);
+	let isLoadingDynamic = $state(false);
+
+	let allImages = $derived([...project.images, ...dynamicImages]);
+	
+	const BATCH_SIZE = 5;
+	let visibleCount = $state(BATCH_SIZE);
+	let visibleImages = $derived(allImages.slice(0, visibleCount));
+	let scrollWatcher = $state<HTMLElement | null>(null);
+
+	onMount(async () => {
+		if (project.cloudinaryFolder) {
+			isLoadingDynamic = true;
+			try {
+				const response = await fetch(`/api/cloudinary/${project.cloudinaryFolder}`);
+				if (response.ok) {
+					const data = await response.json();
+					if (data.images) {
+						dynamicImages = data.images;
+					}
+				}
+			} catch (e) {
+				console.error('Failed to fetch dynamic images:', e);
+			} finally {
+				isLoadingDynamic = false;
+			}
+		}
 		mounted = true;
+	});
+
+	$effect(() => {
+		if (scrollWatcher && visibleCount < allImages.length) {
+			const observer = new IntersectionObserver(
+				(entries) => {
+					if (entries[0].isIntersecting) {
+						visibleCount += BATCH_SIZE;
+					}
+				},
+				{ threshold: 0.1, rootMargin: '200px' }
+			);
+
+			observer.observe(scrollWatcher);
+			return () => observer.disconnect();
+		}
 	});
 </script>
 
@@ -89,8 +131,14 @@
 						{/if}
 
 						<div class="gallery-wrapper">
-							<ImageGallery images={project.images} projectTitle={project.title} baseDelay={400} />
+							<ImageGallery images={visibleImages} projectTitle={project.title} baseDelay={400} />
 						</div>
+
+						{#if visibleCount < allImages.length}
+							<div bind:this={scrollWatcher} class="scroll-watcher">
+								<div class="loader"></div>
+							</div>
+						{/if}
 					</div>
 				</div>
 			</div>
@@ -216,6 +264,28 @@
 
 	.gallery-wrapper {
 		margin-top: var(--spacing-2xl);
+	}
+
+	.scroll-watcher {
+		display: flex;
+		justify-content: center;
+		padding: var(--spacing-2xl) 0;
+		height: var(--spacing-3xl);
+	}
+
+	.loader {
+		width: var(--spacing-md);
+		height: var(--spacing-md);
+		border: 1px solid var(--color-border);
+		border-top-color: var(--color-text-tertiary);
+		border-radius: 50%;
+		animation: spin 0.8s linear infinite;
+	}
+
+	@keyframes spin {
+		to {
+			transform: rotate(360deg);
+		}
 	}
 
 	@media (max-width: 768px) {

@@ -30,6 +30,7 @@ export interface Project {
 	links?: ProjectLink[];
 	technologies?: string[]; // e.g., ["React", "D3.js", "TypeScript"]
 	categories: string[];
+	cloudinaryFolder?: string;
 }
 
 export interface WebProject extends Project {
