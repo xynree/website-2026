@@ -3,6 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import ImageGallery from '$lib/components/ImageGallery.svelte';
+	import ImageSlider from '$lib/components/ImageSlider.svelte';
 	import type { Project } from '$lib/types';
 
 	interface Props {
@@ -131,14 +132,18 @@
 						{/if}
 
 						<div class="gallery-wrapper">
-							<ImageGallery images={visibleImages} projectTitle={project.title} baseDelay={400} />
-						</div>
+							{#if project.displayMode === 'slider'}
+								<ImageSlider images={allImages} projectTitle={project.title} />
+							{:else}
+								<ImageGallery images={visibleImages} projectTitle={project.title} baseDelay={400} />
 
-						{#if visibleCount < allImages.length}
-							<div bind:this={scrollWatcher} class="scroll-watcher">
-								<div class="loader"></div>
-							</div>
-						{/if}
+								{#if visibleCount < allImages.length}
+									<div bind:this={scrollWatcher} class="scroll-watcher">
+										<div class="loader"></div>
+									</div>
+								{/if}
+							{/if}
+						</div>
 					</div>
 				</div>
 			</div>

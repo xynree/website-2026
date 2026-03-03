@@ -31,6 +31,7 @@ export interface Project {
 	technologies?: string[]; // e.g., ["React", "D3.js", "TypeScript"]
 	categories: string[];
 	cloudinaryFolder?: string;
+	displayMode?: 'gallery' | 'slider';
 }
 
 export interface WebProject extends Project {

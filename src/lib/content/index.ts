@@ -149,7 +149,7 @@ export const artProjects: ArtProject[] = [
 		categories: ['Illustration', 'Design'],
 		shortDescription: 'Branding and design work for the band John Honda',
 		fullDescription: '',
-		technologies: ['Procreate', 'Figma'],
+		technologies: ['Procreate', 'Affinity'],
 		images: [
 			{
 				url: `${CLOUDINARY_ART}/john-honda-art/1.7.26_central-saloon-poster-small.jpg`,
@@ -176,6 +176,7 @@ export const artProjects: ArtProject[] = [
 		categories: ['Comics'],
 		shortDescription: 'Ongoing autobiographical comics practice',
 		fullDescription: '',
+		displayMode: 'slider',
 		images: [
 			{
 				url: 'https://res.cloudinary.com/xynree/image/upload/diary/2026/2.18.26_1',
@@ -210,6 +211,7 @@ export const artProjects: ArtProject[] = [
 	{
 		id: 'tattoos',
 		title: 'Tattoos',
+		displayMode: 'slider',
 		categories: ['Other'],
 		shortDescription: 'Various tattoos done for friends, family and clients',
 		fullDescription: '',

@@ -92,11 +92,11 @@
 	<div class="page">
 		<main class="main">
 			<section class="art-section">
-				<TagFilter
+				<!-- <TagFilter
 					categories={artCategories as unknown as ArtCategory[]}
 					{selectedCategories}
 					onToggleCategory={handleCategorySelect}
-				/>
+				/> -->
 
 				<div class="art-grid">
 					{#each visibleProjects as project, i (project.id)}
