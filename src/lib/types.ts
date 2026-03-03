@@ -23,7 +23,7 @@ export interface ProjectLink {
 export interface Project {
 	id: string;
 	title: string;
-	year?: number;
+	year?: [number] | [number, number];
 	shortDescription: string;
 	fullDescription: string;
 	images: ProjectImage[]; // Array of image objects for the gallery

@@ -24,6 +24,12 @@
 	let visibleImages = $derived(allImages.slice(0, visibleCount));
 	let scrollWatcher = $state<HTMLElement | null>(null);
 
+	let formattedYear = $derived.by(() => {
+		if (!project.year) return 'Ongoing';
+		if (project.year.length === 1) return project.year[0].toString();
+		return `${project.year[0]} - ${project.year[1]}`;
+	});
+
 	onMount(async () => {
 		if (project.cloudinaryFolder) {
 			isLoadingDynamic = true;
@@ -100,7 +106,7 @@
 				>
 					<div class="meta-col">
 						<div class="meta-item">
-							<span class="mono-value">{project.year ?? 'Ongoing'}</span>
+							<span class="mono-value">{formattedYear}</span>
 						</div>
 						<div class="meta-item">
 							<div class="mono-list">

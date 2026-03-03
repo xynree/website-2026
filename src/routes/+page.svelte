@@ -11,7 +11,14 @@
 
 	// Infinite scroll state
 	let visibleCount = $state(BATCH_SIZE);
-	let visibleProjects = $derived(webProjects.slice(0, visibleCount));
+	let sortedProjects = $derived(
+		[...webProjects].sort((a, b) => {
+			const yearA = a.year ? Math.max(...a.year) : Infinity;
+			const yearB = b.year ? Math.max(...b.year) : Infinity;
+			return yearB - yearA;
+		})
+	);
+	let visibleProjects = $derived(sortedProjects.slice(0, visibleCount));
 
 
 	let mounted = $state(false);
@@ -38,7 +45,7 @@
 	});
 
 	$effect(() => {
-		if (scrollWatcher && visibleCount < webProjects.length) {
+		if (scrollWatcher && visibleCount < sortedProjects.length) {
 			const observer = new IntersectionObserver(
 				(entries) => {
 					if (entries[0].isIntersecting) {
@@ -83,7 +90,7 @@
 				</div>
 
 				<!-- Infinite scroll scrollWatcher -->
-				{#if visibleCount < webProjects.length}
+				{#if visibleCount < sortedProjects.length}
 					<div bind:this={scrollWatcher} class="scroll-watcher">
 						<div class="loader"></div>
 					</div>

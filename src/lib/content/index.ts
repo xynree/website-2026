@@ -30,7 +30,7 @@ export const webProjects: WebProject[] = [
 		shortDescription:
 			'Interactive map interface for exploring neighborhood trees from local SDOT Tree dataset',
 		fullDescription: '',
-		year: 2026,
+		year: [2026],
 		technologies: ['React.JS', 'Deck.GL', 'TailwindCSS'],
 		images: [
 			{
@@ -58,7 +58,7 @@ export const webProjects: WebProject[] = [
 	{
 		id: 'diary-comics',
 		title: 'Diary Comics',
-		year: 2025,
+		year: [2025],
 		categories: ['Software'],
 		shortDescription: 'Autobiographical comics website',
 		fullDescription: '',
@@ -85,7 +85,7 @@ export const webProjects: WebProject[] = [
 	{
 		id: 'thread-association-flow',
 		title: 'Asset Utility Association Flow',
-		year: 2025,
+		year: [2025],
 		categories: ['UI/UX', 'Software'],
 		shortDescription:
 			'Design and implementation for software to associate drone photography to utility assets in the field',
@@ -106,7 +106,7 @@ export const webProjects: WebProject[] = [
 	{
 		id: 'john-honda-website',
 		title: 'John Honda',
-		year: 2025,
+		year: [2025],
 		categories: ['Software', 'UI/UX'],
 		shortDescription: 'Website & branding for the band John Honda',
 		fullDescription: '',
@@ -121,7 +121,7 @@ export const webProjects: WebProject[] = [
 	{
 		id: 'thread-design-system',
 		title: 'Design System',
-		year: 2023,
+		year: [2023],
 		categories: ['UI/UX', 'Software'],
 		shortDescription: 'Custom Design System for utility inspection interface',
 		fullDescription: '',
@@ -196,7 +196,7 @@ export const artProjects: ArtProject[] = [
 	{
 		id: 'debris-series',
 		title: 'Painting Series - Debris',
-		year: 2020,
+		year: [2020],
 		categories: ['Illustration'],
 		shortDescription: 'Digital painting series',
 		fullDescription: '',
@@ -211,6 +211,7 @@ export const artProjects: ArtProject[] = [
 	{
 		id: 'tattoos',
 		title: 'Tattoos',
+		year: [2018, 2022],
 		displayMode: 'slider',
 		categories: ['Other'],
 		shortDescription: 'Various tattoos done for friends, family and clients',

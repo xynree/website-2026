@@ -15,13 +15,19 @@
 	);
 
 	let sortedCategories = $derived(project.categories.sort((a, b) => a.localeCompare(b)));
+	
+	let formattedYear = $derived.by(() => {
+		if (!project.year) return 'Ongoing';
+		if (project.year.length === 1) return project.year[0].toString();
+		return `${project.year[0]} - ${project.year[1]}`;
+	});
 </script>
 
 <article class="project-card">
 	<a href={`/${basePath}/${project.id}`} class="project-card-link container">
 		<div class="project-row container">
 			<div class="col-index">
-				<span class="mono-label year-label">{project.year ?? 'Ongoing'}</span>
+				<span class="mono-label year-label">{formattedYear}</span>
 			</div>
 
 			<div class="col-content">
