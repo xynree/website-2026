@@ -29,7 +29,8 @@ export const webProjects: WebProject[] = [
 		categories: ['Software', 'UI/UX'],
 		shortDescription:
 			'Interactive map interface for exploring neighborhood trees from local SDOT Tree dataset',
-		fullDescription: '',
+		fullDescription:
+			'Custom interactive map interface exploring the SDOT Tree dataset which explores both publicly and privately maintained trees in the public right of way, with information on the condition, location, size, species and maintenance responsibility. Allows users to explore 3D trees on an interactive map, filter by various criteria, and view detailed information as well as aggregations.',
 		year: [2026],
 		ongoing: false,
 		technologies: ['React.JS', 'Deck.GL', 'TailwindCSS'],
@@ -53,7 +54,11 @@ export const webProjects: WebProject[] = [
 		],
 		links: [
 			{ title: 'View on Web', url: 'https://xynree.github.io/seattle-tree-spy/' },
-			{ title: 'Source', url: 'https://github.com/xynree/seattle-tree-spy' }
+			{ title: 'Source', url: 'https://github.com/xynree/seattle-tree-spy' },
+			{
+				title: 'SDOT Tree Dataset',
+				url: 'https://data-seattlecitygis.opendata.arcgis.com/datasets/SeattleCityGIS::sdot-trees/about'
+			}
 		]
 	},
 	{
@@ -63,7 +68,8 @@ export const webProjects: WebProject[] = [
 		ongoing: false,
 		categories: ['Software'],
 		shortDescription: 'Autobiographical comics website',
-		fullDescription: '',
+		fullDescription:
+			'Autobiographical comics website which pulls imagery from Cloudinary. Project includes a script to automatically watch a local folder and auto-upload imagery so that the comics archive stays up to date.',
 		technologies: ['Next.JS', 'TailwindCSS', 'Python'],
 		images: [
 			{
@@ -91,7 +97,8 @@ export const webProjects: WebProject[] = [
 		categories: ['UI/UX', 'Software'],
 		shortDescription:
 			'Design and implementation for software to associate drone photography to utility assets in the field',
-		fullDescription: '',
+		fullDescription:
+			'Design flow made for software to associate drone photography to utility assets in the field. Users would upload imagery of utility assets and the software would provide ML based suggestions for asset associations as well as guide users to confirm or reject associations.',
 		technologies: ['Figma', 'Angular', 'Storybook'],
 		images: [
 			{ url: `${CLOUDINARY_SOFTWARE}/thread-association-flow/association-flow_1.jpg` },
@@ -111,7 +118,8 @@ export const webProjects: WebProject[] = [
 		year: [2025],
 		categories: ['Software', 'UI/UX'],
 		shortDescription: 'Website & branding for the band John Honda',
-		fullDescription: '',
+		fullDescription:
+			'Custom website for a local band. The interactive UI is generated from a custom script which processes a video of practice footage into ASCII art format.',
 		technologies: ['Astro', 'Python'],
 		images: [
 			{ url: `${CLOUDINARY_SOFTWARE}/john-honda-website/screencap.gif`, caption: '' },
@@ -126,8 +134,10 @@ export const webProjects: WebProject[] = [
 		year: [2023],
 		categories: ['UI/UX', 'Software'],
 		shortDescription: 'Custom Design System for utility inspection interface',
-		fullDescription: '',
+		fullDescription:
+			'Designed for an enterprise utility asset inspection interface, this project spanned layout, typography, color design, brand exploration, and design of all working componentry. The final product was implemented in Svelte and maintained in Storybook, while design files were referenced through Figma documentation.',
 		technologies: ['Figma', 'Svelte', 'Storybook'],
+		displayMode: 'slider',
 		images: [
 			{ url: `${CLOUDINARY_SOFTWARE}/thread-design-system/design-system_1.png` },
 			{ url: `${CLOUDINARY_SOFTWARE}/thread-design-system/design-system_2.png` },
@@ -150,8 +160,8 @@ export const artProjects: ArtProject[] = [
 		title: 'John Honda: Design & Branding',
 		categories: ['Illustration', 'Design'],
 		shortDescription: 'Branding and design work for the band John Honda',
-		fullDescription: '',
-		technologies: ['Procreate', 'Affinity'],
+		fullDescription: 'Show posters, merchandise, and brand design.',
+		technologies: ['Digital', 'Affinity'],
 		year: [2025],
 		ongoing: true,
 		images: [
@@ -179,10 +189,11 @@ export const artProjects: ArtProject[] = [
 		title: 'Diary Comics',
 		categories: ['Comics'],
 		shortDescription: 'Ongoing autobiographical comics practice',
-		fullDescription: '',
+		fullDescription:
+			'Ongoing autobiographical comics practice spanning 8+ years (as of now). This is updated both on the comics instagram and on a dedicated website.',
 		year: [2019],
+		technologies: ['Digital'],
 		ongoing: true,
-		displayMode: 'slider',
 		images: [
 			{
 				url: 'https://res.cloudinary.com/xynree/image/upload/diary/2026/2.18.26_1',
@@ -197,7 +208,10 @@ export const artProjects: ArtProject[] = [
 				caption: '2/18/26 - 3'
 			}
 		],
-		links: [{ title: 'View on Web', url: 'https://comics.xinrui.work' }]
+		links: [
+			{ title: 'View on Web', url: 'https://comics.xinrui.work' },
+			{ title: 'Instagram', url: 'https://www.instagram.com/xyncomix/' }
+		]
 	},
 	{
 		id: 'debris-series',
@@ -206,7 +220,8 @@ export const artProjects: ArtProject[] = [
 		categories: ['Illustration'],
 		shortDescription: 'Digital painting series',
 		fullDescription: '',
-		technologies: ['Procreate'],
+		displayMode: 'slider',
+		technologies: ['Digital'],
 		cloudinaryFolder: 'art/debris',
 		images: [
 			{ url: `${CLOUDINARY_ART}/debris/Debris_1.jpg` },
@@ -221,7 +236,8 @@ export const artProjects: ArtProject[] = [
 		displayMode: 'slider',
 		categories: ['Other'],
 		shortDescription: 'Various tattoos done for friends, family and clients',
-		fullDescription: '',
+		fullDescription:
+			'Archive of selected tattoos done for friends, family and clients. I am no longer doing these regularly, but I could be convinced to make some new ones..',
 		technologies: [],
 		cloudinaryFolder: 'art/tattoos',
 		images: [

@@ -49,6 +49,10 @@
 			rel="prefetch"
 			href={getOptimizedUrl(images[(currentIndex + 1) % images.length].url, 800)}
 		/>
+		<link
+			rel="prefetch"
+			href={getOptimizedUrl(images[(currentIndex - 1 + images.length) % images.length].url, 800)}
+		/>
 	{/if}
 	<link rel="prefetch" href={getOptimizedUrl(images[currentIndex].url, 1600)} />
 </svelte:head>
@@ -70,7 +74,7 @@
 				>
 					<button class="image-wrapper" onclick={openModal} aria-label="View large image">
 						<img
-							src={getOptimizedUrl(images[currentIndex].url, 800)}
+							src={getOptimizedUrl(images[currentIndex].url,800)}
 							alt={images[currentIndex].caption || `${projectTitle} - image ${currentIndex + 1}`}
 							class="slider-image"
 							fetchpriority="high"
@@ -117,13 +121,10 @@
 					in:fly={{ x: direction * 20, duration: 300, easing: cubicOut }}
 				>
 					<img
-						src={getOptimizedUrl(images[currentIndex].url, 1600)}
+						src={images[currentIndex].url}
 						alt={images[currentIndex].caption || projectTitle}
 						class="modal-image"
 					/>
-					{#if images[currentIndex].caption}
-						<p class="modal-caption">{images[currentIndex].caption}</p>
-					{/if}
 				</div>
 			{/key}
 		</div>
@@ -132,11 +133,11 @@
 
 <style>
 	.slider-container {
-		width: 100%;
+		width: calc(100% + (112px));
 		display: flex;
 		flex-direction: column;
 		gap: var(--spacing-md);
-		margin: var(--spacing-xl) 0;
+		margin: 0 -56px;
 	}
 
 	.slider-content {
@@ -184,22 +185,7 @@
 	.slider-image {
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
-	}
-
-	.caption {
-		position: absolute;
-		bottom: var(--spacing-sm);
-		left: var(--spacing-xl);
-		right: var(--spacing-xl);
-		text-align: center;
-		font-size: var(--text-xs);
-		color: var(--color-text-tertiary);
-		margin: 0;
-		background: rgba(var(--color-background-rgb), 0.8);
-		backdrop-filter: blur(4px);
-		padding: var(--spacing-xxs) var(--spacing-sm);
-		pointer-events: none;
+		object-fit: contain;
 	}
 
 	.nav-btn {

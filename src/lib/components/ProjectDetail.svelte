@@ -232,7 +232,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: var(--spacing-md);
-		margin-bottom: var(--spacing-2xl);
+		margin-bottom: var(--spacing-sm);
 	}
 
 	.project-link {
@@ -267,7 +267,7 @@
 	}
 
 	.gallery-wrapper {
-		margin-top: var(--spacing-2xl);
+		display: flex;
 	}
 
 	.scroll-watcher {
