@@ -17,7 +17,7 @@
 	let dynamicImages = $state<Project['images']>([]);
 	let isLoadingDynamic = $state(false);
 
-	let allImages = $derived.by(() =>  dynamicImages.length? dynamicImages:project.images);
+	let allImages = $derived(dynamicImages.length? dynamicImages:project.images);
 	
 	const BATCH_SIZE = 5;
 	let visibleCount = $state(BATCH_SIZE);

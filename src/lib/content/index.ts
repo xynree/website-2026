@@ -176,6 +176,7 @@ export const artProjects: ArtProject[] = [
 		categories: ['Comics'],
 		shortDescription: 'Ongoing autobiographical comics practice',
 		fullDescription: '',
+		year: [2019, 2026],
 		displayMode: 'slider',
 		images: [
 			{
