@@ -18,7 +18,10 @@
 	let sortedCategories = $derived(project.categories.sort((a, b) => a.localeCompare(b)));
 	
 	let formattedYear = $derived.by(() => {
-		if (!project.year) return 'Ongoing';
+		if (project.ongoing) {
+			return `${project.year ? project.year[0] : ''} - Ongoing`;
+		}
+		if (!project.year) return ''; // Should not happen with new logic but safe fallback
 		if (project.year.length === 1) return project.year[0].toString();
 		return `${project.year[0]} - ${project.year[1]}`;
 	});

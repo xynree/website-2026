@@ -17,9 +17,13 @@
 			? artProjects.filter((p) => p.categories.some((c) => selectedCategories.includes(c as ArtCategory)))
 			: artProjects
 		).sort((a, b) => {
-			const yearA = a.year ? Math.max(...a.year) : Infinity;
-			const yearB = b.year ? Math.max(...b.year) : Infinity;
-			return yearB - yearA;
+			const valA = a.ongoing ? Infinity : (a.year ? Math.max(...a.year) : -Infinity);
+			const valB = b.ongoing ? Infinity : (b.year ? Math.max(...b.year) : -Infinity);
+			
+			if (valA === Infinity && valB === Infinity) {
+				return (b.year?.[0] || 0) - (a.year?.[0] || 0);
+			}
+			return valB - valA;
 		})
 	);
 

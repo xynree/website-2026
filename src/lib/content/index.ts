@@ -31,6 +31,7 @@ export const webProjects: WebProject[] = [
 			'Interactive map interface for exploring neighborhood trees from local SDOT Tree dataset',
 		fullDescription: '',
 		year: [2026],
+		ongoing: false,
 		technologies: ['React.JS', 'Deck.GL', 'TailwindCSS'],
 		images: [
 			{
@@ -59,6 +60,7 @@ export const webProjects: WebProject[] = [
 		id: 'diary-comics',
 		title: 'Diary Comics',
 		year: [2025],
+		ongoing: false,
 		categories: ['Software'],
 		shortDescription: 'Autobiographical comics website',
 		fullDescription: '',
@@ -150,6 +152,8 @@ export const artProjects: ArtProject[] = [
 		shortDescription: 'Branding and design work for the band John Honda',
 		fullDescription: '',
 		technologies: ['Procreate', 'Affinity'],
+		year: [2025],
+		ongoing: true,
 		images: [
 			{
 				url: `${CLOUDINARY_ART}/john-honda-art/1.7.26_central-saloon-poster-small.jpg`,
@@ -176,7 +180,8 @@ export const artProjects: ArtProject[] = [
 		categories: ['Comics'],
 		shortDescription: 'Ongoing autobiographical comics practice',
 		fullDescription: '',
-		year: [2019, 2026],
+		year: [2019],
+		ongoing: true,
 		displayMode: 'slider',
 		images: [
 			{

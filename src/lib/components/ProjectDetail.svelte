@@ -25,7 +25,10 @@
 	let scrollWatcher = $state<HTMLElement | null>(null);
 
 	let formattedYear = $derived.by(() => {
-		if (!project.year) return 'Ongoing';
+		if (project.ongoing) {
+			return `${project.year ? project.year[0] : ''} - Ongoing`;
+		}
+		if (!project.year) return '';
 		if (project.year.length === 1) return project.year[0].toString();
 		return `${project.year[0]} - ${project.year[1]}`;
 	});

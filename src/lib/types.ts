@@ -24,6 +24,7 @@ export interface Project {
 	id: string;
 	title: string;
 	year?: [number] | [number, number];
+	ongoing?: boolean;
 	shortDescription: string;
 	fullDescription: string;
 	images: ProjectImage[]; // Array of image objects for the gallery
