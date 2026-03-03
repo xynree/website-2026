@@ -3,6 +3,7 @@
 	import { fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import type { ProjectImage } from '$lib/types';
+	import { getOptimizedUrl } from '$lib/cloudinary';
 
 	interface Props {
 		images: ProjectImage[];
@@ -27,9 +28,11 @@
 			>
 				<div class="gallery-image-wrapper">
 					<img
-						src={image.url}
+						src={getOptimizedUrl(image.url, 1000)}
 						alt={image.caption || `${projectTitle} - Image ${index + 1}`}
 						class="gallery-image"
+						loading={index < 2 ? 'eager' : 'lazy'}
+						fetchpriority={index === 0 ? 'high' : 'auto'}
 					/>
 				</div>
 				{#if image.caption}

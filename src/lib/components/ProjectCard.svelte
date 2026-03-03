@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Project, ProjectImage } from '$lib/types';
+	import { getOptimizedUrl } from '$lib/cloudinary';
 
 	interface Props {
 		project: Project;
@@ -41,9 +42,10 @@
 								{#each project.images.slice(0, 3) as image, i (image.url)}
 									<div class="project-preview-item">
 										<img
-											src={image.url}
+											src={getOptimizedUrl(image.url)}
 											alt={`${project.title} preview ${i + 1}`}
 											class="preview-image"
+											loading="lazy"
 										/>
 									</div>
 								{/each}
