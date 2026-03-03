@@ -299,6 +299,10 @@
 			align-items: start;
 		}
 
+		.project-title {
+			font-size: var(--text-lg);
+		}
+
 		.project-header {
 			padding: var(--spacing-sm) 0 var(--spacing-md) var(--spacing-md);
 		}
@@ -310,10 +314,6 @@
 		.detail-grid {
 			grid-template-columns: 1fr;
 			gap: var(--spacing-xl);
-		}
-
-		.project-title {
-			font-size: var(--text-xl);
 		}
 
 		.meta-col {

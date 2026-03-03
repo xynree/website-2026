@@ -5,7 +5,7 @@
 	import { bio } from '$lib/content';
 
 	let mounted = $state(false);
-	onMount(() => mounted = true);
+	onMount(() => (mounted = true));
 </script>
 
 <div class="page">

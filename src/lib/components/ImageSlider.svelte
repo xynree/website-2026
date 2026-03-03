@@ -74,7 +74,7 @@
 				>
 					<button class="image-wrapper" onclick={openModal} aria-label="View large image">
 						<img
-							src={getOptimizedUrl(images[currentIndex].url,800)}
+							src={getOptimizedUrl(images[currentIndex].url, 800)}
 							alt={images[currentIndex].caption || `${projectTitle} - image ${currentIndex + 1}`}
 							class="slider-image"
 							fetchpriority="high"
@@ -327,7 +327,7 @@
 
 	@media (max-width: 768px) {
 		.slider-main {
-			aspect-ratio: 1/1;
+			aspect-ratio: 2/3;
 		}
 
 		.modal-content {

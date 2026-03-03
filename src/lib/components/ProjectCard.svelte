@@ -35,7 +35,7 @@
 								{#each project.images.slice(0, 3) as image, i (image.url)}
 									<div class="project-preview-item">
 										<img
-											src={getOptimizedUrl(image.url)}
+											src={getOptimizedUrl(image.url, 200)}
 											alt={`${project.title} preview ${i + 1}`}
 											class="preview-image"
 											loading="lazy"
@@ -99,7 +99,8 @@
 	.col-content {
 		display: flex;
 		flex-direction: column;
-		overflow: hidden;
+		overflow: clip;
+		width: 100%;
 	}
 
 	.content-wrapper {
@@ -145,6 +146,7 @@
 		margin: 0;
 		line-height: 1.4;
 		max-width: 500px;
+		overflow-wrap: break-word;
 	}
 
 	.col-categories {
@@ -182,7 +184,7 @@
 		display: flex;
 		gap: var(--spacing-sm);
 		margin-top: var(--spacing-xs);
-		overflow: hidden;
+		overflow: clip;
 		width: 100%;
 	}
 
@@ -204,6 +206,7 @@
 			display: flex;
 			flex-direction: column;
 			gap: var(--spacing-md);
+			padding: var(--spacing-sm);
 		}
 
 		.col-index {

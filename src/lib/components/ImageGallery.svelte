@@ -79,7 +79,7 @@
 		}
 
 		.gallery-image-wrapper {
-			aspect-ratio: 4 / 3;
+			aspect-ratio: unset;
 		}
 	}
 </style>
