@@ -7,7 +7,8 @@ export const bio = {
 		{ name: 'Email', url: 'mailto:xynree@gmail.com' },
 		{ name: 'GitHub', url: 'https://github.com/xynree' },
 		{ name: 'LinkedIn', url: 'https://linkedin.com/in/xinruichen7' },
-		{ name: 'Instagram', url: 'https://instagram.com/xynree' }
+		{ name: 'Instagram', url: 'https://instagram.com/xynree' },
+		{ name: 'Diary', url: 'https://comics.xinrui.work' }
 	]
 };
 
@@ -122,8 +123,7 @@ export const webProjects: WebProject[] = [
 		title: 'Design System',
 		year: 2023,
 		categories: ['UI/UX', 'Software'],
-		shortDescription:
-			'Custom Design System implemented for utility inspection interface. Implemented in Svelte',
+		shortDescription: 'Custom Design System for utility inspection interface',
 		fullDescription: '',
 		technologies: ['Figma', 'Svelte', 'Storybook'],
 		images: [

@@ -110,7 +110,7 @@
 							}}
 							animate:flip={{ duration: 300 }}
 						>
-							<ProjectCard {project} showCategories={true} />
+							<ProjectCard {project} showCategories={true} basePath="art" />
 						</div>
 					{:else}
 						<p class="no-projects">No art projects found.</p>

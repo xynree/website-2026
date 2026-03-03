@@ -80,9 +80,8 @@
 	--mono-text-transform: uppercase;
 
 	/* Component Specific Tokens */
-
 	--col-width-link: 100px;
-	--col-width-label: 180px;
+	--col-width-label: 160px;
 }
 
 html {

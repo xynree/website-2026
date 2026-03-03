@@ -4,9 +4,10 @@
 	interface Props {
 		project: Project;
 		showCategories?: boolean;
+		basePath: string;
 	}
 
-	let { project, showCategories = false }: Props = $props();
+	let { project, showCategories = false, basePath }: Props = $props();
 
 	// Find the featured image for the thumbnail
 	let featuredImage = $derived(
@@ -17,7 +18,7 @@
 </script>
 
 <article class="project-card">
-	<a href={`/projects/${project.id}`} class="project-card-link container">
+	<a href={`/${basePath}/${project.id}`} class="project-card-link container">
 		<div class="project-row container">
 			<div class="col-index">
 				<span class="mono-label year-label">{project.year ?? 'Ongoing'}</span>

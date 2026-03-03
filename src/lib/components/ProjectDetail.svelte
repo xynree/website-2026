@@ -3,10 +3,14 @@
 	import { fade } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import ImageGallery from '$lib/components/ImageGallery.svelte';
-	import type { PageData } from './$types';
+	import type { Project } from '$lib/types';
 
-	let { data }: { data: PageData } = $props();
-	let project = $derived(data.project);
+	interface Props {
+		project: Project;
+		fallbackHref: string;
+	}
+
+	let { project, fallbackHref }: Props = $props();
 
 	let mounted = $state(false);
 	onMount(() => {
@@ -27,7 +31,7 @@
 					<div class="header-grid">
 						<div class="label-col">
 							<a
-								href="/"
+								href={fallbackHref}
 								onclick={(e) => {
 									e.preventDefault();
 									history.back();
@@ -197,7 +201,7 @@
 
 	.project-link:hover {
 		background-color: var(--color-text-primary);
-		color: var(--color-bg);
+		color: var(--color-background);
 		border-color: var(--color-text-primary);
 	}
 

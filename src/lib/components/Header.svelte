@@ -61,8 +61,7 @@
 		padding: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
-		margin-top: 1px;
+		gap: 12px;
 	}
 
 	.mono-text {

@@ -55,14 +55,14 @@
 </script>
 
 <svelte:head>
-	<title>xinrui chen » software</title>
-	<meta name="description" content="{bio.name} - software" />
+	<title>xinrui chen » web</title>
+	<meta name="description" content="{bio.name} - web" />
 </svelte:head>
 
 {#if mounted}
 	<div class="page">
 		<main class="main">
-			<section class="software-section">
+			<section class="web-section">
 				<div class="projects-list">
 					{#each visibleProjects as project, i (project.id)}
 						<div
@@ -75,7 +75,7 @@
 							}}
 							animate:flip={{ duration: 300 }}
 						>
-							<ProjectCard {project} showCategories={false} />
+							<ProjectCard {project} showCategories={false} basePath="web" />
 						</div>
 					{:else}
 						<p class="no-projects">No projects found for the selected categories.</p>
