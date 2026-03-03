@@ -195,25 +195,30 @@ export const artProjects: ArtProject[] = [
 	{
 		id: 'debris-series',
 		title: 'Painting Series - Debris',
-		year: 2019,
+		year: 2020,
 		categories: ['Illustration'],
-		shortDescription: 'Painting Series',
+		shortDescription: 'Digital painting series',
 		fullDescription: '',
 		technologies: ['Procreate'],
+		cloudinaryFolder: 'art/debris',
 		images: [
-			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Ecommerce+1', caption: 'Checkout' },
-			{ url: 'https://placehold.co/1600x1000/EEE/31343C?text=Ecommerce+2', caption: 'Mobile' }
+			{ url: `${CLOUDINARY_ART}/debris/Debris_1.jpg` },
+			{ url: `${CLOUDINARY_ART}/debris/Debris_2.jpg` },
+			{ url: `${CLOUDINARY_ART}/debris/Debris_3.jpg` }
 		]
 	},
 	{
 		id: 'tattoos',
 		title: 'Tattoos',
-		year: 2019,
 		categories: ['Other'],
 		shortDescription: 'Various tattoos done for friends, family and clients',
 		fullDescription: '',
 		technologies: [],
 		cloudinaryFolder: 'art/tattoos',
-		images: []
+		images: [
+			{ url: `${CLOUDINARY_ART}/tattoos/20200219_220346.jpg` },
+			{ url: `${CLOUDINARY_ART}/tattoos/20190820_125755.jpg` },
+			{ url: `${CLOUDINARY_ART}/tattoos/20190713_004851.jpg` }
+		]
 	}
 ];
