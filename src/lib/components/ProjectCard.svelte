@@ -82,7 +82,7 @@
 
 	.project-card-link {
 		display: block;
-		padding: var(--spacing-lg) 0;
+		padding: var(--spacing-sm) 0;
 	}
 
 	.project-row {
