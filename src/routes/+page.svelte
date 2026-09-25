@@ -1,195 +1,86 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { fade, fly } from 'svelte/transition';
-	import { cubicOut } from 'svelte/easing';
-	import { flip } from 'svelte/animate';
-	import ProjectCard from '$lib/components/ProjectCard.svelte';
-	import { bio, webProjects } from '$lib/content';
-	import { sortProjectByYear } from '$lib/helpers';
+	import star from '$lib/art/star.txt?raw';
+	import flower from '$lib/art/flower.txt?raw';
+	import eye from '$lib/art/eye.txt?raw';
+	import hand from '$lib/art/hand.txt?raw';
+	import butterfly from '$lib/art/butterfly.txt?raw';
+	import { createMorphFrames } from '$lib/morph';
+	import { createTimeline } from '$lib/timeline';
+	import { embedTitle } from '$lib/title';
 
-	const BATCH_SIZE = 5;
-
-	// Infinite scroll state
-	let visibleCount = $state(BATCH_SIZE);
-	let sortedProjects = $derived(webProjects.sort(sortProjectByYear));
-	let visibleProjects = $derived(sortedProjects.slice(0, visibleCount));
-
-	let mounted = $state(false);
-	let isInitialLoad = $state(true);
-	let scrollWatcher = $state<HTMLElement | null>(null);
-	let showScrollTop = $state(false);
-
-	function scrollToTop() {
-		window.scrollTo({ top: 0, behavior: 'smooth' });
-	}
+	const transitions = createMorphFrames([star, flower, eye, hand, butterfly], 7);
+	const title = '☺︎ xinrui chen';
+	const subtitle = 'hanging out in seattle, wa';
+	const frames = createTimeline(transitions).map((frame: string) => embedTitle(frame, title, subtitle));
+	const symbols = ["'", '`', '\\', ';', '¨', '°', '¯'];
+	const dots = Array.from({ length: 32 }, (_, id) => ({
+		id,
+		symbolOffset: Math.floor(Math.random() * symbols.length),
+		x: 3 + Math.random() * 94,
+		y: 3 + Math.random() * 94
+	}));
+	let frame = $state(0);
+	let reducedMotion = $state(false);
+	const visibleFrame = $derived(reducedMotion ? 0 : frame);
+	const titleParts = $derived(frames[visibleFrame].split(title));
+	const subtitleParts = $derived(titleParts[1].split(subtitle));
+	const keyframe = $derived(Math.floor(visibleFrame / (frames.length / transitions.length)));
 
 	onMount(() => {
-		mounted = true;
-		setTimeout(() => {
-			isInitialLoad = false;
-		}, 1200);
-
-		const handleScroll = () => {
-			showScrollTop = window.scrollY > 400;
+		const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+		let request = 0;
+		let lastFrameTime = performance.now();
+		const animate = (now: number) => {
+			if (now - lastFrameTime >= 80) {
+				frame = (frame + 1) % frames.length;
+				lastFrameTime = now;
+			}
+			request = requestAnimationFrame(animate);
 		};
-
-		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
-	});
-
-	$effect(() => {
-		if (scrollWatcher && visibleCount < sortedProjects.length) {
-			const observer = new IntersectionObserver(
-				(entries) => {
-					if (entries[0].isIntersecting) {
-						visibleCount += BATCH_SIZE;
-					}
-				},
-				{ threshold: 0.1 }
-			);
-
-			observer.observe(scrollWatcher);
-			return () => observer.disconnect();
-		}
+		const update = () => {
+			cancelAnimationFrame(request);
+			reducedMotion = preference.matches;
+			lastFrameTime = performance.now();
+			if (!reducedMotion) request = requestAnimationFrame(animate);
+		};
+		update();
+		preference.addEventListener('change', update);
+		return () => {
+			cancelAnimationFrame(request);
+			preference.removeEventListener('change', update);
+		};
 	});
 </script>
 
-<svelte:head>
-	<title>xinrui chen » web</title>
-	<meta name="description" content="{bio.name} - web" />
-</svelte:head>
-
-{#if mounted}
-	<div class="page">
-		<main class="main">
-			<section class="web-section">
-				<div class="projects-list">
-					{#each visibleProjects as project, i (project.id)}
-						<div
-							class="project-wrapper"
-							in:fly|global={{
-								y: 5,
-								duration: 800,
-								delay: isInitialLoad ? 200 + i * 150 : (i % BATCH_SIZE) * 150,
-								easing: cubicOut
-							}}
-							animate:flip={{ duration: 300 }}
-						>
-							<ProjectCard {project} showCategories={false} basePath="web" />
-						</div>
-					{:else}
-						<p class="no-projects">No projects found for the selected categories.</p>
-					{/each}
-				</div>
-
-				<!-- Infinite scroll scrollWatcher -->
-				{#if visibleCount < sortedProjects.length}
-					<div bind:this={scrollWatcher} class="scroll-watcher">
-						<div class="loader"></div>
-					</div>
-				{/if}
-			</section>
-		</main>
+<main class="page">
+	<div class="floating-dots" aria-hidden="true">
+		{#each dots as dot (dot.id)}
+			<span style:left="{dot.x}%" style:top="{dot.y}%"
+				>{symbols[(dot.symbolOffset + keyframe) % symbols.length]}</span
+			>
+		{/each}
 	</div>
-{/if}
-
-{#if showScrollTop}
-	<button
-		class="scroll-top-btn"
-		onclick={scrollToTop}
-		transition:fade={{ duration: 200 }}
-		aria-label="Scroll to top"
-	>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="2"
-			stroke-linecap="round"
-			stroke-linejoin="round"><path d="m18 15-6-6-6 6" /></svg
+	<div class="centerpiece">
+		<div
+			class="art"
+			role="img"
+			aria-label="ASCII art morphing through a star, flower, eye, hand, and butterfly."
 		>
-	</button>
-{/if}
-
-<style>
-	.page {
-		margin-bottom: var(--spacing-2xl);
-	}
-
-	.projects-list {
-		display: grid;
-		grid-template-columns: 100%;
-		position: relative;
-		border-bottom: 1px solid var(--color-border);
-	}
-
-	.project-wrapper {
-		grid-column: 1;
-		width: 100%;
-	}
-
-	.no-projects {
-		color: var(--color-text-tertiary);
-		text-align: center;
-		padding: var(--spacing-xl) 0;
-	}
-
-	.scroll-watcher {
-		display: flex;
-		justify-content: center;
-		padding: var(--spacing-2xl) 0;
-		height: var(--spacing-3xl);
-	}
-
-	.loader {
-		width: var(--spacing-md);
-		height: var(--spacing-md);
-		border: 1px solid var(--color-border);
-		border-top-color: var(--color-text-tertiary);
-		border-radius: 50%;
-		animation: spin 0.8s linear infinite;
-	}
-
-	@keyframes spin {
-		to {
-			transform: rotate(360deg);
-		}
-	}
-
-	.scroll-top-btn {
-		position: fixed;
-		bottom: var(--spacing-xl);
-		right: var(--spacing-xl);
-		width: var(--spacing-xl);
-		height: var(--spacing-xl);
-		border-radius: 50%;
-		background: var(--color-background);
-		border: 1px solid var(--color-border);
-		color: var(--color-text-primary);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-		transition: all var(--transition-fast);
-		z-index: 100;
-	}
-
-	.scroll-top-btn:hover {
-		transform: translateY(-4px);
-		background: var(--color-hover);
-		border-color: var(--color-text-tertiary);
-	}
-
-	@media (max-width: 768px) {
-		.scroll-top-btn {
-			bottom: var(--spacing-lg);
-			right: var(--spacing-lg);
-			width: 40px;
-			height: 40px;
-		}
-	}
-</style>
+			<pre aria-hidden="true">{titleParts[0]}<span class="art-title">{title}</span>{subtitleParts[0]}<span class="art-title">{subtitle}</span>{subtitleParts[1]}</pre>
+		</div>
+		<nav class="links" aria-label="Links">
+			<a href="https://instagram.com/xynree">art</a>
+			<span aria-hidden="true">•</span>
+			<a href="https://instagram.com/xyncomix">comics</a>
+			<span aria-hidden="true">•</span>
+			<a href="https://github.com/xynree">web</a>
+			<span aria-hidden="true">•</span>
+			<a href="mailto:xynree@gmail.com" aria-label="Email xinrui chen" title="Email xinrui chen"
+				><span class="envelope" aria-hidden="true">✉</span></a
+			>
+		</nav>
+	</div>
+	<h1 class="sr-only">xinrui chen</h1>
+	<p class="sr-only">☺︎ wandering around in seattle, wa</p>
+</main>
