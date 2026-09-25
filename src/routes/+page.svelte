@@ -12,7 +12,9 @@
 	const transitions = createMorphFrames([star, flower, eye, hand, butterfly], 7);
 	const title = '☺︎ xinrui chen';
 	const subtitle = 'hanging out in seattle, wa';
-	const frames = createTimeline(transitions).map((frame: string) => embedTitle(frame, title, subtitle));
+	const frames = createTimeline(transitions).map((frame: string) =>
+		embedTitle(frame, title, subtitle)
+	);
 	const artColumns = frames[0].split('\n')[0].length;
 	const symbols = ["'", '`', '\\', ';', '¨', '°', '¯'];
 	const dots = Array.from({ length: 32 }, (_, id) => ({
@@ -68,7 +70,8 @@
 			role="img"
 			aria-label="ASCII art morphing through a star, flower, eye, hand, and butterfly."
 		>
-			<pre aria-hidden="true">{titleParts[0]}<span class="art-title">{title}</span>{subtitleParts[0]}<span class="art-title">{subtitle}</span>{subtitleParts[1]}</pre>
+			<pre aria-hidden="true">{titleParts[0]}<span class="art-title">{title}</span
+				>{subtitleParts[0]}<span class="art-title">{subtitle}</span>{subtitleParts[1]}</pre>
 		</div>
 		<nav class="links" aria-label="Links">
 			<a href="https://instagram.com/xynree">art</a>
@@ -83,5 +86,5 @@
 		</nav>
 	</div>
 	<h1 class="sr-only">xinrui chen</h1>
-	<p class="sr-only">☺︎ wandering around in seattle, wa</p>
+	<p class="sr-only">☺︎ hanging out in seattle, wa</p>
 </main>

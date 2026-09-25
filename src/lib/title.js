@@ -1,6 +1,6 @@
 // Reserve fixed character cells for both lines without changing the ASCII grid.
 /** @param {string} frame */
-export function embedTitle(frame, title = '☺︎ xinrui chen', subtitle = 'hanging out in seattle, wa') {
+export function embedTitle(frame, title = 'xinrui chen', subtitle = 'hanging out in seattle, wa') {
 	const rows = frame.split('\n');
 	const y = Math.floor(rows.length / 2);
 	const lines = [title, '', subtitle];
