@@ -98,13 +98,13 @@ button {
 	transform: translateX(-50%);
 	display: flex;
 	align-items: center;
-	gap: 1ch;
+	gap: 2ch;
 	white-space: nowrap;
 	line-height: 1.25;
 }
 
 .links a {
-	color: #4a6da9;
+	color: #447ad7;
 	text-shadow: 0 0 0.75px currentColor;
 	text-decoration: none;
 }
