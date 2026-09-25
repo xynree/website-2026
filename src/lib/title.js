@@ -11,7 +11,7 @@ export function embedTitle(frame, title = '☺︎ xinrui chen', subtitle = 'hang
 		const row = y + index;
 		const x = Math.max(
 			0,
-			Math.min(rows[row].length - cells, Math.floor((rows[row].length - cells) / 2) + 2)
+			Math.min(rows[row].length - cells, Math.floor((rows[row].length - cells) / 2))
 		);
 		rows[row] = rows[row].slice(0, x) + text + rows[row].slice(x + cells);
 	});

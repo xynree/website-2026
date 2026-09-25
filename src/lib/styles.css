@@ -36,6 +36,7 @@ button {
 
 .centerpiece {
 	position: relative;
+	font-size: 18px;
 	transform: translateY(-5svh);
 }
 
@@ -44,7 +45,7 @@ button {
 	font-size: 16px;
 	position: absolute;
 	top: 100%;
-	left: 55%;
+	left: 50%;
 	transform: translateX(-50%);
 	display: flex;
 	align-items: center;
@@ -125,4 +126,15 @@ button {
 
 .centerpiece {
 	z-index: 1;
+}
+
+@media (max-width: 480px) {
+	.page {
+		padding-inline: 5vw;
+	}
+
+	.centerpiece {
+		/* Courier New characters are 0.6em wide; fit the full grid to 90vw. */
+		font-size: calc(90vw / var(--art-columns) / 0.6);
+	}
 }

@@ -13,6 +13,7 @@
 	const title = '☺︎ xinrui chen';
 	const subtitle = 'hanging out in seattle, wa';
 	const frames = createTimeline(transitions).map((frame: string) => embedTitle(frame, title, subtitle));
+	const artColumns = frames[0].split('\n')[0].length;
 	const symbols = ["'", '`', '\\', ';', '¨', '°', '¯'];
 	const dots = Array.from({ length: 32 }, (_, id) => ({
 		id,
@@ -61,7 +62,7 @@
 			>
 		{/each}
 	</div>
-	<div class="centerpiece">
+	<div class="centerpiece" style:--art-columns={artColumns}>
 		<div
 			class="art"
 			role="img"
